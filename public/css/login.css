@@ -1,0 +1,29 @@
+/* Flexbox para centralizar itens */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+form {
+    color: #ffffff;
+    background-color: #4113ad;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.404);
+    text-align: center;
+}
+
+form input {
+    margin: 10px;
+    padding: 10px;
+}
+
+form button {
+    margin: 10px;
+    padding: 10px;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menu.css">
+    <title>Usuario</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <!-- Ícone de hambúrguer (três riscos) -->
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="#suporte">Suporte</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <header class="header">
+        <h1>Poppy Cursos</h1>
+        <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <div class="photo-container">
+                <!-- O elemento img será alterado quando o usuário selecionar uma nova imagem -->
+                <img class="photo" src="img/default-avatar.png" alt="Foto do usuário">
+                <div class="edit-photo">&#9998;</div>
+                <!-- Input de arquivo oculto -->
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+            </div>
+            <div class="info">
+                <div class="field">
+                    <label><strong>Nome: </strong> </label>
+                    <input type="text" value="NOME" disabled>
+                    <button class="edit">&#9998;</button>
+                </div>
+                <div class="field">
+                    <label><strong>Email: </strong> </label>
+                    <input type="email" value="Email" disabled>
+                    <button class="edit">&#9998;</button>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="courses">
+            <h2>Meus Cursos</h2>
+            <a class="course" href="inicio.html">
+                <span>Valorante</span>
+                <span>Progresso: X%</span>
+                background: url('https://static.vecteezy.com/ti/vetor-gratis/p1/23869659-roxa-estrangeiro-espaco-planeta-jogos-desenho-animado-fundo-gratis-vetor.jpg') no-repeat center center fixed;
+            </a>
+            <a class="other-courses" href="cursos.html">Entrar em outros Cursos</a>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffffdc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #686c8ddc;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: 600px;
+            backdrop-filter: blur(5px);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .photo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .edit-photo {
+            position: absolute;
+            bottom: 10px;
+            right: -10px;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .info {
+            margin-left: 20px;
+            flex-grow: 1;
+        }
+
+        .field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .edit {
+            background-color: #fff;
+            border: 1px solid #000;
+            padding: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+
+        .courses {
+            text-align: left;
+        }
+
+        .course {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .other-courses {
+            background-color: #fff;
+            border: 1px solid #000;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .label{
+            font-size: 7px;
+        }
+    </style>
+
+<script>
+    // Função para alternar a edição de inputs (nome e email)
+    const editButtons = document.querySelectorAll('.edit');
+    
+    editButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const input = event.target.previousElementSibling;
+            input.disabled = !input.disabled; // Alterna entre habilitar e desabilitar o campo
+            if (!input.disabled) {
+                input.focus(); // Foca no input quando está habilitado para edição
+            }
+        });
+    });
+
+    // Seleciona o botão de editar foto e o input de arquivo
+    const editPhotoButton = document.querySelector('.edit-photo');
+    const fileInput = document.getElementById('file-input');
+    const photo = document.querySelector('.photo');
+
+    // Evento para abrir o seletor de arquivos ao clicar no botão de edição de foto
+    editPhotoButton.addEventListener('click', () => {
+        fileInput.click(); // Simula o clique no input de arquivo
+    });
+
+    // Evento para atualizar a foto quando o usuário seleciona uma nova imagem
+    fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0]; // Obtém o arquivo selecionado
+        if (file) {
+            const reader = new FileReader(); // Cria um FileReader para ler o arquivo
+            reader.onload = (e) => {
+                photo.src = e.target.result; // Atualiza a imagem de perfil com a nova foto
+            };
+            reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados (base64)
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/funcao.css">
+    <title>Valorant-Sentinelas</title>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="inicio.html" class="home-icon"><img src="img/games-valorant-icon-512x512-kqz6q7jw.png" class="logo" alt="Logo Valorant"></a>
+        <h1>Sentinelas</h1>
+        <a href="index.html" class="home-icon"><img src="img/coisapt2.png" alt="Logo Valorant" class="logo"> </a><!-- mudei a imagem do usuario -->
+    </div>
+</header>
+
+<div class="conteudo">
+    <div class="content-box">
+        <div class="conteudo-texto">
+            <h1>Resumo Básico de Como Jogar de Sentinela no Valorant:</h1>
+            <p>
+                Sentinelas são especialistas em defesa e controle de área. Seu papel é proteger bombsites, impedir avanços inimigos e dar suporte ao time. Ao jogar de sentinela, você deve usar suas habilidades para cortar a visão dos inimigos, impedir flancos e fornecer suporte para a equipe em momentos críticos. Geralmente, o jogador de sentinela se posiciona em pontos estratégicos para vigiar e retardar o inimigo, permitindo que seu time tenha uma vantagem nas lutas ou na defesa do bombsite.
+            </p>
+            <p>
+                Jogando de Sentinela em Valorant, seu principal objetivo é fornecer segurança e controle em áreas cruciais do mapa. Sentinelas são especializados em segurar posições e garantir que os inimigos não avancem facilmente. Os agentes mais comuns dessa classe são Sage, Killjoy, Cypher e Chamber.
+            </p>
+            <h1>Abaixo os sentinelas, e seus vídeos:</h1>
+        </div>
+    </div>
+    <div class="conteudo-video">
+        <!-- Novo círculo com percentual -->
+        <div id="circle" class="percentage-circle">0%</div>
+
+        <!-- Vídeo existente -->
+        <iframe src="https://www.youtube.com/embed/5CA1DeOaIc0" frameborder="0" allowfullscreen></iframe> 
+    </div>
+</div>
+    
+<div class="botoes-container">
+    <!-- Botão Sage -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/600px-Sage_Artwork.png" alt="Sage">
+            <div class="hover-text">Sage</div>
+        </a>
+    </div>
+    <!-- Botão Killjoy -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/600px-Killjoy_Artwork.png" alt="Killjoy">
+            <div class="hover-text">Killjoy</div>
+        </a>
+    </div>
+    <!-- Botão Cypher -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/Cypher_Artwork.png" alt="Cypher">
+            <div class="hover-text">Cypher</div>
+        </a>
+    </div>
+    <!-- Botão Chamber -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/600px-Chamber_Artwork.png" alt="Chamber">
+            <div class="hover-text">Chamber</div>
+        </a>
+    </div>
+    <!-- Botão Vyse -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/Vyse_-_Full_body22222999999999999999.webp" alt="Vyse">
+            <div class="hover-text">Vyse</div>
+        </a>
+    </div>
+    <!-- Botão Deadlock -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/novo.webp" alt="Deadlock">
+            <div class="hover-text">Deadlock</div>
+        </a>
+    </div>
+</div>
+
+<!-- Modal para exibir o vídeo, avaliação e conclusão -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="rating-section">
+                <h2>Avalie o Vídeo:</h2>
+                <div class="star-rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <button id="concludeButton">Concluir Aula</button>
+            </div>
+            <div class="video-section">
+                <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/sentinela.js"></script>
+
+</body>
+</html>

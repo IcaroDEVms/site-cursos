@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Cadastro</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Poppy Cursos</h1>
+        <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
+
+    </header>
+
+
+    <div class="flexbox">
+        <form id="senhaForm" action="/cadastrar-email" method="post">
+            <h2>Registro</h2>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+            <button class="enviar" type="submit">Cadastrar</button>
+            <p>Já possui uma conta? Então <a href="login.html"> Entre</a></p>
+        </form>
+    </div>
+
+    <script>
+        // Intercepta o envio do formulário
+        document.getElementById('senhaForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Previne o comportamento padrão de recarregar a página
+
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+        // Validação das senhas no frontend
+        if (senha !== confirmarSenha) {
+            alert("As senhas não coincidem!"); // Mostra o alerta sem recarregar a página
+            return; // Impede o envio do formulário
+        }
+
+        // Caso as senhas coincidam, envia o formulário via AJAX
+        fetch('/cadastrar-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: document.getElementById('email').value, senha: senha, confirmarSenha: confirmarSenha })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Exibe o alert com a resposta do servidor
+            alert(data.message || 'Cadastro realizado com sucesso!');
+            window.location.href = 'login.html'
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro ao enviar os dados. Tente novamente.');
+        });
+    });
+    </script>
+</body>
+</html>

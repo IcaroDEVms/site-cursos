@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/funcao.css">
+    <title>Valorant-Iniciadores</title>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="inicio.html" class="home-icon"><img src="img/games-valorant-icon-512x512-kqz6q7jw.png" class="logo" alt="Logo Valorant"></a>
+        <h1>Iniciadores</h1>
+        <a href="index.html" class="home-icon"><img src="img/coisapt2.png" alt="Logo Valorant" class="logo"> </a> <!-- mudei a imagem do usuario -->
+    </div>
+</header>
+
+<div class="conteudo">
+    <div class="content-box">
+        <div class="conteudo-texto">
+            <h1>Resumo Básico de Como Jogar de Iniciador no Valorant:</h1>
+            <p>
+                Iniciadores têm a função de abrir caminho para que a equipe avance, oferecendo utilidade, visão e desorientando os inimigos. Suas habilidades são projetadas para revelar a posição dos oponentes, desativar temporariamente seus recursos e facilitar entradas seguras em bombsites.
+            </p>
+            <p>
+                Iniciadores, como Sova, Skye, Breach, KAY/O e Gekko, são essenciais para abrir caminho para a equipe ao desestabilizar a defesa inimiga com flashes, revelações ou stuns. Eles são o ponto de apoio da equipe para iniciar ataques ou retakes.
+            </p>
+            <h1>Abaixo os Iniciadores, e seus videos:</h1>
+        </div>
+    </div>
+    <div class="conteudo-video">
+        <!-- Novo círculo com percentual -->
+        <div id="circle" class="percentage-circle">0%</div>
+
+        <!-- Vídeo existente -->
+        <iframe src="https://www.youtube.com/embed/GSUr_8Z2TCo" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+    
+<div class="botoes-container">
+    <!-- Botão Sova -->
+    <div class="button-link">
+        <a href="javascript:void(0)"> 
+            <img src="img/SOVA.png" alt="Sova">
+            <div class="hover-text">Sova</div>
+        </a>
+    </div>
+    <!-- Botão Skye -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/Skye.png" alt="Skye">
+            <div class="hover-text">Skye</div>
+        </a>
+    </div>
+    <!-- Botão Breach -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/Breach.png" alt="Breach">
+            <div class="hover-text">Breach</div>
+        </a>
+    </div>
+    <!-- Botão KAY/O -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/KAYO.png" alt="KAY/O">
+            <div class="hover-text">KAY/O</div>
+        </a>
+    </div>
+    <!-- Botão Gekko -->
+    <div class="button-link">
+        <a href="javascript:void(0)">
+            <img src="img/Gekko.png" alt="Gekko">
+            <div class="hover-text">Gekko</div>
+        </a>
+    </div>
+</div>
+    
+<!-- Modal para exibir o vídeo, avaliação e conclusão -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="rating-section">
+                <h2>Avalie o Vídeo:</h2>
+                <div class="star-rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <button id="concludeButton">Concluir Aula</button>
+            </div>
+            <div class="video-section">
+                <iframe id="videoFrame" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/funcao.js"></script>
+
+</body>
+</html>
