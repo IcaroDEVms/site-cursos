@@ -39,7 +39,7 @@
 
         const senha = document.getElementById('senha').value;
         const confirmarSenha = document.getElementById('confirmarSenha').value;
-        const nome = document.getElementById('nome');
+        const nome = document.getElementById('nome').value;
 
         // Validação das senhas no frontend
         if (senha !== confirmarSenha) {
@@ -47,12 +47,15 @@
             return; // Impede o envio do formulário
         }
 
+        console.log("Valores enviados:", {nome: nome, email: email, senha: senha, confirmarSenha: confirmarSenha});
+
         // Caso as senhas coincidam, envia o formulário via AJAX
         fetch('/cadastrar-usuario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            
             body: JSON.stringify({ email: document.getElementById('email').value, senha: senha, confirmarSenha: confirmarSenha, nome: nome})
         })
         .then(response => response.json())

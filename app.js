@@ -12,16 +12,18 @@ app.use(bodyParser.json()); // Agora aceita JSON
 
 
 // Rota para cadastro de e-mail
-app.post('/cadastrar-email', (req, res) => {
-    const { email, senha, confirmarSenha } = req.body;
+app.post('/cadastrar-usuario', (req, res) => {
+    const { email, senha, confirmarSenha, nome } = req.body;
 
     if (senha !== confirmarSenha) {
         return res.status(400).send('As senhas não coincidem.');
     }
 
-    const query = 'INSERT INTO usuarios (email, senha) VALUES (?, ?)';
+    const query = 'INSERT INTO usuarios (email, senha, nome) VALUES (?, ?, ?)';
 
-    connection.query(query, [email, senha], (err, result) => {
+    console.log("Valores a serem inseridos: "+ email, senha, confirmarSenha, nome);
+
+    connection.query(query, [email, senha, nome], (err, result) => {
         if (err) {
             console.error('Erro ao inserir no banco de dados: ' + err.stack);
             return res.status(500).send('Erro ao cadastrar o e-mail.');
@@ -44,7 +46,6 @@ app.post('/login', (req, res) => {
 
         if (results.length > 0) {
             res.json({message: "Login bem-sucedido!", id: results[0].id});
-            //res.send("Login bem-sucedido!");
         } else {
             res.status(401).send('E-mail ou senha incorretos.');
         }
