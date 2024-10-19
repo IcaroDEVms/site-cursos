@@ -1,8 +1,8 @@
-drop database bancoemail;
+drop database bancoEmail;
 create database bancoEmail;
 use bancoEmail;
 
-create table emails(
+create table usuarios(
 id int auto_increment not null,
 email varchar(70) not null,
 senha varchar(50),
@@ -14,7 +14,7 @@ CREATE TABLE matriculas (
     email_id INT,         -- Chave estrangeira para a tabela emails
     curso_id INT,         -- ID do curso
     data_matricula DATE,  -- Data da matrícula
-    CONSTRAINT fk_email FOREIGN KEY (email_id) REFERENCES emails(id)
+    CONSTRAINT fk_email FOREIGN KEY (email_id) REFERENCES usuarios(id)
 );
 
 CREATE TABLE cursos (
@@ -31,7 +31,7 @@ CREATE TABLE progressos (
     curso_id INT,         -- ID do curso
     progresso INT,        -- Percentual de progresso (0-100)
     data_atualizacao DATE,-- Data da última atualização
-    CONSTRAINT fk_email_progresso FOREIGN KEY (email_id) REFERENCES emails(id)
+    CONSTRAINT fk_email_progresso FOREIGN KEY (email_id) REFERENCES usuarios(id)
 );
 
 
@@ -49,6 +49,8 @@ CREATE TABLE conclusoes_etapas (
     email_id INT,                         -- ID do usuário (chave estrangeira para tabela emails)
     etapa_id INT,                         -- ID da etapa (chave estrangeira para tabela etapas)
     data_conclusao DATE,                  -- Data em que o usuário concluiu a etapa
-    CONSTRAINT fk_email_etapa FOREIGN KEY (email_id) REFERENCES emails(id),
+    CONSTRAINT fk_email_etapa FOREIGN KEY (email_id) REFERENCES usuarios(id),
     CONSTRAINT fk_etapa_conclusao FOREIGN KEY (etapa_id) REFERENCES etapas(id)
 );
+
+select * from usuarios
