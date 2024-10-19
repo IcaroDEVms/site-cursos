@@ -7,11 +7,29 @@
 body {
     font-family: Arial, sans-serif;
     background-size: cover;
-    color: #333; /* Texto escuro para melhor contraste */
+    color: #333; 
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 35px;
+}
+
+:root{
+    --hanburgueTRES-color: #ff0000;
+    --hanburgueTEXT-color: #ff5555;
+    --cabesalho-color: #0328c9;
+    --cabesalhoTEXT-color: #4567ff;
+    --borda-color: #555;
+    --botoesdenavegacaodocarrossel-color: #555;
+    --TEXTO-color: #555;
+    --fundoTEXT-color: #f10ee6;
+    --H2-color: #333;
+    --H3-color: #333;
+    --LI-color: #333;
+    --UL-color: #3b3b3b;
+    --folder-collor: #000000;  
 }
 
 /* Sidebar retrátil */
@@ -51,7 +69,7 @@ body {
 .bar {
     width: 100%;
     height: 4px;
-    background-color: white;
+    background-color: var(--hanburgueTRES-color);
     border-radius: 2px;
     transition: all 0.3s;
 }
@@ -87,7 +105,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: rgb(202, 201, 201);
+    color: var(--hanburgueTEXT-color);
     text-decoration: none;
     display: block;
     font-size: 18px;
@@ -107,8 +125,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    color: rgb(5, 5, 5);
+    background-color: var(--cabesalho-color);
+    color: var(--cabesalhoTEXT-color);
     padding: 30px;
     position:absolute;
     top: 0;
@@ -138,16 +156,15 @@ body {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: -40px 30px 20px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    background-color: #ffffff;
     border-width: 0,5px;
-    border-color: #d3d2d2;
+    border-color: var(--borda-color);
     border-style:solid;
 }
 
 .carousel-container {
     display: flex;
-    transition: transform 1s ease-in-out; /* Transição mais suave */
+    transition: transform 1s ease-in-out; 
 }
 
 .carousel img {
@@ -155,7 +172,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: none;
-    transition: opacity 1s ease; /* Transição suave entre imagens */
+    transition: opacity 1s ease; 
 }
 
 .carousel img.active {
@@ -168,8 +185,8 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color:var(--botoesdenavegacaodocarrossel);
+    color: #fff;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -191,20 +208,6 @@ body {
     margin-top: 15px;
 }
 
-.carousel-indicators .dot {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin: 5px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.carousel-indicators .dot.active {
-    background-color: #333;
-}
-
 /* Texto abaixo do carrossel */
 .content-below-carousel {
     margin: 40px auto;
@@ -212,23 +215,22 @@ body {
     max-width: 900px;
     text-align: center;
     padding: 20px;
-    background-color: rgba(199, 199, 199, 0.863);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--fundoTEXT-color);
     border-radius: 10px;
-    color: rgb(26, 26, 26);
+    color: var(--TEXTO-color);
     backdrop-filter: blur(5px);
-    border: 2px solid #ccc;
+    border: 3px solid var(--borda-color);
 }
 
 .content-below-carousel h2 {
     text-align: center;
-    font-size: 2rem; /* Tamanho maior para destaque */
+    font-size: 2rem;
     margin-bottom: 20px;
-    color: rgb(26, 26, 26);
+    color: var(--H2-color)
 }
 
 .content-below-carousel h3,.content-below-carousel strong {
-    color: rgb(26, 26, 26);
+    color: var(--H3-color)
 }
 
 
@@ -236,7 +238,7 @@ body {
 /* Alinhando o texto à esquerda */
 .content-below-carousel p, .content-below-carousel ul {
     text-align: left;
-    line-height: 1.6; /* Melhora a legibilidade */
+    line-height: 1.6; 
     font-size: 1.1rem;
 }
 
@@ -244,10 +246,10 @@ body {
 .content-below-carousel ul {
     margin-top: 15px;
     margin-bottom: 15px;
-    padding-left: 20px; /* Recuo à esquerda para as listas */
+    padding-left: 20px;
 }
 
-/* Para itens específicos */
+
 .content-below-carousel li {
     list-style-position: inside;
 }
@@ -255,10 +257,9 @@ body {
 /* Footer fixo à direita */
 .footer {
  
-    color: rgb(17, 0, 255);
+    color: var(--folder-collor);
     text-align: right;
     padding: 10px 20px;
-    position: fixed;
     bottom: 0;
     right: 0;
     width: 100%;
@@ -271,22 +272,22 @@ body {
 .containerSobre {
     max-width: 900px;
     margin: 40px auto;
-    background-color: #9e9e9e;
+    background-color: var(--fundoTEXT-color);
+    border: 3px solid var(--borda-color);
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-top: 160px; /* Adiciona espaçamento entre o header e o conteúdo */
+    margin-top: 160px; 
 }
 
 .containerSobre h2 {
     font-size: 2rem;
-    color: rgb(26, 26, 26);
+    color: var(--H2-color);
     margin-bottom: 20px;
 }
 
 .containerSobre h3 {
     font-size: 1.5rem;
-    color: rgb(26, 26, 26);
+    color: var(--H3-color);
     margin-top: 30px;
     margin-bottom: 10px;
 }
@@ -294,13 +295,13 @@ body {
 .containerSobre p {
     margin-bottom: 20px;
     font-size: 1.1rem;
-    color: rgb(26, 26, 26);
+    color: var(--TEXTO-color);
 }
 
 .containerSobre ul {
     list-style-type: none;
     padding-left: 0;
-    color: rgb(26, 26, 26);
+    color: var(--UL-color);
 }
 
 .containerSobre li {
@@ -309,5 +310,138 @@ body {
 }
 
 .containerSobre li strong {
-    color: rgb(32, 32, 32);
+    color: var(--LI-color)
+}
+
+/* Seção de imagens com títulos e textos dos curso*/
+.cursoimage-text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    width: 80%;
+    max-width: 900px;
+}
+
+.cursoimage-text-item {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: var(--fundoTEXT-color);
+    border: 3px solid var(--borda-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 100px; 
+    display: flex; 
+    align-items: flex-start; 
+}
+
+.cursoimage-text-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.cursotext-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.cursotext-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--H2-color);
+}
+
+.cursotext-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--H3-color);
+}
+
+.cursotext-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--TEXTO-color);
+}
+.cursotext-content ul {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--UL-color);
+}
+.cursotext-content ul li {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--LI-color);
+}
+
+.suportecontainer {
+    max-width: 900px;
+    background-color: var(--fundoTEXT-color);
+    border: 3px solid var(--borda-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 100px;
+    color: var(--TEXTO-color);
+    text-align: center;
+}
+
+.suportecontainer h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--H2-color);
+}
+
+.suportecontainer p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.suportecontact-info {
+    margin-bottom: 30px;
+}
+
+.suportecontact-info p {
+    font-size: 1.2rem;
+}
+
+/* Formulário de contato */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input, form textarea {
+    width: 80%;
+    max-width: 700px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+form textarea {
+    height: 150px;
+    resize: none;
+}
+
+form button {
+    background-color: rgb(43, 190, 63);
+    color: #eff0ef;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #397a39;
+    color: white;
 }
