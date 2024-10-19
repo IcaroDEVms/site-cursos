@@ -19,7 +19,7 @@ app.post('/cadastrar-email', (req, res) => {
         return res.status(400).send('As senhas não coincidem.');
     }
 
-    const query = 'INSERT INTO emails (email, senha) VALUES (?, ?)';
+    const query = 'INSERT INTO usuarios (email, senha) VALUES (?, ?)';
 
     connection.query(query, [email, senha], (err, result) => {
         if (err) {
@@ -34,7 +34,7 @@ app.post('/cadastrar-email', (req, res) => {
 // Rota para login
 app.post('/login', (req, res) => {
     const { email, senha } = req.body;
-    const query = 'SELECT * FROM emails WHERE email = ? AND senha = ?';
+    const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
 
     connection.query(query, [email, senha], (err, results) => {
         if (err) {
@@ -43,7 +43,8 @@ app.post('/login', (req, res) => {
         }
 
         if (results.length > 0) {
-            res.send('Login bem-sucedido!');
+            res.json({message: "Login bem-sucedido!", id: results[0].id});
+            //res.send("Login bem-sucedido!");
         } else {
             res.status(401).send('E-mail ou senha incorretos.');
         }
@@ -51,8 +52,8 @@ app.post('/login', (req, res) => {
 });
 
 // Rota para obter todos os e-mails (não usa req.body)
-app.get('/emails', (req, res) => {
-    const query = 'SELECT * FROM emails';
+app.get('/usuarios', (req, res) => {
+    const query = 'SELECT * FROM usuarios';
 
     connection.query(query, (err, results) => {
         if (err) {

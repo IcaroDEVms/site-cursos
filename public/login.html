@@ -39,7 +39,9 @@
                 });
 
                 if (response.ok) {
-                    // Redirecionar para a página do usuário
+                    const result = await response.json();
+                    localStorage.setItem('userId', result.id);
+
                     window.location.href = 'usuario.html';
                 } else {
                     // Exibir mensagem de erro
