@@ -21,7 +21,7 @@
 
 
     <div class="flexbox">
-        <form id="senhaForm" action="/cadastrar-email" method="post">
+        <form id="cadastroForm" action="/cadastrar-email" method="post">
             <h2>Registro</h2>
             <input type="text" id="nome" name="nome" placeholder="Nome de usuario" required>
             <input type="email" id="email" name="email" placeholder="E-mail" required>
@@ -34,7 +34,7 @@
 
     <script>
         // Intercepta o envio do formulário
-        document.getElementById('senhaForm').addEventListener('submit', function(event) {
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Previne o comportamento padrão de recarregar a página
 
         const senha = document.getElementById('senha').value;
