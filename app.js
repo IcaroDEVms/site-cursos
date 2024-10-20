@@ -10,6 +10,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Agora aceita JSON
 
+app.get('/usuario/:id', (req, res) =>{
+    const userId = req.params.id;
+
+    const query = 'SELECT nome, email FROM usuarios WHERE id = ?';
+
+    connection.query(query, [userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao buscar dados');
+        }
+        if(result.length >0){
+            res.json(result[0]);
+        }else{
+            res.status(404).send('Usuário não encontrado');
+        }
+    });
+});
 
 // Rota para cadastro de e-mail
 app.post('/cadastrar-usuario', (req, res) => {

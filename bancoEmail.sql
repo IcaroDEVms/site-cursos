@@ -53,3 +53,5 @@ CREATE TABLE conclusoes_etapas (
     CONSTRAINT fk_email_etapa FOREIGN KEY (email_id) REFERENCES usuarios(id),
     CONSTRAINT fk_etapa_conclusao FOREIGN KEY (etapa_id) REFERENCES etapas(id)
 );
+
+SELECT * FROM usuarios;
