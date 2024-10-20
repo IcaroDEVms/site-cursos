@@ -6,7 +6,6 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #333; 
     padding: 0;
     margin: 0;
     display: flex;
@@ -26,43 +25,44 @@ body::before {
     background-image: url('https://c.pxhere.com/photos/d6/73/background_with_blue-494595.jpg!d');
     background-size: cover;
     background-position: center;
-    filter: grayscale(100%); /* Aplica o filtro preto e branco na imagem de fundo */
     z-index: -1;
 }
 :root{
-    --hanburgueTRES-color: #ff0000;
-    --hanburgueTEXT-color: #ff5555;
-    --hanburguue-color: #863b3b;
-    --cabecalho-color: #5222ff;
-    --cabecalhoTEXT-color: #ffffff;
+    --hanburgueTRES-color: #F78166;
+    --hanburgueTEXT-color: #0cdbff;
+    --hanburguue-color: #e9e9e9;
+    --cabecalho-color: #fff;
+    --cabecalhoTEXT-color: #0cdbff;
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #555;
-    --TEXTO-color: #555;
-    --fundoTEXT-color: #b306b9;
-    --H2-color: #333;
-    --H3-color: #333;
-    --LI-color: #333;
-    --UL-color: #3b3b3b;
-    --folder-collor: #000000;
-    --entraremoutroscursos-color: #791d1d;  
+    --TEXTO-color: #F0F6EF;
+    --fundoTEXT-color: #1100ff05;
+    --H2-color: #0cdbff;
+    --H3-color: #F0F6EF;
+    --LI-color: #0cdbff;
+    --UL-color: #F0F6EF;
+    --folder-collor: #ffffff;
+    --entraremoutroscursos-color: #555;
+    --TEXTusuario-color: #F0F6EF;  
 }
 
 .dark-mode:root{
-    --hanburgueTRES-color: #b62d2d;
-    --hanburgueTEXT-color: #000000;
-    --hanburguue-color: #863b3b;
-    --cabecalho-color: #c53a0f;
-    --cabecalhoTEXT-color: #c57122;
-    --borda-color: #300505;
-    --botoesdenavegacaodocarrossel-color: #e40d0d;
-    --TEXTO-color: #bb8585;
-    --fundoTEXT-color: #a70b0b;
-    --H2-color: #333;
-    --H3-color: #333;
-    --LI-color: #333;
-    --UL-color: #3b3b3b;
-    --folder-collor: #6d1b1b;  
-    --entraremoutroscursos-color: #791d1d; 
+    --hanburgueTRES-color: #F78166;
+    --hanburgueTEXT-color: #0cdbff;
+    --hanburguue-color: #010409;
+    --cabecalho-color: #0D1117;
+    --cabecalhoTEXT-color: #0cdbff;
+    --borda-color: #555;
+    --botoesdenavegacaodocarrossel-color: #555;
+    --TEXTO-color: #F0F6EF;
+    --fundoTEXT-color: #0d11172f;
+    --H2-color: #0cdbff;
+    --H3-color: #F0F6EF;
+    --LI-color: #0cdbff;
+    --UL-color: #F0F6EF;
+    --folder-collor: #ffffff;
+    --entraremoutroscursos-color: #555;
+    --TEXTusuario-color: #F0F6EF;  
 }
 
 /* Sidebar retrátil */
@@ -217,7 +217,7 @@ body::before {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color:var(--botoesdenavegacaodocarrossel);
+    background-color:var(--botoesdenavegacaodocarrossel-color);
     color: #fff;
     border: none;
     padding: 10px;
@@ -250,8 +250,7 @@ body::before {
     background-color: var(--fundoTEXT-color);
     border-radius: 10px;
     color: var(--TEXTO-color);
-    backdrop-filter: blur(5px);
-    border: 3px solid var(--borda-color);
+    backdrop-filter: blur(8px);
 }
 
 .content-below-carousel h2 {
@@ -305,10 +304,10 @@ body::before {
     max-width: 900px;
     margin: 40px auto;
     background-color: var(--fundoTEXT-color);
-    border: 3px solid var(--borda-color);
     padding: 20px;
     border-radius: 10px;
     margin-top: 160px; 
+    backdrop-filter: blur(8px);
 }
 
 .containerSobre h2 {
@@ -359,7 +358,7 @@ body::before {
     max-width: 900px;
     margin: 20px auto;
     background-color: var(--fundoTEXT-color);
-    border: 3px solid var(--borda-color);
+    backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: 10px;
     margin-top: 100px; 
@@ -412,7 +411,7 @@ body::before {
 .suportecontainer {
     max-width: 900px;
     background-color: var(--fundoTEXT-color);
-    border: 3px solid var(--borda-color);
+    backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: 10px;
     margin-top: 100px;
@@ -464,7 +463,7 @@ form textarea {
 
 form button {
     background-color: rgb(43, 190, 63);
-    color: #eff0ef;
+    color: var(--TEXTusuario-color);
     padding: 10px 20px;
     font-size: 1rem;
     border: none;
@@ -475,7 +474,7 @@ form button {
 
 form button:hover {
     background-color: #397a39;
-    color: white;
+    color: var(--TEXTusuario-color);
 }
 
 .loginflexbox {
@@ -510,7 +509,7 @@ form button:hover {
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
     padding: 20px;
-    border: 3px solid var(--borda-color);
+    color: var(--TEXTusuario-color);
     border-radius: 10px;
     width: 600px;
     backdrop-filter: blur(5px);
@@ -544,8 +543,7 @@ form button:hover {
     position: absolute;
     bottom: 10px;
     right: -10px;
-    background-color: #fff;
-    border: 1px solid var(--borda-color);
+    color: var(--TEXTusuario-color);
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
@@ -565,7 +563,6 @@ form button:hover {
 input {
     flex-grow: 1;
     padding: 8px;
-    border: 1px solid var(--borda-color);
     border-radius: 5px;
     font-size: 16px;
 }
@@ -599,13 +596,46 @@ hr {
 
 .Usuarioother-courses {
     background-color: var(--entraremoutroscursos-color);
-    border: 1px solid var(--borda-color);
     padding: 10px;
+    color: var(--TEXTusuario-color);
     cursor: pointer;
+    text-decoration: none; 
     border-radius: 5px;
     text-align: center;
+    color: var()
 }
 
 .Usuariolabel{
     font-size: 7px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--TEXTusuario-color);
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3; 
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.corRegistre{
+    color: var(--TEXTusuario-color);
+}
+.corlogin{
+    color: var(--TEXTusuario-color);
 }
