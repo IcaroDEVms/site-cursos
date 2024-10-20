@@ -43,12 +43,12 @@
             <div class="Usuarioinfo">
                 <div class="field">
                     <label><strong>Nome: </strong> </label>
-                    <input type="text" value="NOME" disabled>
+                    <input type="text" value="NOME" id="nome" disabled>
                     <button class="edit">&#9998;</button>
                 </div>
                 <div class="field">
                     <label><strong>Email: </strong> </label>
-                    <input type="email" value="Email" disabled>
+                    <input type="email" value="Email" id="email" disabled>
                     <button class="edit">&#9998;</button>
                 </div>
                 <div class="field">
@@ -89,7 +89,27 @@
     // Função para alternar a edição de inputs (nome e email)
     const editButtons = document.querySelectorAll('.edit');
     const btnSair = document.getElementById('sair');
-    const userId = localStorage.getItem('userId');
+    const nome = document.getElementById('nome');
+    const email = document.getElementById('email');
+    
+    window.onload = function() {
+    carregarDadosUsuario();
+    };
+
+    function carregarDadosUsuario () {
+        const userId = localStorage.getItem('userId');
+        console.log("ID: "+userId);
+
+        fetch(`/usuario/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                nome.value = data.nome;
+                email.value = data.email;
+            })
+            .catch(error => {
+                console.error("Erro: "+ error);
+            });
+    }
 
     btnSair.addEventListener('click', function(){
         console.log("usuario desconectado...");
