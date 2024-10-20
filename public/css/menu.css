@@ -513,6 +513,7 @@ form button:hover {
     border-radius: 10px;
     width: 600px;
     backdrop-filter: blur(5px);
+    text-align: end;
 }
 
 .Usuarioprofile {
@@ -558,6 +559,7 @@ form button:hover {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    justify-content: flex-end;
 }
 
 input {
@@ -626,11 +628,11 @@ hr {
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #e23535;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: #ff0000;
 }
 
 .corRegistre{
