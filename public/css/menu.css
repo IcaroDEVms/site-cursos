@@ -72,7 +72,7 @@ body::before {
     padding: 15px;
     height: 100vh;
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     transition: width 0.3s;
     overflow: hidden;
@@ -131,21 +131,41 @@ body::before {
     margin: 10px 0; /* Espaçamento para evitar que a imagem fique colada no texto */
 }
 
-
-body.full-width-accordion .sidebar {
-    padding: 0; /* Remove o padding da sidebar apenas nesta página */
-    margin: 0; /* Remove a margem */
+/* Ajuste para o accordion ocupar completamente a largura da sidebar */
+.sidebar .accordion {
+    width: 100%; /* O accordion ocupa toda a largura da sidebar */
+    padding: 0;
+    margin: 0; /* Remove qualquer margem ou padding */
 }
 
-body.full-width-accordion .accordion {
-    width: 100%; /* O accordion ocupa toda a largura da sidebar */
+.sidebar .accordion-item {
+    width: 100%; /* Cada item do accordion também ocupa toda a largura */
+    margin: 0; /* Remove margens entre os itens */
+    padding: 0; /* Remove o padding interno */
+    border: none; /* Remove bordas extras se houver */
+}
+
+.sidebar .accordion-header {
     padding: 0;
     margin: 0;
 }
 
-body.full-width-accordion .accordion-item {
-    width: 100%; /* Cada item do accordion também ocupa toda a largura */
+.sidebar .accordion-button {
+    width: 100%; /* Faz o botão do accordion ocupar toda a largura */
+    text-align: left; /* Mantém o texto alinhado à esquerda */
+    padding: 10px; /* Ajuste o padding conforme necessário */
     margin: 0;
+}
+
+.accordion {
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove padding se houver */
+    width: auto; /* Altera a largura para se ajustar ao conteúdo */
+    max-width: 100%; /* Garante que o accordion não exceda a largura da tela */
+    position: absolute; /* Posiciona o accordion */
+    left: 0; /* Move para a esquerda */
+    top: 120px; /* Alinha com o conteúdo desejado */
+    z-index: 10; /* Define a ordem de empilhamento, se necessário */
 }
 
 .sidebar:hover nav ul {
@@ -199,7 +219,7 @@ body.full-width-accordion .accordion-item {
 .icon-button {
     position: absolute;
     right: 20px;
-    padding: 10px 20px;
+    padding: 10px 70px;
     border: none;
     cursor: pointer;
 }
