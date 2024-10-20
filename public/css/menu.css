@@ -96,6 +96,7 @@ body::before {
     width: 30px;
     cursor: pointer;
     transition: opacity 0.3s;
+    margin-top: 10px;
 }
 
 .bar {
@@ -119,6 +120,32 @@ body::before {
     opacity: 0;
     transform: translateX(-20px);
     transition: opacity 0.5s, transform 0.5s;
+}
+
+.thumb-accordion-item {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    object-fit: cover; /* Faz com que a imagem se ajuste ao contêiner sem distorção */
+    border-radius: 5px; /* Borda arredondada para um estilo suave */
+    display: block; /* Garante que a imagem seja exibida corretamente */
+    margin: 10px 0; /* Espaçamento para evitar que a imagem fique colada no texto */
+}
+
+
+body.full-width-accordion .sidebar {
+    padding: 0; /* Remove o padding da sidebar apenas nesta página */
+    margin: 0; /* Remove a margem */
+}
+
+body.full-width-accordion .accordion {
+    width: 100%; /* O accordion ocupa toda a largura da sidebar */
+    padding: 0;
+    margin: 0;
+}
+
+body.full-width-accordion .accordion-item {
+    width: 100%; /* Cada item do accordion também ocupa toda a largura */
+    margin: 0;
 }
 
 .sidebar:hover nav ul {
