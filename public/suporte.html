@@ -18,7 +18,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                <li><a href="index.html"><img class="home" src="img/favicon22.ico" alt="casinha"></a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="cursos.html">Cursos</a></li>
                 <li><a href="suporte.html">Suporte</a></li>
@@ -28,9 +28,6 @@
 
     <!-- Header -->
     <header class="header">
-        <label for="switch">
-            <input type="checkbox" id="switch"> Dark Mode
-        </label>
         <script src="js/darkmode.js"></script>
         <h1>Poppy Cursos</h1>
         <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
@@ -51,11 +48,11 @@
         <p>Na seção abaixo, você pode preencher seus dados e descrever sua dúvida ou problema. O suporte entrará em contato com você o mais rápido possível.</p>
 
         <!-- Formulário de contato -->
-        <form action="#" method="POST">
+        <form action="#" method="POST" class="SuporteTextBox">
             <input type="text" name="name" placeholder="Seu Nome" required>
             <input type="email" name="email" placeholder="Seu E-mail" required>
             <textarea name="message" placeholder="Digite sua mensagem aqui..." required></textarea>
-            <button type="submit">Enviar Mensagem</button>
+            <button class="enviar" type="submit">Enviar Mensagem</button>
         </form>
     </div>
 
