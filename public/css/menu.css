@@ -13,7 +13,8 @@ body {
     align-items: center;
     padding: 35px;
     position: relative;
-    background-color: #0056b3;
+    background-color: var(--background-color);
+    color: var(--TEXTO-color);
 }
 
 body::before {
@@ -23,28 +24,30 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://c.pxhere.com/photos/d6/73/background_with_blue-494595.jpg!d');
     background-size: cover;
     background-position: center;
     z-index: -1;
 }
 :root{
-    --hanburgueTRES-color: #F78166;
-    --hanburgueTEXT-color: #0cdbff;
+    --hanburgueTRES-color: #0cdbff;
+    --hanburgueTEXT-color: #F78166;
     --hanburguue-color: #e9e9e9;
-    --cabecalho-color: #fff;
-    --cabecalhoTEXT-color: #0cdbff;
+    --cabecalho-color: #f5f5f5;
+    --cabecalhoTEXT-color: #F78166;
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #555;
-    --TEXTO-color: #F0F6EF;
-    --fundoTEXT-color: #1100ff05;
-    --H2-color: #0cdbff;
-    --H3-color: #F0F6EF;
-    --LI-color: #0cdbff;
-    --UL-color: #F0F6EF;
+    --TEXTO-color: #444;
+    --fundoTEXT-color: #efefef;
+    --H2-color: #F78166;
+    --H3-color: #333;
+    --LI-color: #F78166;
+    --UL-color: #444;
     --folder-collor: #ffffff;
     --entraremoutroscursos-color: #555;
-    --TEXTusuario-color: #F0F6EF;  
+    --TEXTusuario-color: #444;  
+    --background-color: #ffffff;
+    --CorButaoUsuario-color: #F0F6EF;
+    --SuporteTextBox-color: #fff;
 }
 
 .dark-mode:root{
@@ -64,6 +67,9 @@ body::before {
     --folder-collor: #ffffff;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #F0F6EF;  
+    --background-color: #303030;
+    --CorButaoUsuario-color: #F0F6EF;
+    --SuporteTextBox-color: #555;
 }
 
 /* Sidebar retrátil */
@@ -124,26 +130,26 @@ body::before {
 }
 
 .thumb-accordion-item {
-    width: 70px; /* Ajuste o tamanho conforme necessário */
-    height: auto; /* Mantém a proporção da imagem */
-    object-fit: cover; /* Faz com que a imagem se ajuste ao contêiner sem distorção */
-    border-radius: 5px; /* Borda arredondada para um estilo suave */
-    display: block; /* Garante que a imagem seja exibida corretamente */
-    margin: 10px 10px; /* Espaçamento para evitar que a imagem fique colada no texto */
+    width: 70px; 
+    height: auto; 
+    object-fit: cover; 
+    border-radius: 5px; 
+    display: block; 
+    margin: 10px 10px;
 }
 
 /* Ajuste para o accordion ocupar completamente a largura da sidebar */
 .sidebar .accordion {
-    width: 100%; /* O accordion ocupa toda a largura da sidebar */
+    width: 100%; 
     padding: 0;
-    margin: 0; /* Remove qualquer margem ou padding */
+    margin: 0; 
 }
 
 .sidebar .accordion-item {
-    width: 100%; /* Cada item do accordion também ocupa toda a largura */
-    margin: 0; /* Remove margens entre os itens */
-    padding: 0; /* Remove o padding interno */
-    border: none; /* Remove bordas extras se houver */
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    border: none; 
 }
 
 .sidebar .accordion-header {
@@ -152,25 +158,21 @@ body::before {
 }
 
 .sidebar .accordion-button {
-    width: 100%; /* Faz o botão do accordion ocupar toda a largura */
-    text-align: left; /* Mantém o texto alinhado à esquerda */
-    padding: 10px; /* Ajuste o padding conforme necessário */
+    width: 100%; 
+    text-align: left; 
+    padding: 10px; 
     margin: 0;
 }
 
 .accordion {
-    margin: 0; /* Remove margens */
-    padding: 0; /* Remove padding se houver */
-    width: auto; /* Altera a largura para se ajustar ao conteúdo */
-    max-width: 100%; /* Garante que o accordion não exceda a largura da tela */
-    position: absolute; /* Posiciona o accordion */
-    left: 0; /* Move para a esquerda */
-    top: 120px; /* Alinha com o conteúdo desejado */
-    z-index: 10; /* Define a ordem de empilhamento, se necessário */
-}
-
-.button-aula{
-    
+    margin: 0; 
+    padding: 0; 
+    width: auto; 
+    max-width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 120px; 
+    z-index: 10; 
 }
 
 .sidebar:hover nav ul {
@@ -251,7 +253,7 @@ align-items: center;
     border-radius: 15px;
     overflow: hidden;
     background-color: #ffffff;
-    border-width: 0,5px;
+    border-width: 1px;
     border-color: var(--borda-color);
     border-style:solid;
 }
@@ -272,6 +274,7 @@ align-items: center;
 .carousel img.active {
     display: block;
     opacity: 1;
+    position: absolute;
 }
 
 /* Botões de navegação do carrossel */
@@ -312,7 +315,6 @@ align-items: center;
     background-color: var(--fundoTEXT-color);
     border-radius: 10px;
     color: var(--TEXTO-color);
-    backdrop-filter: blur(8px);
 }
 
 .content-below-carousel h2 {
@@ -369,7 +371,6 @@ align-items: center;
     padding: 20px;
     border-radius: 10px;
     margin-top: 160px; 
-    backdrop-filter: blur(8px);
 }
 
 .containerSobre h2 {
@@ -420,7 +421,6 @@ align-items: center;
     max-width: 900px;
     margin: 20px auto;
     background-color: var(--fundoTEXT-color);
-    backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: 10px;
     margin-top: 100px; 
@@ -473,7 +473,6 @@ align-items: center;
 .suportecontainer {
     max-width: 900px;
     background-color: var(--fundoTEXT-color);
-    backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: 10px;
     margin-top: 100px;
@@ -523,9 +522,9 @@ form textarea {
     resize: none;
 }
 
-form button {
+.enviar {
     background-color: rgb(43, 190, 63);
-    color: var(--TEXTusuario-color);
+    color: white;
     padding: 10px 20px;
     font-size: 1rem;
     border: none;
@@ -552,7 +551,7 @@ form button:hover {
     display: flex;
     flex-direction: column;
     padding: 30px;
-    border: 3px solid var(--borda-color);
+    border: 1px solid var(--borda-color);
     border-radius: 20px;
     text-align: center;
 }
@@ -565,16 +564,17 @@ form button:hover {
 .loginform button {
     margin: 10px;
     padding: 10px;
+    color: white;
 }
 
 
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
     padding: 20px;
+    margin-top: 100px;
     color: var(--TEXTusuario-color);
     border-radius: 10px;
     width: 600px;
-    backdrop-filter: blur(5px);
     text-align: end;
 }
 
@@ -594,7 +594,7 @@ form button:hover {
 .Usuariophoto {
     width: 150px;
     height: 150px;
-    border: 2px solid var(--borda-color);
+    border: 1px solid var(--borda-color);
     border-radius: 50%;
     object-fit: cover;
     display: flex;
@@ -604,12 +604,13 @@ form button:hover {
 
 .edit-photo {
     position: absolute;
-    bottom: 10px;
-    right: -10px;
+    bottom: 0px;
+    right: -12px;
     color: var(--TEXTusuario-color);
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .Usuarioinfo {
@@ -631,29 +632,44 @@ input {
     font-size: 16px;
 }
 
+.meu-input{
+    color: var(--TEXTusuario-color);
+}
+
 .edit {
-    background-color: #fff;
-    border: 1px solid var(--borda-color);
+    background-color: #ffffff00;
+    color: var(--TEXTusuario-color);
+    border: none;
     padding: 5px;
     cursor: pointer;
     margin-left: 10px;
-    border-radius: 5px;
+    font-size: 20px;
 }
 
 hr {
     margin: 20px 0;
-    border: 1px solid var(--borda-color);
+    border: .5px solid var(--borda-color);
+}
+
+.SuporteTextBox input,textarea{
+    background-color: var(--SuporteTextBox-color);
+    color: var(--TEXTO-color);
 }
 
 .Usuariocourses {
     text-align: left;
 }
 
+.hr {
+    
+    height: .5px;
+}
+
 .Usuariocourse {
     display: flex;
     justify-content: space-between;
     padding: 50px;
-    border: 2px solid var(--borda-color);
+    border: .5px solid var(--borda-color);
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -661,7 +677,7 @@ hr {
 .Usuarioother-courses {
     background-color: var(--entraremoutroscursos-color);
     padding: 10px;
-    color: var(--TEXTusuario-color);
+    color: var(--CorButaoUsuario-color);
     cursor: pointer;
     text-decoration: none; 
     border-radius: 5px;
@@ -676,7 +692,7 @@ hr {
 .btn {
     padding: 10px 20px;
     font-size: 16px;
-    color: var(--TEXTusuario-color);
+    color: var(--CorButaoUsuario-color);
     background-color: #007BFF;
     border: none;
     border-radius: 5px;
