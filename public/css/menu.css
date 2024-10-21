@@ -123,12 +123,12 @@ body::before {
 }
 
 .thumb-accordion-item {
-    width: 100px; /* Ajuste o tamanho conforme necessário */
+    width: 70px; /* Ajuste o tamanho conforme necessário */
     height: auto; /* Mantém a proporção da imagem */
     object-fit: cover; /* Faz com que a imagem se ajuste ao contêiner sem distorção */
     border-radius: 5px; /* Borda arredondada para um estilo suave */
     display: block; /* Garante que a imagem seja exibida corretamente */
-    margin: 10px 0; /* Espaçamento para evitar que a imagem fique colada no texto */
+    margin: 10px 10px; /* Espaçamento para evitar que a imagem fique colada no texto */
 }
 
 /* Ajuste para o accordion ocupar completamente a largura da sidebar */
@@ -215,6 +215,15 @@ body::before {
     transition: margin-left 0.3s;
     
 }
+
+
+.accordion-body{
+
+display: flex;
+align-items: center;
+}
+
+
 
 .icon-button {
     position: absolute;
