@@ -10,7 +10,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Agora aceita JSON
 
-app.get('/usuario/:id', (req, res) =>{
+app.put('/atualizar-usuario/:id', (req, res) =>{
+    const userId = req.params.id;
+    const { nome, email } = req.body;
+
+    const query = 'UPDATE usuarios SET nome = ?, email = ? WHERE id = ?';
+
+    connection.query(query, [nome, email, userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao atualizar o usuario');
+        }
+        res.send('Usuario atualizado com sucesso')
+    })
+})
+
+app.get('/buscar-usuario/:id', (req, res) =>{
     const userId = req.params.id;
 
     const query = 'SELECT nome, email FROM usuarios WHERE id = ?';

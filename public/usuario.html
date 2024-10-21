@@ -41,19 +41,19 @@
             </div>
             
             <div class="Usuarioinfo">
-                <div class="field">
-                    <label><strong>Nome: </strong> </label>
-                    <input type="text" value="NOME" id="nome" disabled>
-                    <button class="edit">&#9998;</button>
-                </div>
-                <div class="field">
-                    <label><strong>Email: </strong> </label>
-                    <input type="email" value="Email" id="email" disabled>
-                    <button class="edit">&#9998;</button>
-                </div>
-                <div class="field">
-                    <button class="btn">Salvar alterações</button>
-                </div>
+                    <div class="field">
+                        <label><strong>Nome: </strong> </label>
+                        <input type="text" value="NOME" id="nome" disabled>
+                        <button class="edit">&#9998;</button>
+                    </div>
+                    <div class="field">
+                        <label><strong>Email: </strong> </label>
+                        <input type="email" value="Email" id="email" disabled>
+                        <button class="edit">&#9998;</button>
+                    </div>
+                    <div class="field">
+                        <button class="btn" id="atualizar">Salvar alterações</button>
+                    </div>
             </div>
         </div>
         
@@ -91,6 +91,37 @@
     const btnSair = document.getElementById('sair');
     const nome = document.getElementById('nome');
     const email = document.getElementById('email');
+
+    document.getElementById('atualizar').addEventListener('click', function() {
+        event.preventDefault();
+
+        const userId = localStorage.getItem('userId');
+        console.log("Atualizando ID: "+userId);
+       
+
+        fetch(`/atualizar-usuario/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome: nome.value, email: email.value })
+        })
+        .then(response => {
+            console.log("Resposta recebida: " + response);
+            if(!response.ok){
+                throw new Error('Erro na atualização do usuário');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Usuario atualizado");
+        })
+        .catch(error => {
+            console.error("Erro: " + error);
+        })
+        location.reload();
+    });
+
     
     window.onload = function() {
     carregarDadosUsuario();
@@ -98,9 +129,9 @@
 
     function carregarDadosUsuario () {
         const userId = localStorage.getItem('userId');
-        console.log("ID: "+userId);
+        console.log("Buscando ID: "+userId);
 
-        fetch(`/usuario/${userId}`)
+        fetch(`/buscar-usuario/${userId}`)
             .then(response => response.json())
             .then(data => {
                 nome.value = data.nome;
