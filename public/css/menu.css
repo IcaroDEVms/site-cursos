@@ -678,7 +678,7 @@ hr {
     background-color: var(--entraremoutroscursos-color);
     padding: 10px;
     color: var(--CorButaoUsuario-color);
-    cursor: pointer;
+    cursor: pointer;                      
     text-decoration: none; 
     border-radius: 5px;
     text-align: center;
@@ -719,3 +719,24 @@ hr {
 .corlogin{
     color: var(--TEXTusuario-color);
 }
+
+@media screen and  (max-width: 1020px){
+    .flex{
+        flex-direction: column;
+    }
+
+    .hamburger-menu{
+        display: none;
+    }
+
+    .carousel-container{
+        max-width: 100%;
+    }
+
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+  }
