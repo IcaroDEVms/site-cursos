@@ -13,6 +13,7 @@ body {
     align-items: center;
     padding: 35px;
     position: relative;
+    background-color: #0056b3;
 }
 
 body::before {
@@ -166,6 +167,10 @@ body::before {
     left: 0; /* Move para a esquerda */
     top: 120px; /* Alinha com o conteúdo desejado */
     z-index: 10; /* Define a ordem de empilhamento, se necessário */
+}
+
+.button-aula{
+    
 }
 
 .sidebar:hover nav ul {
