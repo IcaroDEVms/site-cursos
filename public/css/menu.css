@@ -464,6 +464,89 @@ body::before {
     max-width: 900px;
 }
 
+/* Container geral da seção dos cursos */
+.meuscursosBOX {
+    margin-top: 100px; 
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+}
+
+/* Estilo do banner */
+.meuscursosbanner {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Define uma altura fixa para o banner */
+    overflow: hidden;
+    border-radius: 15px; 
+}
+
+/* Imagem de fundo que cobre todo o espaço do banner */
+.meuscursosbanner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* A imagem cobre o espaço mantendo sua proporção */
+    border-radius: inherit; /* Garante que a imagem siga o arredondamento do banner */
+}
+
+/* Título no canto superior esquerdo */
+.meuscursosbanner h2 {
+    position: absolute;
+    top: 20px;  /* Distância do topo do banner */
+    left: 20px; /* Distância da esquerda do banner */
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 1; /* Texto sobre a imagem */
+    text-align: left;
+}
+
+/* Parágrafo logo abaixo do h2 no canto superior esquerdo */
+.meuscursosbanner p {
+    position: absolute;
+    top: 80px;  /* Distância do topo do banner, logo abaixo do h2 */
+    left: 20px; /* Distância da esquerda do banner */
+    color: #fff;
+    font-size: 1.2rem;
+    max-width: 80%; /* Limita a largura do texto */
+    z-index: 1; /* Texto sobre a imagem */
+    text-align: left;
+}
+
+/* Botão no canto inferior direito */
+.meuscursosbanner-button {
+    position: absolute;
+    bottom: 20px;  /* Coloca o botão na parte inferior */
+    right: 20px;   /* Coloca o botão no canto direito */
+    background-color: #333;
+    color: #fff;
+    padding: 15px 25px;  /* Tamanho ajustado do botão */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 2; /* Coloca o botão acima da imagem */
+}
+
+/* Mudança de cor ao passar o mouse sobre o botão */
+.meuscursosbanner-button:hover {
+    background-color: #555;
+}
+
+/* Sombra sobre a imagem para melhorar a legibilidade do texto */
+.meuscursosbanner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Escurece a imagem para melhorar a visibilidade do texto */
+    border-radius: inherit; /* Sombra segue o arredondamento do banner */
+    z-index: 0; /* Sombra fica abaixo do texto e botão */
+}
+
 .cursoimage-text-item {
     max-width: 900px;
     margin: 20px auto;
