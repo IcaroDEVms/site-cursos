@@ -31,13 +31,13 @@ body::before {
 :root{
     --hanburgueTRES-color: #0cdbff;
     --hanburgueTEXT-color: #F78166;
-    --hanburguue-color: #e9e9e9;
-    --cabecalho-color: #e2e2e2;
+    --hanburguue-color: #dddada;
+    --cabecalho-color: #e1e1e1;
     --cabecalhoTEXT-color: #F78166;
     --borda-color: #555;
-    --botoesdenavegacaodocarrossel-color: #555;
+    --botoesdenavegacaodocarrossel-color: #55555567;
     --TEXTO-color: #444;
-    --fundoTEXT-color: #e7e7e7;
+    --fundoTEXT-color: #e1e1e1;
     --H2-color: #F78166;
     --H3-color: #333;
     --LI-color: #F78166;
@@ -45,7 +45,7 @@ body::before {
     --folder-collor: #ffffff;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #444;  
-    --background-color: #ffffff;
+    --background-color: #F0F6EF;
     --CorButaoUsuario-color: #F0F6EF;
     --SuporteTextBox-color: #fff;
 }
@@ -683,6 +683,10 @@ hr {
     border-radius: 5px;
     text-align: center;
     color: var()
+}
+
+.Usuarioother-courses:hover {
+    background-color: #333;
 }
 
 .Usuariolabel{
