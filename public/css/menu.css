@@ -466,8 +466,9 @@ body::before {
 
 /* Container geral da seção dos cursos */
 .meuscursosBOX {
-    margin-top: 100px; 
+    margin-top: 90px; 
     width: 100%;
+    margin-bottom: -70px;
     max-width: 900px;
     position: relative;
 }
