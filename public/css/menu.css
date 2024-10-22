@@ -263,11 +263,21 @@ body::before {
 
 
 .accordion-body{
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column
 }
 
 
+.button-aula {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+    border: none; /* Remover bordas, opcional */
+    background-color: #f9f9f9; /* Cor de fundo do botão, ajustável */
+    cursor: pointer;
+}
 
 .icon-button {
     position: absolute;
