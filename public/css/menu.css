@@ -262,11 +262,21 @@ body::before {
 
 
 .accordion-body{
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column
 }
 
 
+.button-aula {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+    border: none; /* Remover bordas, opcional */
+    background-color: #f9f9f9; /* Cor de fundo do botão, ajustável */
+    cursor: pointer;
+}
 
 .icon-button {
     position: absolute;
@@ -459,8 +469,9 @@ align-items: center;
 
 /* Container geral da seção dos cursos */
 .meuscursosBOX {
-    margin-top: 100px; 
+    margin-top: 90px; 
     width: 100%;
+    margin-bottom: -70px;
     max-width: 900px;
     position: relative;
 }

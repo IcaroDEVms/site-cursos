@@ -62,12 +62,24 @@ function playVideo(videoUrl) {
 
 //botões do modulo 1  NOMENCLATURA mxay  x=numero do módulo e y = numero da aula
 // Adiciona o evento de clique ao botão para exibir o vídeo
-document.getElementById('m1a1').addEventListener('click', function() {
-    const videoUrl = "https://www.youtube.com/embed/EuTdbZxJzKk?si=NWqqVox8RyBywdcq"; // URL do vídeo a ser exibido
+document.getElementById('m1a1git').addEventListener('click', function() {
+    const videoUrl = "https://www.youtube.com/embed/iQU7AS2jbPM?si=EFYBDny_r2hbcs0I"; // URL do vídeo a ser exibido
     playVideo(videoUrl); // Chama a função ao clicar no botão
 });
-document.getElementById('m1a2').addEventListener('click', function() {
-    const videoUrl = "https://www.youtube-nocookie.com/embed/Eti7y5G_9OU?si=usvHid90iBloX18v"; // URL do vídeo a ser exibido
+document.getElementById('m1a2git').addEventListener('click', function() {
+    const videoUrl = "https://www.youtube.com/embed/Vl49fxpMiGc?si=eJAnOjNtMvQIwAF9"; // URL do vídeo a ser exibido
+    playVideo(videoUrl); // Chama a função ao clicar no botão
+});
+document.getElementById('m1a3git').addEventListener('click', function() {
+    const videoUrl = "https://www.youtube.com/embed/63e5LEAcSmE?si=kFAkfHuN1WkUu0Dy"; // URL do vídeo a ser exibido
+    playVideo(videoUrl); // Chama a função ao clicar no botão
+});
+document.getElementById('m1a4git').addEventListener('click', function() {
+    const videoUrl = "https://www.youtube.com/embed/NyPnxWXoWXg?si=dVfQEJcc0IxVDIw0"; // URL do vídeo a ser exibido
+    playVideo(videoUrl); // Chama a função ao clicar no botão
+});
+document.getElementById('m1a5git').addEventListener('click', function() {
+    const videoUrl = "https://www.youtube.com/embed/6ul_U0zeoz8?si=_qvwCWCi04gxTg1Z"; // URL do vídeo a ser exibido
     playVideo(videoUrl); // Chama a função ao clicar no botão
 });
 
