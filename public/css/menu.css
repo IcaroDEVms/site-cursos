@@ -253,6 +253,7 @@ body::before {
     color: var(--cabecalhoTEXT-color);
     padding: 30px;
     position:absolute;
+    margin-bottom: 0px;
     top: 0;
     left: 0;
     right: 0;
@@ -466,9 +467,9 @@ body::before {
 
 /* Container geral da seção dos cursos */
 .meuscursosBOX {
-    margin-top: 90px; 
+    margin-top: 30px; 
     width: 100%;
-    margin-bottom: -70px;
+    margin-bottom: 20px;
     max-width: 900px;
     position: relative;
 }
@@ -599,6 +600,9 @@ body::before {
     font-size: 0.9rem;
     line-height: 2;
     color: var(--LI-color);
+}
+.BannersCursos{
+    margin-top: 50px;
 }
 
 .suportecontainer {
