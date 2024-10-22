@@ -64,7 +64,6 @@
             <a class="Usuariocourse" href="inicio.html">
                 <span>Valorante</span>
                 <span>Progresso: X%</span>
-                background: url('https://static.vecteezy.com/ti/vetor-gratis/p1/23869659-roxa-estrangeiro-espaco-planeta-jogos-desenho-animado-fundo-gratis-vetor.jpg') no-repeat center center fixed;
             </a>
             <a class="Usuarioother-courses" href="cursos.html">Entrar em outros Cursos  
             </a>
@@ -84,23 +83,9 @@
             height: 100vh;
         }
     </style>
+
     <script>
-        
-    const $checkbox = document.querySelector('#switch')
-
-    $checkbox.addEventListener('change', function() {
-        $html.classList.toggle('dark-mode');
-
-        // Save the state in local storage
-        if ($html.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', '1'); // Use '1' as a string
-        } else {
-            localStorage.setItem('darkMode', '0'); // Use '0' as a string
-        }
-    });
-
-
-        // Função para alternar a edição de inputs (nome e email)
+        //lógica para atualizar dados do usuário
         const editButtons = document.querySelectorAll('.edit');
         const btnSair = document.getElementById('sair');
         const nome = document.getElementById('nome');
@@ -136,15 +121,20 @@
         location.reload();
     });
     
-    
-    window.onload = function() {
+    //Lógica para carregar dados do usuário 
+    window.addEventListener('load', function() {
         carregarDadosUsuario();
-    };
+    });
     
     function carregarDadosUsuario () {
         const userId = localStorage.getItem('userId');
         console.log("Buscando ID: "+userId);
         
+        if (!userId) {
+            console.error("ID do usuário não encontrado.");
+            return;
+        }
+
         fetch(`/buscar-usuario/${userId}`)
         .then(response => response.json())
         .then(data => {
@@ -156,6 +146,7 @@
         });
     }
     
+    //Função para deslogar o usuário
     btnSair.addEventListener('click', function(){
         console.log("usuario desconectado...");
         localStorage.setItem('userId', 0);
@@ -163,7 +154,7 @@
         window.location.href = 'login.html';
     })
     
-    
+    // Função para alternar a edição de inputs (nome e email)
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const input = event.target.previousElementSibling;
@@ -174,25 +165,23 @@
         });
     });
 
-    // Seleciona o botão de editar foto e o input de arquivo
-    const editPhotoButton = document.querySelector('.edit-photo');
-    const fileInput = document.getElementById('file-input');
-    const photo = document.querySelector('.photo');
-    
-    // Evento para abrir o seletor de arquivos ao clicar no botão de edição de foto
-    editPhotoButton.addEventListener('click', () => {
-        fileInput.click(); // Simula o clique no input de arquivo
-    });
-    
-    // Evento para atualizar a foto quando o usuário seleciona uma nova imagem
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0]; // Obtém o arquivo selecionado
-        if (file) {
-            const reader = new FileReader(); // Cria um FileReader para ler o arquivo
-            reader.onload = (e) => {
-                photo.src = e.target.result; // Atualiza a imagem de perfil com a nova foto
-            };
-            reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados (base64)
+    //função do modo escuro
+    const checkbox = document.querySelector('#switch');
+    const $html = document.documentElement;
+
+    if (localStorage.getItem('darkMode') === '1') {
+        $html.classList.add('dark-mode');  // Aplica o dark mode
+        checkbox.checked = true;  // Marca o checkbox
+    }  
+
+
+    checkbox.addEventListener('change', function() {
+        $html.classList.toggle('dark-mode');
+
+        if ($html.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', '1');
+        } else {
+            localStorage.setItem('darkMode', '0');
         }
     });
 </script>
