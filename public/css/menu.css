@@ -164,6 +164,44 @@ body::before {
     margin: 0;
 }
 
+.video-container{
+    padding: 150px;
+}
+.textoPendeciaEscolherAula{
+    padding: 20px;
+    margin: 15px;
+}
+
+.star-rating {
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    font-size: 50px;
+    cursor: pointer;
+    color: #bababa;
+    transition: color 0.2s;
+}
+
+.star.active {
+    color: gold;
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+}
+
+.star:hover ~ .star {
+    color: #ccc;
+}
+
+#rating-value {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
 .accordion {
     margin: 0; 
     padding: 0; 
@@ -225,7 +263,6 @@ body::before {
 
 
 .accordion-body{
-
 display: flex;
 align-items: center;
 }
@@ -614,6 +651,21 @@ form textarea {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+.ConclusaoButton {
+    background-color: rgb(43, 190, 63);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.AboveVideo {
+    display: flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    justify-content: space-between; /* Espaço entre estrelas e botão */
 }
 
 form button:hover {
