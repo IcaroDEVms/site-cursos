@@ -7,18 +7,23 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh; 
-    display: flex;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex; 
     background-color: var(--background-color);
     color: var(--TEXTO-color);
-    flex-direction: column; 
-    box-sizing: border-box; 
-    font-family: Arial, sans-serif;
+    flex-direction: column;
 }
 
-.main-content { 
-    flex: 1; 
-    margin-top: 20px;
+/* O conteúdo principal terá um margin-top uniforme */
+.main-content {
+    flex: 1;
+    margin-top: 50px; /* Padronize o valor do margin-top aqui */
+}
+
+/* Se houver h1, h2, p, etc., garantir margens consistentes */
+h1, h2, p {
+    margin-bottom: 20px;
 }
 
 :root{
@@ -124,7 +129,7 @@ body {
     width: 70px; 
     height: auto; 
     object-fit: cover; 
-    border-radius: 5px; 
+    border-radius: 15px; 
     display: block; 
     margin: 10px 10px;
 }
@@ -156,11 +161,11 @@ body {
 }
 
 .video-container{
-    padding: 150px;
+    padding: 130px;
 }
 .textoPendeciaEscolherAula{
     padding: 20px;
-    margin: 15px;
+    margin: 100px;
 }
 
 .star-rating {
@@ -249,10 +254,11 @@ body {
     right: 0;
 }
 
-.accordion-body{
+.accordion{
     display: flex;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    
 }
 
 .button-aula {
@@ -382,8 +388,12 @@ body {
     list-style-position: inside;
 }
 
-footer, .main-content {
-    margin-top: 20px;
+/* Header e Footer com espaçamento uniforme */
+header, footer {
+    background-color: #282c34;
+    color: white;
+    padding: 20px; /* Mesma padding em ambos */
+    text-align: center;
 }
 
 /* Rodapé sempre ao final da página */
@@ -445,18 +455,10 @@ footer, .main-content {
     color: var(--LI-color);
 }
 
-/* Seção de imagens com títulos e textos dos curso*/
-.cursoimage-text-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 40px auto;
-    width: 80%;
-    max-width: 900px;
-}
+
 
 .BannersCursos{
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 /* Container geral da seção dos cursos */
@@ -545,22 +547,31 @@ footer, .main-content {
     z-index: 0; /* Sombra fica abaixo do texto e botão */
 }
 
+/* Seção de imagens com títulos e textos dos curso*/
+.cursoimage-text-section {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 80%;
+    max-width: 900px;
+}
+
 .cursoimage-text-item {
     max-width: 900px;
     margin: 20px auto;
     background-color: var(--fundoTEXT-color);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 100px; 
     display: flex; 
-    align-items: flex-start; 
 }
 
 .cursoimage-text-item img {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-right: 20px;
 }
 
