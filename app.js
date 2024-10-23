@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./db');
+const multer = require('multer');
 const port = 2005;
 
 const app = express();
@@ -10,6 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Agora aceita JSON
 
+
+
+//Rota para atualizar dados do usuário
 app.put('/atualizar-usuario/:id', (req, res) =>{
     const userId = req.params.id;
     const { nome, email } = req.body;
@@ -24,6 +28,7 @@ app.put('/atualizar-usuario/:id', (req, res) =>{
     })
 })
 
+//Rota para exibir dados do usuário
 app.get('/buscar-usuario/:id', (req, res) =>{
     const userId = req.params.id;
 
