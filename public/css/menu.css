@@ -5,29 +5,27 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 35px;
-    position: relative;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex; 
     background-color: var(--background-color);
     color: var(--TEXTO-color);
+    flex-direction: column;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+/* O conteúdo principal terá um margin-top uniforme */
+.main-content {
+    flex: 1;
+    margin-top: 50px; /* Padronize o valor do margin-top aqui */
 }
+
+/* Se houver h1, h2, p, etc., garantir margens consistentes */
+h1, h2, p {
+    margin-bottom: 20px;
+}
+
 :root{
     --hanburgueTRES-color: #0cdbff;
     --hanburgueTEXT-color: #F78166;
@@ -42,7 +40,6 @@ body::before {
     --H3-color: #333;
     --LI-color: #F78166;
     --UL-color: #444;
-    --folder-collor: #333;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #444;  
     --background-color: #F0F6EF;
@@ -64,7 +61,6 @@ body::before {
     --H3-color: #F0F6EF;
     --LI-color: #0cdbff;
     --UL-color: #F0F6EF;
-    --folder-collor: #F0F6EF;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #F0F6EF;  
     --background-color: #303030;
@@ -133,7 +129,7 @@ body::before {
     width: 70px; 
     height: auto; 
     object-fit: cover; 
-    border-radius: 5px; 
+    border-radius: 15px; 
     display: block; 
     margin: 10px 10px;
 }
@@ -165,11 +161,11 @@ body::before {
 }
 
 .video-container{
-    padding: 150px;
+    padding: 130px;
 }
 .textoPendeciaEscolherAula{
     padding: 20px;
-    margin: 15px;
+    margin: 100px;
 }
 
 .star-rating {
@@ -253,21 +249,17 @@ body::before {
     color: var(--cabecalhoTEXT-color);
     padding: 30px;
     position:absolute;
-    margin-bottom: 0px;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 500;
-    transition: margin-left 0.3s;
 }
 
-
-.accordion-body{
+.accordion{
     display: flex;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    
 }
-
 
 .button-aula {
     display: flex;
@@ -350,6 +342,7 @@ body::before {
 .carousel-indicators {
     text-align: center;
     margin-top: 15px;
+    flex-grow: 1;
 }
 
 /* Texto abaixo do carrossel */
@@ -376,8 +369,6 @@ body::before {
     color: var(--H3-color);
 }
 
-
-
 /* Alinhando o texto à esquerda */
 .content-below-carousel p, .content-below-carousel ul {
     text-align: left;
@@ -397,19 +388,24 @@ body::before {
     list-style-position: inside;
 }
 
+/* Header e Footer com espaçamento uniforme */
+header, footer {
+    background-color: #282c34;
+    color: white;
+    padding: 20px; /* Mesma padding em ambos */
+    text-align: center;
+}
+
+/* Rodapé sempre ao final da página */
 .footer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: var(--cabecalho-color);
     color: var(--cabecalhoTEXT-color);
-    padding: 10px;
-    position:absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 500;
-}
+    background-color: var(--cabecalho-color);
+    padding: 1rem;
+    width: 100%;
+}  
+
 
 .footer p {
     margin: 0;
@@ -417,11 +413,12 @@ body::before {
 
 .containerSobre {
     max-width: 900px;
-    margin: 40px auto;
     background-color: var(--fundoTEXT-color);
     padding: 20px;
-    border-radius: 10px;
-    margin-top: 160px; 
+    border-radius: 15px;
+    margin-top: 130px; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .containerSobre h2 {
@@ -458,14 +455,10 @@ body::before {
     color: var(--LI-color);
 }
 
-/* Seção de imagens com títulos e textos dos curso*/
-.cursoimage-text-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 40px auto;
-    width: 80%;
-    max-width: 900px;
+
+
+.BannersCursos{
+    margin-top: 120px;
 }
 
 /* Container geral da seção dos cursos */
@@ -475,6 +468,8 @@ body::before {
     margin-bottom: 20px;
     max-width: 900px;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Estilo do banner */
@@ -552,22 +547,31 @@ body::before {
     z-index: 0; /* Sombra fica abaixo do texto e botão */
 }
 
+/* Seção de imagens com títulos e textos dos curso*/
+.cursoimage-text-section {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 80%;
+    max-width: 900px;
+}
+
 .cursoimage-text-item {
     max-width: 900px;
     margin: 20px auto;
     background-color: var(--fundoTEXT-color);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-top: 100px; 
     display: flex; 
-    align-items: flex-start; 
 }
 
 .cursoimage-text-item img {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-right: 20px;
 }
 
@@ -604,24 +608,22 @@ body::before {
     line-height: 2;
     color: var(--LI-color);
 }
-.BannersCursos{
-    margin-top: 50px;
-}
 
 .suportecontainer {
-    max-width: 900px;
+    max-width: 1060px;
+    padding: 30px 0;
     background-color: var(--fundoTEXT-color);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    border-radius: 15px;
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto; 
     color: var(--TEXTO-color);
     text-align: center;
 }
 
 .suportecontainer h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: var(--H2-color);
 }
 
@@ -671,6 +673,7 @@ form textarea {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .ConclusaoButton {
     background-color: rgb(43, 190, 63);
     color: white;
@@ -681,6 +684,7 @@ form textarea {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
 .AboveVideo {
     display: flex;
     align-items: center; /* Alinha verticalmente no centro */
@@ -696,7 +700,9 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 91vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
 }
 
 .loginform {
@@ -720,15 +726,16 @@ form button:hover {
     padding: 10px;
     color: white;
 }
-
-
+ 
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
-    padding: 20px;
-    margin-top: 100px;
+    padding: 25px;
+    margin-top: 200px;
     color: var(--TEXTusuario-color);
     border-radius: 10px;
-    width: 600px;
+    width: 90vh;
+    margin-left: auto;
+    margin-right: auto; 
     text-align: end;
 }
 

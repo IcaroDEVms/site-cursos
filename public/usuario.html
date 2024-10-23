@@ -6,29 +6,32 @@
     <link rel="stylesheet" href="css/menu.css">
     <title>Usuario</title>
 </head>
-<body>
-    <aside class="sidebar">
-        <!-- Ícone de hambúrguer (três riscos) -->
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="suporte.html">Suporte</a></li>
-                <li><a href="meuscursos.html">Meus Cursos</a></li>
-            </ul>
-        </nav>
-    </aside>
-
+<body> 
+    
     <header class="header">
         <h1>Poppy Cursos</h1>
         <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
     </header>
+
+    <div class="main-content">
+
+        <aside class="sidebar">
+            <!-- Ícone de hambúrguer (três riscos) -->
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="suporte.html">Suporte</a></li>
+                    <li><a href="meuscursos.html">Meus Cursos</a></li>
+                </ul>
+            </nav>
+        </aside>
     
     <div class="Usuariocontainer">
         <div class="Usuarioprofile">
@@ -75,20 +78,13 @@
         
         <button class="btn btn-secondary" id="sair">Sair</button>
     </div>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Popy Cursos - Todos os direitos reservados</p>
     </footer>
 
     <style>
-        
-        body {
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
         /* Estilos padrão */
         input,
         textarea {
@@ -106,6 +102,7 @@
         }
     </style>
 
+    
     <script>
         //lógica para atualizar dados do usuário
         const editButtons = document.querySelectorAll('.edit');
@@ -207,7 +204,6 @@
     });
     
 </script>
-
 <script src="js/darkmode.js"></script>
 </body>
 </html>

@@ -8,53 +8,55 @@
 </head>
 <body>
 
-
-    <aside class="sidebar">
-        <!-- Ícone de hambúrguer (três riscos) -->
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><img class="home" src="img/favicon22.ico" alt="casinha"></a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="suporte.html">Suporte</a></li>
-                <li><a href="meuscursos.html">Meus Cursos</a></li>
-            </ul>
-        </nav>
-    </aside>
-
     <!-- Header -->
     <header class="header">
-        
         <h1>Poppy Cursos</h1>
         <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
     </header>
 
-    <!-- Conteúdo da página de suporte -->
-    <div class="suportecontainer">
-        <h2>Suporte</h2>
-        <p>Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco pelo e-mail ou número abaixo. Você também pode preencher o formulário de contato para enviar uma mensagem diretamente ao suporte.</p>
+    <div class="main-content">
 
-        <!-- Informações de contato -->
-        <div class="suportecontact-info">
-            <p><strong>E-mail:</strong> suporte@poppycursos.com</p>
-            <p><strong>Telefone:</strong> (11) 99999-9999</p>
+        <aside class="sidebar">
+            <!-- Ícone de hambúrguer (três riscos) -->
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img class="home" src="img/favicon22.ico" alt="casinha"></a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="suporte.html">Suporte</a></li>
+                    <li><a href="meuscursos.html">Meus Cursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo da página de suporte -->
+        <div class="suportecontainer">
+            <h2>Suporte</h2>
+            <p>Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco pelo e-mail ou número abaixo. Você também pode preencher o formulário de contato para enviar uma mensagem diretamente ao suporte.</p>
+
+            <!-- Informações de contato -->
+            <div class="suportecontact-info">
+                <p><strong>E-mail:</strong> suporte@poppycursos.com</p>
+                <p><strong>Telefone:</strong> (11) 99999-9999</p>
+            </div>
+
+            <!-- Texto explicativo -->
+            <p>Na seção abaixo, você pode preencher seus dados e descrever sua dúvida ou problema. O suporte entrará em contato com você o mais rápido possível.</p>
+
+            <!-- Formulário de contato -->
+            <form action="#" method="POST" class="SuporteTextBox">
+                <input type="text" name="name" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu E-mail" required>
+                <textarea name="message" placeholder="Digite sua mensagem aqui..." required></textarea>
+                <button class="enviar" type="submit">Enviar Mensagem</button>
+            </form>
         </div>
 
-        <!-- Texto explicativo -->
-        <p>Na seção abaixo, você pode preencher seus dados e descrever sua dúvida ou problema. O suporte entrará em contato com você o mais rápido possível.</p>
-
-        <!-- Formulário de contato -->
-        <form action="#" method="POST" class="SuporteTextBox">
-            <input type="text" name="name" placeholder="Seu Nome" required>
-            <input type="email" name="email" placeholder="Seu E-mail" required>
-            <textarea name="message" placeholder="Digite sua mensagem aqui..." required></textarea>
-            <button class="enviar" type="submit">Enviar Mensagem</button>
-        </form>
     </div>
 
     <!-- Footer -->
