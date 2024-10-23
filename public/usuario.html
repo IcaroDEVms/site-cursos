@@ -32,19 +32,11 @@
     
     <div class="Usuariocontainer">
         <div class="Usuarioprofile">
-            <!-- <div class="Usuariophoto-container">
-                <img class="Usuariophoto" src="img/default-avatar.png" alt="Foto do usuário">
-                <div class="edit-photo">&#9998;</div>
-
-                <input type="file" id="file-input" accept="image/*" style="display: none;">
-            </div> -->
-
             <div class="Usuariophoto-container">
                 <label for="file-input" class="Usuariophoto-label">
-                    <img class="Usuariophoto" src="img/default-avatar.png" alt="Foto do usuário">
+                    <img class="Usuariophoto" src="img/user.png" alt="Foto do usuário">
                     <div class="edit-photo" title="Editar foto">&#9998;</div>
                 </label>
-                
                 <!-- Input de arquivo oculto -->
                 <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
             </div>
@@ -203,7 +195,6 @@
         $html.classList.add('dark-mode');  // Aplica o dark mode
         checkbox.checked = true;  // Marca o checkbox
     }  
-
 
     checkbox.addEventListener('change', function() {
         $html.classList.toggle('dark-mode');
