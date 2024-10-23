@@ -42,7 +42,7 @@ body::before {
     --H3-color: #333;
     --LI-color: #F78166;
     --UL-color: #444;
-    --folder-collor: #ffffff;
+    --folder-collor: #333;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #444;  
     --background-color: #F0F6EF;
@@ -64,7 +64,7 @@ body::before {
     --H3-color: #F0F6EF;
     --LI-color: #0cdbff;
     --UL-color: #F0F6EF;
-    --folder-collor: #ffffff;
+    --folder-collor: #F0F6EF;
     --entraremoutroscursos-color: #555;
     --TEXTusuario-color: #F0F6EF;  
     --background-color: #303030;
@@ -253,21 +253,31 @@ body::before {
     color: var(--cabecalhoTEXT-color);
     padding: 30px;
     position:absolute;
+    margin-bottom: 0px;
     top: 0;
     left: 0;
     right: 0;
     z-index: 500;
     transition: margin-left 0.3s;
-    
 }
 
 
 .accordion-body{
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column
 }
 
 
+.button-aula {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Espaçamento entre os botões */
+    border: none; /* Remover bordas, opcional */
+    background-color: #f9f9f9; /* Cor de fundo do botão, ajustável */
+    cursor: pointer;
+}
 
 .icon-button {
     position: absolute;
@@ -348,6 +358,7 @@ align-items: center;
     width: 80%;
     max-width: 900px;
     text-align: center;
+    flex-grow: 1;
     padding: 20px;
     background-color: var(--fundoTEXT-color);
     border-radius: 10px;
@@ -386,15 +397,18 @@ align-items: center;
     list-style-position: inside;
 }
 
-/* Footer fixo à direita */
 .footer {
- 
-    color: var(--folder-collor);
-    text-align: right;
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cabecalho-color);
+    color: var(--cabecalhoTEXT-color);
+    padding: 10px;
+    position:absolute;
     bottom: 0;
+    left: 0;
     right: 0;
-    width: 100%;
+    z-index: 500;
 }
 
 .footer p {
@@ -456,8 +470,9 @@ align-items: center;
 
 /* Container geral da seção dos cursos */
 .meuscursosBOX {
-    margin-top: 100px; 
+    margin-top: 30px; 
     width: 100%;
+    margin-bottom: 20px;
     max-width: 900px;
     position: relative;
 }
@@ -589,6 +604,9 @@ align-items: center;
     line-height: 2;
     color: var(--LI-color);
 }
+.BannersCursos{
+    margin-top: 50px;
+}
 
 .suportecontainer {
     max-width: 900px;
@@ -596,6 +614,7 @@ align-items: center;
     padding: 20px;
     border-radius: 10px;
     margin-top: 100px;
+    margin-bottom: 100px;
     color: var(--TEXTO-color);
     text-align: center;
 }
@@ -677,7 +696,7 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height: 91vh;
 }
 
 .loginform {
