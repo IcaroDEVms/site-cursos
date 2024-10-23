@@ -6,89 +6,87 @@
     <link rel="stylesheet" href="css/menu.css">
     <title>Usuario</title>
 </head>
-<body>
-    <aside class="sidebar">
-        <!-- Ícone de hambúrguer (três riscos) -->
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="cursos.html">Cursos</a></li>
-                <li><a href="suporte.html">Suporte</a></li>
-                <li><a href="meuscursos.html">Meus Cursos</a></li>
-            </ul>
-        </nav>
-    </aside>
-
+<body> 
+    
     <header class="header">
         <h1>Poppy Cursos</h1>
         <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
     </header>
+
+    <div class="main-content">
+
+        <aside class="sidebar">
+            <!-- Ícone de hambúrguer (três riscos) -->
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="suporte.html">Suporte</a></li>
+                    <li><a href="meuscursos.html">Meus Cursos</a></li>
+                </ul>
+            </nav>
+        </aside>
     
-    <div class="Usuariocontainer">
-        <div class="Usuarioprofile">
-            <div class="Usuariophoto-container">
-                <!-- O elemento img será alterado quando o usuário selecionar uma nova imagem -->
-                <img class="Usuariophoto" src="img/default-avatar.png" alt="Foto do usuário">
-                <div class="edit-photo">&#9998;</div>
-                <!-- Input de arquivo oculto -->
-                <input type="file" id="file-input" accept="image/*" style="display: none;">
+        <div class="Usuariocontainer">
+            <div class="Usuarioprofile">
+                <div class="Usuariophoto-container">
+                    <!-- O elemento img será alterado quando o usuário selecionar uma nova imagem -->
+                    <img class="Usuariophoto" src="img/default-avatar.png" alt="Foto do usuário">
+                    <div class="edit-photo">&#9998;</div>
+                    <!-- Input de arquivo oculto -->
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    
+                </div>
                 
+                <div class="Usuarioinfo">
+                    <div class="field">
+                        <label><strong>Nome: </strong> </label>
+                        <input type="text" class="meu-input" value="Nome" id="nome" disabled>
+                        <button class="edit">&#9998;</button>
+                    </div>
+                    <div class="field">
+                        <label><strong>Email: </strong> </label>
+                        <input type="email" class="meu-input" value="Email" id="email" disabled>
+                        <button class="edit">&#9998;</button>
+                    </div>
+                    <div class="field">
+                        <button class="btn" id="atualizar">Salvar alterações</button>
+                    </div>
+                </div>
             </div>
             
-            <div class="Usuarioinfo">
-                <div class="field">
-                    <label><strong>Nome: </strong> </label>
-                    <input type="text" class="meu-input" value="Nome" id="nome" disabled>
-                    <button class="edit">&#9998;</button>
-                </div>
-                <div class="field">
-                    <label><strong>Email: </strong> </label>
-                    <input type="email" class="meu-input" value="Email" id="email" disabled>
-                    <button class="edit">&#9998;</button>
-                </div>
-                <div class="field">
-                    <button class="btn" id="atualizar">Salvar alterações</button>
-                </div>
+            <hr class="hr">
+            
+            <div class="Usuariocourses">
+                <h2>Meus Cursos</h2>
+                <a class="Usuariocourse" href="inicio.html">
+                    <span>Valorante</span>
+                    <span>Progresso: X%</span>
+                </a>
+                <a class="Usuarioother-courses" href="cursos.html">Entrar em outros Cursos  
+                </a>
             </div>
+            <label for="switch">
+                <input type="checkbox" id="switch"> Dark Mode
+            </label>
+            
+            <button class="btn btn-secondary" id="sair">Sair</button>
         </div>
-        
-        <hr class="hr">
-        
-        <div class="Usuariocourses">
-            <h2>Meus Cursos</h2>
-            <a class="Usuariocourse" href="inicio.html">
-                <span>Valorante</span>
-                <span>Progresso: X%</span>
-            </a>
-            <a class="Usuarioother-courses" href="cursos.html">Entrar em outros Cursos  
-            </a>
-        </div>
-        <label for="switch">
-            <input type="checkbox" id="switch"> Dark Mode
-        </label>
-        
-        <button class="btn btn-secondary" id="sair">Sair</button>
-    </div>
     
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Popy Cursos - Todos os direitos reservados</p>
     </footer>
 
     <style>
-        
-        body {
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
         /* Estilos padrão */
         input,
         textarea {
@@ -106,6 +104,7 @@
         }
     </style>
 
+    
     <script>
         //lógica para atualizar dados do usuário
         const editButtons = document.querySelectorAll('.edit');
@@ -207,7 +206,6 @@
         }
     });
 </script>
-
 <script src="js/darkmode.js"></script>
 </body>
 </html>
