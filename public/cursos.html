@@ -8,136 +8,133 @@
 </head>
 <body>
 
-   <header class="header">
+    <header class="header">  
         <h1>Poppy Cursos</h1>
         <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
     </header>
 
-    <div class="main-content">
+    <aside class="sidebar" >
+        <!-- Ícone de hambúrguer (três riscos) -->
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
+                <li><a href="meuscursos.html">Meus Cursos</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-        <aside class="sidebar" >
-            <!-- Ícone de hambúrguer (três riscos) -->
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+    <!-- Seção de imagens com títulos e textos -->
+    <section class="cursoimage-text-section">
+        <div class="cursoimage-text-item">
+            <img src="img/git-removebg-preview.png" alt="Imagem 1">
+            <div class="cursotext-content">
+                <h2>Curso sobre Git</h2>
+                <h3>Professores(a):Joao Pedro, Isaque Nunes, Maria Luisa, Maria Fernanda e Icaro Matos!</h3>
+                <p>
+                    O curso de Git é ideal para desenvolvedores e estudantes de programação que desejam dominar o controle de versão de código. Ele cobre desde os conceitos básicos até as práticas avançadas, ajudando os alunos a gerenciar e colaborar em projetos de maneira eficiente. Os tópicos incluem:
+                </p>
+                    <ul>
+                        <li>Introdução ao controle de versão e o que é o Git.
+                        <li>Comandos essenciais como commit, branch, merge e pull.
+                        <li>Colaboração em equipe usando plataformas como GitHub e GitLab.
+                        <li>Práticas recomendadas para resolução de conflitos e histórico de versões limpo.
+                        <li>Aplicação em projetos reais para reforçar o aprendizado.
+                    </ul>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                </p>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
-                    <li><a href="suporte.html">Suporte</a></li>
-                    <li><a href="meuscursos.html">Meus Cursos</a></li>
-                </ul>
-            </nav>
-        </aside>
+        </div>
 
-        <!-- Seção de imagens com títulos e textos -->
-        <section class="cursoimage-text-section">
-            <div class="cursoimage-text-item">
-                <img src="img/example1.jpg" alt="Imagem 1">
-                <div class="cursotext-content">
-                    <h2>Curso sobre Git</h2>
-                    <h3>Professores(a):Joao Pedro, Isaque Nunes, Maria Luisa, Maria Fernanda e Icaro Matos!</h3>
-                    <p>
-                        O curso de Git é ideal para desenvolvedores e estudantes de programação que desejam dominar o controle de versão de código. Ele cobre desde os conceitos básicos até as práticas avançadas, ajudando os alunos a gerenciar e colaborar em projetos de maneira eficiente. Os tópicos incluem:
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Introdução ao controle de versão e o que é o Git.
-                            <li>Comandos essenciais como commit, branch, merge e pull.
-                            <li>Colaboração em equipe usando plataformas como GitHub e GitLab.
-                            <li>Práticas recomendadas para resolução de conflitos e histórico de versões limpo.
-                            <li>Aplicação em projetos reais para reforçar o aprendizado.
-                        </ul>
-                    </p>
-                </div>
+        <div class="cursoimage-text-item">
+            <img src="img/vava-removebg-preview.png" alt="Imagem 2">
+            <div class="cursotext-content">
+                <h2>Curso de Valorant</h2>
+                <h3>Professor(a):Maria Fernanda.</h3>
+                <p>
+                    Voltado para jogadores que desejam subir de nível no popular FPS tático da Riot Games. O curso foca em melhorar a precisão, tomada de decisões e trabalho em equipe. Os principais tópicos incluem:
+                </p>
+                    <ul>
+                        <li>Conhecimento dos mapas: aprender as melhores rotas, pontos de vantagem e posicionamento.
+                        <li>Estratégias para cada agente: como usar as habilidades de maneira inteligente para dominar o campo.
+                        <li>Técnicas de tiro: como melhorar a mira, controlar o recuo das armas e usar o ambiente a seu favor.
+                        <li>Como coordenar com a equipe e executar estratégias eficazes em situações de alta pressão.
+                        <li>Dicas para melhorar o rank e competir no nível profissional.
+                    </ul>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                </p>
             </div>
+        </div>
 
-            <div class="cursoimage-text-item">
-                <img src="img/example2.jpg" alt="Imagem 2">
-                <div class="cursotext-content">
-                    <h2>Curso de Valorant</h2>
-                    <h3>Professor(a):Maria Fernanda.</h3>
-                    <p>
-                        Voltado para jogadores que desejam subir de nível no popular FPS tático da Riot Games. O curso foca em melhorar a precisão, tomada de decisões e trabalho em equipe. Os principais tópicos incluem:
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Conhecimento dos mapas: aprender as melhores rotas, pontos de vantagem e posicionamento.
-                            <li>Estratégias para cada agente: como usar as habilidades de maneira inteligente para dominar o campo.
-                            <li>Técnicas de tiro: como melhorar a mira, controlar o recuo das armas e usar o ambiente a seu favor.
-                            <li>Como coordenar com a equipe e executar estratégias eficazes em situações de alta pressão.
-                            <li>Dicas para melhorar o rank e competir no nível profissional.
-                        </ul>
-                    </p>
-                </div>
+        <div class="cursoimage-text-item">
+            <img src="img/r6-removebg-preview.png" alt="Imagem 3">
+            <div class="cursotext-content">
+                <h2>Curso de Rainbow Six Siege (R6)</h2>
+                <h3>Professor(a):Joao Pedro</h3>
+                <p>
+                    Esse curso ensina os jogadores a dominar o FPS tático baseado em operações da Ubisoft, com foco em planejamento estratégico e trabalho em equipe. Os tópicos abordados incluem:
+                </p>
+                    <ul>
+                        <li>Posicionamento defensivo e ataque coordenado para cada mapa.
+                        <li>Utilização eficiente de operadores: aprender a usar cada habilidade de forma tática.
+                        <li>Gerenciamento de recursos e gadgets (como drones e armadilhas) para ganhar vantagem.
+                        <li>Treinamento em mira e reflexos rápidos para melhorar a performance em combates.
+                        <li>Análise de jogadas competitivas e como adaptar táticas conforme o progresso da partida.
+                    </ul>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                </p>
             </div>
+        </div>
+            </div>
+        </div>
 
-            <div class="cursoimage-text-item">
-                <img src="img/example3.jpg" alt="Imagem 3">
-                <div class="cursotext-content">
-                    <h2>Curso de Rainbow Six Siege (R6)</h2>
-                    <h3>Professor(a):Joao Pedro</h3>
-                    <p>
-                        Esse curso ensina os jogadores a dominar o FPS tático baseado em operações da Ubisoft, com foco em planejamento estratégico e trabalho em equipe. Os tópicos abordados incluem:
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Posicionamento defensivo e ataque coordenado para cada mapa.
-                            <li>Utilização eficiente de operadores: aprender a usar cada habilidade de forma tática.
-                            <li>Gerenciamento de recursos e gadgets (como drones e armadilhas) para ganhar vantagem.
-                            <li>Treinamento em mira e reflexos rápidos para melhorar a performance em combates.
-                            <li>Análise de jogadas competitivas e como adaptar táticas conforme o progresso da partida.
-                        </ul>
-                    </p>
-                </div>
+        <div class="cursoimage-text-item">
+            <img src="img/rocket-removebg-preview.png" alt="Imagem 4">
+            <div class="cursotext-content">
+                <h2>Curso de Rocket League</h2>
+                <h3>Professor(a):Icaro Matos</h3>
+                <p>
+                    Esse curso é destinado a jogadores de Rocket League que querem aprimorar suas habilidades nas partidas de futebol com carros. O curso abrange:
+                </p>
+                    <ul>
+                        <li>Fundamentos do controle de veículos: melhorar o manejo e as manobras aéreas.
+                        <li>Técnicas de chute, passes e defesa: como dominar os movimentos básicos e avançados.
+                        <li>Como jogar em equipe: desenvolver estratégias de posicionamento e comunicação.
+                        <li>Melhorar a leitura de jogo: prever movimentos adversários e tomar decisões rápidas.
+                        <li>Aumentar o nível competitivo e se destacar em torneios e partidas ranqueadas.
+                    </ul>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                </p>
             </div>
-                </div>
-            </div>
+        </div>
 
-            <div class="cursoimage-text-item">
-                <img src="img/example4.jpg" alt="Imagem 4">
-                <div class="cursotext-content">
-                    <h2>Curso de Rocket League</h2>
-                    <h3>Professor(a):Icaro Matos</h3>
-                    <p>
-                        Esse curso é destinado a jogadores de Rocket League que querem aprimorar suas habilidades nas partidas de futebol com carros. O curso abrange:
-                    </p>
-                        <ul>
-                            <li>Fundamentos do controle de veículos: melhorar o manejo e as manobras aéreas.
-                            <li>Técnicas de chute, passes e defesa: como dominar os movimentos básicos e avançados.
-                            <li>Como jogar em equipe: desenvolver estratégias de posicionamento e comunicação.
-                            <li>Melhorar a leitura de jogo: prever movimentos adversários e tomar decisões rápidas.
-                            <li>Aumentar o nível competitivo e se destacar em torneios e partidas ranqueadas.
-                        </ul>
-                    </p>
-                </div>
+        <div class="cursoimage-text-item">
+            <img src="img/lol-removebg-preview.png" alt="Imagem 5">
+            <div class="cursotext-content">
+                <h2>Curso de League of Legends (LoL)</h2>
+                <h3>Professor(a):Isaque Nunes</h3>
+                <p>
+                    Este curso é para jogadores que desejam se destacar no MOBA mais jogado do mundo. Com foco em mecânicas individuais e estratégias de equipe, os tópicos incluem:
+                </p>
+                    <ul>
+                        <li>Melhoria no controle de campeões: técnicas de last hitting, posicionamento e movimentação no mapa.
+                        <li>Macro e microjogo: como tomar decisões a curto e longo prazo durante as partidas.
+                        <li>Conhecimento de objetivos: quando lutar pelo dragão, barão e torres.
+                        <li>Como construir seu campeão de acordo com a partida e o adversário.
+                        <li>Comunicação e sinergia com a equipe para maximizar o desempenho em partidas ranqueadas.
+                    </ul>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                </p>
             </div>
-
-            <div class="cursoimage-text-item">
-                <img src="img/example5.jpg" alt="Imagem 5">
-                <div class="cursotext-content">
-                    <h2>Curso de League of Legends (LoL)</h2>
-                    <h3>Professor(a):Isaque Nunes</h3>
-                    <p>
-                        Este curso é para jogadores que desejam se destacar no MOBA mais jogado do mundo. Com foco em mecânicas individuais e estratégias de equipe, os tópicos incluem:
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Melhoria no controle de campeões: técnicas de last hitting, posicionamento e movimentação no mapa.
-                            <li>Macro e microjogo: como tomar decisões a curto e longo prazo durante as partidas.
-                            <li>Conhecimento de objetivos: quando lutar pelo dragão, barão e torres.
-                            <li>Como construir seu campeão de acordo com a partida e o adversário.
-                            <li>Comunicação e sinergia com a equipe para maximizar o desempenho em partidas ranqueadas.
-                        </ul>
-                    </p>
-                </div>
-            </div>
-        </section>
-    
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

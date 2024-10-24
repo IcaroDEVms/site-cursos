@@ -11,7 +11,37 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Agora aceita JSON
 
+//Configuração do Multer para envio de imagens
+let imageCounter = 0;
 
+const storage = multer.diskStorage({
+    destination: 'public/userIMG',
+    filename: (req, file, cb) =>{
+        imageCounter++;
+        const fileExtension = file.extname(file.originalname);
+        cb(null, `userImg${imageCounter}${fileExtension}`);
+    }
+});
+
+const upload = multer({storage: storage});
+
+app.post('/upload-image/:id', upload.single('image'), (req, res) =>{
+    if(!req.file){
+        res.status(400).send('nenhuma imagem enviada.');
+    }
+    
+    const userId = req.params.id;
+    const imagePath = req.file.filename;
+
+    const query = 'UPDATE usuarios SET imagePath = ? WHERE id = ?'
+
+    connection.query(query, [imagePath, userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao salvar caminho da imagem no banco de dados.')
+        }  
+        res.send(`Imagem carregada e caminho salvo no banco de dados: ${imagePath}`);
+    });
+});
 
 //Rota para atualizar dados do usuário
 app.put('/atualizar-usuario/:id', (req, res) =>{
