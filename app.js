@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./db');
 const multer = require('multer');
+const path = require('path');
 const port = 2005;
 
 const app = express();
@@ -11,7 +12,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Agora aceita JSON
 
+//Configuração do Multer para envio de imagens
+let imageCounter = 0;
 
+const storage = multer.diskStorage({
+    destination: 'public/userIMG',
+    filename: (req, file, cb) =>{
+        imageCounter++;
+        const fileExtension = path.extname(file.originalname);
+        cb(null, `userImg${imageCounter}${fileExtension}`);
+    }
+});
+
+const upload = multer({storage: storage});
+
+app.post('/upload-image', upload.single('image'), (req, res) =>{
+    if(!req.file){
+        res.status(400).send('nenhuma imagem enviada.');
+    }
+    
+    const imagePath = `/public/userIMG/${req.file.filename}`;
+    console.log(imagePath)
+
+    res.status(200).json({
+        message: 'Imagem enviada com sucesso',
+        imagePath: imagePath
+    });
+
+});
 
 //Rota para atualizar dados do usuário
 app.put('/atualizar-usuario/:id', (req, res) =>{
@@ -25,6 +53,22 @@ app.put('/atualizar-usuario/:id', (req, res) =>{
             return res.status(500).send('Erro ao atualizar o usuario');
         }
         res.send('Usuario atualizado com sucesso')
+    })
+})
+
+//Rota para atualizar path da imagem do usuário
+app.put('/atualizar-imgUsuario/:id', (req, res) =>{
+    const userId = req.params.id;
+    const imagePath = req.body.imagePath;
+
+    const query = 'UPDATE usuarios SET imagePath = ? WHERE id = ?';
+    
+    connection.query(query, [imagePath, userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao atualizar o usuario');
+        }
+        console.log('path do usuario atualizado\n'+'id: '+userId+'\nimagePath: '+imagePath);
+        res.json({ message: 'Usuario atualizado com sucesso' });
     })
 })
 

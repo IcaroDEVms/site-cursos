@@ -24,7 +24,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html"><img src="img/favicon22.ico" alt="casinha"></a></li>
+                    <li><a href="index.html"><img src="img/CASINHABRANCA.png" alt="casinha"></a></li>
                     <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="cursos.html">Cursos</a></li>
                     <li><a href="suporte.html">Suporte</a></li>
@@ -36,12 +36,14 @@
     <div class="Usuariocontainer">
         <div class="Usuarioprofile">
             <div class="Usuariophoto-container">
-                <label for="file-input" class="Usuariophoto-label">
-                    <img class="Usuariophoto" src="img/user.png" alt="Foto do usuário">
-                    <div class="edit-photo" title="Editar foto">&#9998;</div>
-                </label>
-                <!-- Input de arquivo oculto -->
-                <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                <form id="uplpadForm" enctype="multipart/form-data">
+                    <label for="file-input" class="Usuariophoto-label">
+                        <img class="Usuariophoto" src="userIMG/defaultUser.png" alt="Foto do usuário">
+                        <div class="edit-photo" title="Editar foto">&#9998;</div>
+                    </label>
+                    <!-- Input de arquivo oculto -->
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                </form>
             </div>
             
             <div class="Usuarioinfo">
@@ -104,16 +106,73 @@
 
     
     <script>
+        //criação da constante userId que será utilizada nas demais funções
+        const userId = localStorage.getItem('userId');
+
+        // Função disparada ao selecionar a imagem
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            console.log("função de envio da imagem disparada!");
+            const file = event.target.files[0]; // Captura o arquivo selecionado
+
+            if (file) {
+
+                const formData = new FormData();
+                formData.append('image', file);
+
+                // Envia o arquivo para o servidor usando fetch
+                fetch('/upload-image', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json()) // Recebe a resposta do servidor
+                .then(result => {
+                    console.log(result); // Mostra o resultado no console
+
+                    const imagePath = result.imagePath;
+                    console.log('atualizando path do id: '+ userId+"\npath: "+ imagePath);
+                    atualizarPathUserImg(imagePath);
+
+                    alert("Imagem enviada com sucesso.");
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar a imagem:', error);
+                    alert("Erro ao enviar a imagem.");
+                });
+            } else {
+                alert("Por favor, selecione uma imagem.");
+            }
+        });
+
+        function atualizarPathUserImg(imagePath){
+            fetch(`/atualizar-imgUsuario/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ imagePath: imagePath })
+            })
+            .then(response =>{
+                if(!response.ok){
+                    throw new Error('Erro na resposta do servidor: '+ response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Usuario atualizado: "+ Response);
+            })
+            .catch(error => {
+                console.error("Erro: " + error);
+            })
+            // location.reload()
+        }
+
         //lógica para atualizar dados do usuário
-        const editButtons = document.querySelectorAll('.edit');
-        const btnSair = document.getElementById('sair');
         const nome = document.getElementById('nome');
         const email = document.getElementById('email');
-
+        
         document.getElementById('atualizar').addEventListener('click', function() {
             event.preventDefault();
             
-            const userId = localStorage.getItem('userId');
             console.log("Atualizando ID: "+userId);
             
             
@@ -124,84 +183,88 @@
                 },
                 body: JSON.stringify({ nome: nome.value, email: email.value })
             })
-            .then(response => {
-                console.log("Resposta recebida: " + response);
+            .then(response =>{
                 if(!response.ok){
-                    throw new Error('Erro na atualização do usuário');
+                    throw new Error('Erro na resposta do servidor: '+ response.statusText);
                 }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Usuario atualizado");
-        })
-        .catch(error => {
-            console.error("Erro: " + error);
-        })
-        location.reload();
-    });
-    
-    //Lógica para carregar dados do usuário 
-    window.addEventListener('load', function() {
-        carregarDadosUsuario();
-    });
-    
-    function carregarDadosUsuario () {
-        const userId = localStorage.getItem('userId');
-        console.log("Buscando ID: "+userId);
-        
-        if (!userId) {
-            console.error("ID do usuário não encontrado.");
-            return;
-        }
-
-        fetch(`/buscar-usuario/${userId}`)
-        .then(response => response.json())
-        .then(data => {
-            nome.value = data.nome;
-            email.value = data.email;
-        })
-        .catch(error => {
-            console.error("Erro: "+ error);
+                return response.json();
+            })
+            .then(data => {
+                console.log("Usuario atualizado");
+            })
+            .catch(error => {
+                console.error("Erro: " + error);
+            })
+            location.reload();
         });
-    }
+
+
     
-    //Função para deslogar o usuário
-    btnSair.addEventListener('click', function(){
-        console.log("usuario desconectado...");
-        localStorage.setItem('userId', 0);
+        //Lógica para carregar dados do usuário 
+        window.addEventListener('load', function() {
+            carregarDadosUsuario();
+        });
         
-        window.location.href = 'login.html';
-    })
-    
-    // Função para alternar a edição de inputs (nome e email)
-    editButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const input = event.target.previousElementSibling;
-            input.disabled = !input.disabled; // Alterna entre habilitar e desabilitar o campo
-            if (!input.disabled) {
-                input.focus(); // Foca no input quando está habilitado para edição
+        function carregarDadosUsuario () {
+            console.log("Buscando ID: "+userId);
+            
+            if (!userId) {
+                console.error("ID do usuário não encontrado.");
+                return;
+            }
+
+            fetch(`/buscar-usuario/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                nome.value = data.nome;
+                email.value = data.email;
+            })
+            .catch(error => {
+                console.error("Erro: "+ error);
+            });
+        }
+        
+        //Função para deslogar o usuário
+        const btnSair = document.getElementById('sair');
+        
+        btnSair.addEventListener('click', function(){
+            console.log("usuario desconectado...");
+            localStorage.setItem('userId', 0);
+            
+            window.location.href = 'login.html';
+        })
+        
+        // Função para alternar a edição de inputs (nome e email)
+        const editButtons = document.querySelectorAll('.edit');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const input = event.target.previousElementSibling;
+                input.disabled = !input.disabled; // Alterna entre habilitar e desabilitar o campo
+                if (!input.disabled) {
+                    input.focus(); // Foca no input quando está habilitado para edição
+                }
+            });
+        });
+        
+        //função do modo escuro
+        const checkbox = document.querySelector('#switch');
+        const $html = document.documentElement;
+
+        if (localStorage.getItem('darkMode') === '1') {
+            $html.classList.add('dark-mode');  // Aplica o dark mode
+            checkbox.checked = true;  // Marca o checkbox
+        }  
+
+        checkbox.addEventListener('change', function() {
+            $html.classList.toggle('dark-mode');
+
+            if ($html.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', '1');
+            } else {
+                localStorage.setItem('darkMode', '0');
             }
         });
-    });
-
-    //função do modo escuro
-    const checkbox = document.querySelector('#switch');
-    const $html = document.documentElement;
-
-    if (localStorage.getItem('darkMode') === '1') {
-        $html.classList.add('dark-mode');  // Aplica o dark mode
-        checkbox.checked = true;  // Marca o checkbox
-    }  
-
-    checkbox.addEventListener('change', function() {
-        $html.classList.toggle('dark-mode');
-
-        if ($html.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', '1');
-        } else {
-            localStorage.setItem('darkMode', '0');
-        }
-    });
     
 </script>
 <script src="js/darkmode.js"></script>
