@@ -93,16 +93,16 @@ app.get('/buscar-usuario/:id', (req, res) =>{
 // Rota para cadastro de e-mail
 app.post('/cadastrar-usuario', (req, res) => {
     const { email, senha, confirmarSenha, nome } = req.body;
+    const defaultImgPath = '/public/userIMG/defaultUser.png';
 
     if (senha !== confirmarSenha) {
         return res.status(400).send('As senhas não coincidem.');
     }
-
-    const query = 'INSERT INTO usuarios (email, senha, nome) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO usuarios (email, senha, nome, imagePath) VALUES (?, ?, ?, ?)';
 
     console.log("Valores a serem inseridos: "+ email, senha, confirmarSenha, nome);
 
-    connection.query(query, [email, senha, nome], (err, result) => {
+    connection.query(query, [email, senha, nome, defaultImgPath], (err, result) => {
         if (err) {
             console.error('Erro ao inserir no banco de dados: ' + err.stack);
             return res.status(500).send('Erro ao cadastrar o e-mail.');
