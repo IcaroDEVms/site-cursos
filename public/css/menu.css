@@ -160,12 +160,33 @@ h1, h2, p {
     margin: 0;
 }
 
-.video-container{
-    padding: 130px;
+.fixed-footer {
+    position: fixed; /* ou absolute */
+    bottom: 0;
+    width: 100%;
+    color: var(--cabecalhoTEXT-color);
+    background-color: var(--cabecalho-color);
+    padding: 10px 0;
+    text-align: center;
 }
+
+.video-container {
+    min-height: calc(100vh - 50px); /* Ajuste conforme necessário */
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.aula {
+    overflow-y: auto; /* Adiciona rolagem apenas na aula se necessário */
+    max-height: calc(100vh - 60px); /* Ajusta a altura conforme necessário */
+}
+
 .textoPendeciaEscolherAula{
-    padding: 20px;
-    margin: 15px;
+    font-size: 1.5em;
+    color: var(--TEXTO-color);
 }
 
 .star-rating {
@@ -388,24 +409,16 @@ h1, h2, p {
     list-style-position: inside;
 }
 
-/* Header e Footer com espaçamento uniforme */
-header, footer {
-    background-color: #282c34;
-    color: white;
-    padding: 20px; /* Mesma padding em ambos */
-    text-align: center;
-}
-
 /* Rodapé sempre ao final da página */
 .footer {
-    display: flex;
-    justify-content: center;
+    position: relative; /* Ou fixed, dependendo do comportamento desejado */
+    bottom: 0;
+    width: 100%;
     color: var(--cabecalhoTEXT-color);
     background-color: var(--cabecalho-color);
-    padding: 1rem;
-    width: 100%;
+    padding: 13px 0;
+    text-align: center;
 }  
-
 
 .footer p {
     margin: 0;
@@ -757,9 +770,9 @@ form button:hover {
     padding: 25px;
     margin-bottom: 17.5vh;
     margin-top: 200px;
-    margin-bottom: 17.5vh;
+    margin-bottom: 18.1vh;
     color: var(--TEXTusuario-color);
-    border-radius: 10px;
+    border-radius: 15px;
     width: 90vh;
     margin-left: auto;
     margin-right: auto; 
@@ -858,7 +871,7 @@ hr {
     justify-content: space-between;
     padding: 50px;
     border: .5px solid var(--borda-color);
-    border-radius: 5px;
+    border-radius: 15px;
     margin-bottom: 20px;
 }
 
@@ -868,7 +881,7 @@ hr {
     color: var(--CorButaoUsuario-color);
     cursor: pointer;                      
     text-decoration: none; 
-    border-radius: 5px;
+    border-radius: 15px;
     text-align: center;
     color: var()
 }
