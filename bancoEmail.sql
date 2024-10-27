@@ -7,7 +7,7 @@ id int auto_increment not null,
 email varchar(70) not null,
 senha varchar(50),
 nome varchar(50),
-imagePath varchar(30),
+imagePath varchar(40),
 primary key(id)
 );
 
