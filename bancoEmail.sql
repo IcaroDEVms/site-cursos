@@ -1,4 +1,4 @@
-drop database bancoEmail;
+
 create database bancoEmail;
 use bancoEmail;
 
@@ -22,7 +22,6 @@ CREATE TABLE matriculas (
 CREATE TABLE cursos (
     id INT PRIMARY KEY AUTO_INCREMENT,  -- ID do curso
     nome VARCHAR(255),                  -- Nome do curso
-    descricao TEXT,                     -- Descrição do curso
     carga_horaria INT,                  -- Carga horária do curso em horas
     data_criacao DATE                   -- Data de criação do curso
 );
@@ -56,3 +55,10 @@ CREATE TABLE conclusoes_etapas (
 );
 
 SELECT * FROM usuarios;
+     
+INSERT INTO cursos (nome, carga_horaria, data_criacao) VALUES
+  ('Curso de Git', 1, '2024-10-27'),
+  ('Curso de Valorant', 1.10, '2024-10-27'),
+  ('Curso de League of Legends', 2.5, '2024-10-27'),
+  ('Curso de Rocket League', 1.30, '2024-10-27'),
+  ('Curso de Rainbow Six', 1.10, '2024-10-27');
