@@ -881,7 +881,7 @@ hr {
     color: var(--CorButaoUsuario-color);
     cursor: pointer;                      
     text-decoration: none; 
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
     color: var()
 }
