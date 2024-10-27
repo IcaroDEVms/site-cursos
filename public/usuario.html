@@ -257,6 +257,15 @@
             checkbox.checked = true;  // Marca o checkbox
         }  
 
+        window.addEventListener('load', function(){
+            const darkMode = localStorage.getItem('darkMode');
+            const casinha = document.getElementById('casinha');
+            if (darkMode === '1') {
+                console.log('modo escuro ativado!');
+                casinha.src = 'img/CASINHABRANCA.png' 
+            }
+        });
+
         checkbox.addEventListener('change', function() {
             $html.classList.toggle('dark-mode');
 
@@ -265,6 +274,8 @@
             } else {
                 localStorage.setItem('darkMode', '0');
             }
+
+            
             location.reload()
         });
     
@@ -293,7 +304,6 @@ function atualizarPathUserImg(imagePath) {
 
 // Carrega a imagem do usuário ao carregar a página
 window.addEventListener('load', function() {
-    carregarDadosUsuario();
     loadUserPhoto(userId);
 });
 
