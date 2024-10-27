@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use(express.static('public'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json()); // Agora aceita JSON
 
 //Configuração do Multer para envio de imagens
@@ -90,6 +91,7 @@ app.get('/buscar-usuario/:id', (req, res) =>{
     });
 });
 
+
 // Rota para cadastro de e-mail
 app.post('/cadastrar-usuario', (req, res) => {
     const { email, senha, confirmarSenha, nome } = req.body;
@@ -131,6 +133,21 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.get('/buscar-imagemPath/:id', (req, res) =>{
+    const userId = req.params.id;
+
+    const query = 'SELECT imagePath FROM usuarios WHERE id = ?';
+    connection.query(query, [userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao buscar dados');
+        }
+        if(result.length >0){
+            res.json(result[0]);
+        }else{
+            res.status(404).send('Usuário não encontrado');
+        }
+    });
+});
 // Rota para obter todos os e-mails (não usa req.body)
 app.get('/usuarios', (req, res) => {
     const query = 'SELECT * FROM usuarios';
