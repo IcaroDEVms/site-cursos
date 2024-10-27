@@ -38,7 +38,7 @@
             <div class="Usuariophoto-container">
                 <form id="uplpadForm" enctype="multipart/form-data">
                     <label for="file-input" class="Usuariophoto-label">
-                        <img class="Usuariophoto" src="" alt="Foto do usuário"> <!--Adicionar imagempath no src-->
+                        <img class="Usuariophoto" id="user-photo" src="" alt="Foto do usuário"> <!--Adicionar imagempath no src-->
                         <div class="edit-photo" title="Editar foto">&#9998;</div>
                     </label>
                     <!-- Input de arquivo oculto -->
@@ -203,6 +203,7 @@
         //Lógica para carregar dados do usuário 
         window.addEventListener('load', function() {
             carregarDadosUsuario();
+            loadUserPhoto(userId);
         });
         
         function carregarDadosUsuario () {
@@ -267,6 +268,85 @@
             location.reload()
         });
     
+    
+        
+function atualizarPathUserImg(imagePath) {
+    fetch(`/atualizar-imgUsuario/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ imagePath: imagePath })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar caminho da imagem');
+        }
+        console.log("Caminho da imagem atualizado no banco de dados");
+    })
+    .catch(error => {
+        console.error("Erro ao atualizar caminho da imagem:", error);
+    });
+}
+    
+
+
+// Carrega a imagem do usuário ao carregar a página
+window.addEventListener('load', function() {
+    carregarDadosUsuario();
+    loadUserPhoto(userId);
+});
+
+// Função para carregar e definir o caminho da imagem de perfil
+function loadUserPhoto(userId) {
+    fetch(`/buscar-imagemPath/${userId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao buscar imagem do usuário');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const userPhoto = document.getElementById('user-photo');
+            if (data.imagePath) {
+                userPhoto.src = data.imagePath; // Atualiza o caminho da imagem
+            } else {
+                userPhoto.alt = "Imagem não encontrada";
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar imagem:', error);
+        });
+}
+
+
+// Envio e atualização da imagem do perfil do usuário
+document.getElementById('file-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        fetch('/upload-image', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            const imagePath = result.imagePath;
+            atualizarPathUserImg(imagePath); // Atualiza o caminho da imagem no banco de dados
+
+            // Atualiza o src da imagem no front-end imediatamente
+            document.getElementById('user-photo').src = imagePath;
+        })
+        .catch(error => {
+            console.error('Erro ao enviar a imagem:', error);
+            alert("Erro ao enviar a imagem.");
+        });
+    } else {
+        alert("Por favor, selecione uma imagem.");
+    }
+});
 </script>
 <script src="js/darkmode.js"></script>
 </body>
