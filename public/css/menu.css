@@ -740,7 +740,8 @@ form button:hover {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 250px;
+    margin-top: 25vh;
+    margin-bottom: 25vh;
 }
 
 .loginform {
