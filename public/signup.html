@@ -28,7 +28,11 @@
                     <button type="button" id="togglePassword" class="toggle-password">👁️</button>
                 
                 </div>
-                <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+                <div class="password-container">
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" required>
+                    <button type="button" id="togglePassword_confirmarSenha" class="toggle-password">👁️</button>
+                </div>
+               
                 
                 <button class="enviar" type="submit">Cadastrar</button>
                 <p>Já possui uma conta? Então <a href="login.html" class="corlogin"> Entre</a></p>
@@ -83,6 +87,14 @@
 
     document.getElementById('togglePassword').addEventListener('click', function () {
             const senhaInput = document.getElementById('senha');
+            const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            senhaInput.setAttribute('type', type);
+    
+            // Alterne o ícone entre "👁️" para mostrar e "🔒" para ocultar
+            this.textContent = type === 'password' ? '👁️' : '🔒';
+        });
+        document.getElementById('togglePassword_confirmarSenha').addEventListener('click', function () {
+            const senhaInput = document.getElementById('confirmarSenha');
             const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
             senhaInput.setAttribute('type', type);
     
