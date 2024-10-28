@@ -30,6 +30,7 @@
                     <li><a href="cursos.html">Cursos</a></li>
                     <li><a href="suporte.html">Suporte</a></li>
                     <li><a href="meuscursos.html">Meus Cursos</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
                 </ul>
             </nav>
         </aside>
@@ -48,21 +49,64 @@
             <!-- Texto explicativo -->
             <p>Na seção abaixo, você pode preencher seus dados e descrever sua dúvida ou problema. O suporte entrará em contato com você o mais rápido possível.</p>
 
-            <!-- Formulário de contato -->
-            <form action="#" method="POST" class="SuporteTextBox">
-                <input type="text" name="name" placeholder="Seu Nome" required>
+            <!-- Formulário de contato de suporte -->
+            <form action="/enviar-mensagem-suporte" method="POST" class="SuporteTextBox">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
                 <input type="email" name="email" placeholder="Seu E-mail" required>
-                <textarea name="message" placeholder="Digite sua mensagem aqui..." required></textarea>
+                <textarea name="mensagem" placeholder="Digite sua mensagem aqui..." required></textarea>
                 <button class="enviar" type="submit">Enviar Mensagem</button>
             </form>
         </div>
 
     </div>
 
+    <div id="notification" class="notification"></div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
     </footer>
+
+    <script>
+    document.querySelector('.SuporteTextBox').addEventListener('submit', function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const nome = this.nome.value;
+        const email = this.email.value;
+        const mensagem = this.mensagem.value;
+
+        fetch('/enviar-mensagem-suporte', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nome, email, mensagem }) // Enviando os dados como JSON
+        })
+        .then(response => {
+            if (response.ok) {
+                showNotification('Mensagem enviada com sucesso!'); // Exibe a notificação de sucesso
+                this.reset(); // Limpa o formulário após o envio
+            } else {
+                showNotification('Erro ao enviar a mensagem. Tente novamente.', true); // Exibe erro se houver falha
+            }
+        })
+        .catch(() => {
+            showNotification('Erro ao enviar a mensagem. Verifique sua conexão.', true);
+        });
+    });
+
+    function showNotification(message, isError = false) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.toggle('error', isError);
+        notification.style.display = 'block';
+
+        // Ocultar a notificação após 3 segundos
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 4000);
+    }
+    </script>
 
 <script src="js/darkmode.js"></script>
 </body>

@@ -6,14 +6,15 @@ const path = require('path');
 const port = 2005;
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
 
+// Middleware para processar dados de formulários
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); // Para aceitar JSON
 
 app.use(express.static('public'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json()); // Agora aceita JSON
 
-//Configuração do Multer para envio de imagens
+// Configuração do Multer para envio de imagens
 let imageCounter = 0;
 
 const storage = multer.diskStorage({
@@ -163,4 +164,22 @@ app.get('/usuarios', (req, res) => {
 
 app.listen(port, () => {
     console.log('Servidor rodando na porta ' + port);
+});
+
+
+// Rota para lidar com o envio de mensagens de suporte
+app.post('/enviar-mensagem-suporte', (req, res) => {
+    const { nome, email, mensagem } = req.body;
+    
+    // Verifique se os dados estão sendo recebidos
+    console.log("Dados recebidos: ", nome, email, mensagem);
+
+    const query = 'INSERT INTO suporte_mensagens (nome, email, mensagem) VALUES (?, ?, ?)';
+    connection.query(query, [nome, email, mensagem], (err, result) => {
+        if (err) {
+            console.error('Erro ao inserir mensagem de suporte: ' + err.stack);
+            return res.status(500).send('Erro ao enviar a mensagem.');
+        }
+        res.json({ message: 'Mensagem enviada com sucesso!' });
+    });
 });

@@ -927,6 +927,23 @@ hr {
     color: var(--TEXTusuario-color);
 }
 
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde para sucesso */
+    color: #F0F6EF;
+    border-radius: 5px;
+    display: none; /* Oculto por padrão */
+    font-size: 1rem;
+    z-index: 1000;
+}
+
+.notification.error {
+    background-color: #f44336; 
+}
+
 @media screen and  (max-width: 1020px){
     .flex{
         flex-direction: column;
