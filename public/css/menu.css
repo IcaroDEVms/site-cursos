@@ -126,12 +126,11 @@ h1, h2, p {
 }
 
 .thumb-accordion-item {
-    width: 70px; 
-    height: auto; 
+    width: 60px; 
+    height: 60px; 
     object-fit: cover; 
     border-radius: 15px; 
-    display: block; 
-    margin: 10px 10px;
+    margin: 5px;
 }
 
 /* Ajuste para o accordion ocupar completamente a largura da sidebar */
@@ -276,10 +275,21 @@ h1, h2, p {
 }
 
 .accordion-body{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    
+    max-height: 200px; /* Define a altura máxima desejada */
+    overflow-y: auto;  /* Permite rolagem se o conteúdo for maior que a altura */
+    padding: 10px;     /* Ajusta o padding para dar um respiro no conteúdo */
+}
+
+/* Mantém o botão do accordion com um tamanho fixo */
+.accordion-button {
+    height: 50px; /* Define uma altura específica para o botão */
+}
+
+/* Define uma altura fixa para a área de colapso e controla o fluxo do conteúdo */
+.accordion-collapse {
+    max-height: 200px; /* Altura específica para o conteúdo expandido */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse essa altura */
+    transition: max-height 0.3s ease; /* Animação para suavizar o efeito de abrir/fechar */
 }
 
 .button-aula {
@@ -295,10 +305,15 @@ h1, h2, p {
 .icon-button {
     position: absolute;
     right: 20px;
+    top: 10px; /* Ajuste este valor para mover mais para cima */
     padding: 10px 10px;
     margin: 0 60px;
     border: none;
     cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%; /* Faz a imagem ficar circular */
+    object-fit: cover; /* Mantém o conteúdo centralizado e ajustado */
 }
 
 /* Carrossel */
