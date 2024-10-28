@@ -10,7 +10,9 @@
     
     <header class="header">
         <h1>Poppy Cursos</h1>
-        <a class="icon-button" href="login.html"><img src="img/usuario.ico" alt="icone usuario"></a>
+        <a  id="HeaderUserImg" href="login.html">
+            <img class="icon-button" src="img/usuario.ico" alt="icone usuario" id="user-photo">
+        </a>    
     </header>
 
     <div class="main-content">
@@ -39,7 +41,7 @@
             <div class="Usuariophoto-container">
                 <form id="uplpadForm" enctype="multipart/form-data">
                     <label for="file-input" class="Usuariophoto-label">
-                        <img class="Usuariophoto" id="user-photo" src="" alt="Foto do usuário"> <!--Adicionar imagempath no src-->
+                        <img class="Usuariophoto" id="main-user-photo" src="" alt="Foto do usuário"> <!--Adicionar imagempath no src-->
                         <div class="edit-photo" title="Editar foto">&#9998;</div>
                     </label>
                     <!-- Input de arquivo oculto -->
@@ -319,10 +321,13 @@ function loadUserPhoto(userId) {
         })
         .then(data => {
             const userPhoto = document.getElementById('user-photo');
+            const mainUserPhoto = document.getElementById('main-user-photo');
             if (data.imagePath) {
                 userPhoto.src = data.imagePath; // Atualiza o caminho da imagem
+                mainUserPhoto.src = data.imagePath;
             } else {
                 userPhoto.alt = "Imagem não encontrada";
+                mainUserPhoto.alt = "Imagem não encontrada";
             }
         })
         .catch(error => {
@@ -349,6 +354,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
 
             // Atualiza o src da imagem no front-end imediatamente
             document.getElementById('user-photo').src = imagePath;
+            document.getElementById('main-user-photo').src = imagePath;
         })
         .catch(error => {
             console.error('Erro ao enviar a imagem:', error);
@@ -360,5 +366,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
 });
 </script>
 <script src="js/darkmode.js"></script>
+<script src="js/IconeUsuarioHeader.js"></script>
+
 </body>
 </html>

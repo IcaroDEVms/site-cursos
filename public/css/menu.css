@@ -295,10 +295,15 @@ h1, h2, p {
 .icon-button {
     position: absolute;
     right: 20px;
+    top: 10px; /* Ajuste este valor para mover mais para cima */
     padding: 10px 10px;
     margin: 0 60px;
     border: none;
     cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%; /* Faz a imagem ficar circular */
+    object-fit: cover; /* Mantém o conteúdo centralizado e ajustado */
 }
 
 /* Carrossel */
