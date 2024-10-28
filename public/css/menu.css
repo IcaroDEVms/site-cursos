@@ -753,19 +753,43 @@ form button:hover {
     border: 1px solid var(--borda-color);
     border-radius: 20px;
     text-align: center;
+    width: 300px;
 }
 
 .loginform input {
-    margin: 10px;
+    width: 100%;
+    margin: 10px 0;
     padding: 10px;
+    box-sizing: border-box;
 }
 
-.loginform button {
-    margin: 10px;
+.loginform button.enviar {
+    margin: 10px 0;
     padding: 10px;
     color: white;
 }
  
+.password-container {
+    position: relative;
+    width: 100%; /* Garante a mesma largura do campo de e-mail */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.toggle-password:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
     padding: 25px;
