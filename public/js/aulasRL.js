@@ -105,6 +105,3 @@ document.getElementById('ConclusaoButton').addEventListener('click', function() 
     }
 });
 
-
-
-
