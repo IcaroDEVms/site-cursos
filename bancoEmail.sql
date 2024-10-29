@@ -63,10 +63,10 @@ INSERT INTO cursos (nome, carga_horaria, data_criacao) VALUES
   ('Curso de Rocket League', 1.30, '2024-10-27'),
   ('Curso de Rainbow Six', 1.10, '2024-10-27');
 
-  CREATE TABLE suporte_mensagens (
+CREATE TABLE suporte_mensagens (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    idUsuarioFK INT NOT NULL,
     mensagem TEXT NOT NULL,
-    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUsuarioFK) REFERENCES usuarios(id)
 );

@@ -168,14 +168,18 @@ app.listen(port, () => {
 
 
 // Rota para lidar com o envio de mensagens de suporte
-app.post('/enviar-mensagem-suporte', (req, res) => {
-    const { nome, email, mensagem } = req.body;
+app.post('/enviar-mensagem-suporte/:id', (req, res) => {
+
+
+
+    const userId = req.params.id;
+    const { mensagem } = req.body;
     
     // Verifique se os dados estão sendo recebidos
-    console.log("Dados recebidos: ", nome, email, mensagem);
+    console.log("Dados recebidos: ", mensagem);
 
-    const query = 'INSERT INTO suporte_mensagens (nome, email, mensagem) VALUES (?, ?, ?)';
-    connection.query(query, [nome, email, mensagem], (err, result) => {
+    const query = 'INSERT INTO suporte_mensagens (mensagem, idUsuarioFK) VALUES (?, ?)';
+    connection.query(query, [mensagem, userId], (err, result) => {
         if (err) {
             console.error('Erro ao inserir mensagem de suporte: ' + err.stack);
             return res.status(500).send('Erro ao enviar a mensagem.');

@@ -54,8 +54,6 @@
 
             <!-- Formulário de contato de suporte -->
             <form action="/enviar-mensagem-suporte" method="POST" class="SuporteTextBox">
-                <input type="text" name="nome" placeholder="Seu Nome" required>
-                <input type="email" name="email" placeholder="Seu E-mail" required>
                 <textarea name="mensagem" placeholder="Digite sua mensagem aqui..." required></textarea>
                 <button class="enviar" type="submit">Enviar Mensagem</button>
             </form>
@@ -73,17 +71,22 @@
     <script>
     document.querySelector('.SuporteTextBox').addEventListener('submit', function (event) {
         event.preventDefault(); // Impede o envio padrão do formulário
+        
+        const userId = localStorage.getItem('userId');
+        if (userId <= 0) {
+            alert("Você precisa estar logado para enviar uma mensagem de suporte!");
+            window.location.href = 'login.html';
+            return;
+        }
 
-        const nome = this.nome.value;
-        const email = this.email.value;
         const mensagem = this.mensagem.value;
 
-        fetch('/enviar-mensagem-suporte', {
+        fetch(`/enviar-mensagem-suporte/${userId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nome, email, mensagem }) // Enviando os dados como JSON
+            body: JSON.stringify({ mensagem }) // Enviando os dados como JSON
         })
         .then(response => {
             if (response.ok) {

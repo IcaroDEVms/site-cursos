@@ -2,7 +2,7 @@
 const userId = localStorage.getItem('userId');
 
 // Verifica se o userId existe e chama a função para carregar a foto do usuário
-if (userId) {
+if (userId > 0) {
     loadUserPhoto(userId);
     document.getElementById('HeaderUserImg').href = 'usuario.html';
 }else{
