@@ -14,6 +14,23 @@ app.use(bodyParser.json()); // Para aceitar JSON
 app.use(express.static('public'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+// Rota para inserir uma nova matrícula
+app.post('/cadastrar-matricula/:id', (req, res) => {
+    const userId = req.params.id;
+    const cursoId = req.body.cursoId;
+    
+    console.log("matricula feita\nuserId: ", userId, "\ncursoId: ", cursoId);
+
+    const query = 'INSERT INTO matriculas (usuarioIdFK, cursoIdFK) VALUES (?, ?)';
+    connection.query(query, [userId, cursoId], (err, result) => {
+      if (err) {
+        res.status(500).json({ error: 'Erro ao inserir matrícula' });
+      } else {
+        res.json({ message: 'Matrícula inserida com sucesso', matriculaId: result.insertId });
+      }
+    });
+  });
+
 // Configuração do Multer para envio de imagens
 let imageCounter = 0;
 

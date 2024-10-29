@@ -54,7 +54,7 @@
                         <li>Práticas recomendadas para resolução de conflitos e histórico de versões limpo.
                         <li>Aplicação em projetos reais para reforçar o aprendizado.
                     </ul>
-                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso(1)">Adquirir Curso</button>
                 </p>
             </div>
         </div>
@@ -74,7 +74,7 @@
                         <li>Como coordenar com a equipe e executar estratégias eficazes em situações de alta pressão.
                         <li>Dicas para melhorar o rank e competir no nível profissional.
                     </ul>
-                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso(2)">Adquirir Curso</button>
                 </p>
             </div>
         </div>
@@ -94,7 +94,7 @@
                         <li>Treinamento em mira e reflexos rápidos para melhorar a performance em combates.
                         <li>Análise de jogadas competitivas e como adaptar táticas conforme o progresso da partida.
                     </ul>
-                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso(5)">Adquirir Curso</button>
                 </p>
             </div>
         </div>
@@ -114,7 +114,7 @@
                         <li>Melhorar a leitura de jogo: prever movimentos adversários e tomar decisões rápidas.
                         <li>Aumentar o nível competitivo e se destacar em torneios e partidas ranqueadas.
                     </ul>
-                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso(4)">Adquirir Curso</button>
                 </p>
             </div>
         </div>
@@ -134,7 +134,7 @@
                         <li>Como construir seu campeão de acordo com a partida e o adversário.
                         <li>Comunicação e sinergia com a equipe para maximizar o desempenho em partidas ranqueadas.
                     </ul>
-                    <button class="adquirir-curso-btn" onclick="adquirirCurso('Git')">Adquirir Curso</button>
+                    <button class="adquirir-curso-btn" onclick="adquirirCurso(3)">Adquirir Curso</button>
                 </p>
             </div>
         </div>
@@ -149,6 +149,28 @@
 
 <script src="js/darkmode.js"></script>
 <script src="js/IconeUsuarioHeader.js"></script>
+<script>
+    function adquirirCurso(curso) {
+        const userId = localStorage.getItem('userId');
+        
+        fetch(`/cadastrar-matricula/${userId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
 
+            body: JSON.stringify({cursoId : curso})
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Exibe o alert com a resposta do servidor
+            alert(data.message || 'Curso adiquirido com sucesso!');
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro ao enviar os dados. Tente novamente.');
+        });
+    }
+</script>
 </body>
 </html>
