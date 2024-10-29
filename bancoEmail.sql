@@ -1,4 +1,4 @@
-drop database bancoEmail;
+DROP DATABASE IF EXISTS bancoEmail;
 create database bancoEmail;
 use bancoEmail;
 
@@ -11,14 +11,6 @@ imagePath varchar(40),
 primary key(id)
 );
 
-CREATE TABLE matriculas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    email_id INT,         -- Chave estrangeira para a tabela emails
-    curso_id INT,         -- ID do curso
-    data_matricula DATE,  -- Data da matrícula
-    CONSTRAINT fk_email FOREIGN KEY (email_id) REFERENCES usuarios(id)
-);
-
 CREATE TABLE cursos (
     id INT PRIMARY KEY AUTO_INCREMENT,  -- ID do curso
     nome VARCHAR(255),                  -- Nome do curso
@@ -27,16 +19,35 @@ CREATE TABLE cursos (
     qtd_aulas INT
 );
 
+CREATE TABLE matriculas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuarioIdFK INT,         -- Chave estrangeira para a tabela emails
+    cursoIdFK INT,         -- ID do curso
+    data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Data da matrícula
+    CONSTRAINT fk_usuario_matricula FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
+    CONSTRAINT fk_curso_matricula FOREIGN KEY (cursoIdFK) REFERENCES cursos(id)
+);
+
+CREATE TABLE matriculas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuarioIdFK INT,         -- Chave estrangeira para a tabela emails
+    cursoIdFK INT,         -- ID do curso
+    data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Data da matrícula
+    CONSTRAINT fk_usuario_matricula FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
+    CONSTRAINT fk_curso_matricula FOREIGN KEY (cursoIdFK) REFERENCES cursos(id)
+);
+
 CREATE TABLE progressos (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    email_id INT,                -- Chave estrangeira para o ID do usuário na tabela de usuários
-    curso_id INT,                -- ID do curso
+    usuarioIdFK INT,      -- Chave estrangeira para a tabela usuarios
+    curso_id INT,         -- ID do curso
+    progresso INT,        -- Percentual de progresso (0-100)
     aula_id INT,                 -- ID da aula para rastrear o progresso de cada aula
     progresso INT DEFAULT 0,     -- Percentual de progresso (0-100)
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT fk_email_progresso FOREIGN KEY (email_id) REFERENCES usuarios(id)
+    CONSTRAINT fk_usuario_progresso FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
+    CONSTRAINT fk_curso_progresso FOREIGN KEY (curso_id) REFERENCES cursos(id)
 );
-
 
 CREATE TABLE aulas (
     id INT PRIMARY KEY AUTO_INCREMENT,    -- ID da etapa
@@ -48,11 +59,11 @@ CREATE TABLE aulas (
 
 CREATE TABLE conclusoes_aulas (
     id INT PRIMARY KEY AUTO_INCREMENT,    -- ID único para cada conclusão de etapa
-    email_id INT,                         -- ID do usuário (chave estrangeira para tabela emails)
+    usuarioIdFK INT,                      -- ID do usuário (chave estrangeira para tabela usuarios)
     aula_id INT,                         -- ID da etapa (chave estrangeira para tabela etapas)
     data_conclusao DATE,                  -- Data em que o usuário concluiu a etapa
-    CONSTRAINT fk_email_aula FOREIGN KEY (email_id) REFERENCES usuarios(id),
-    CONSTRAINT fk_aula_conclusao FOREIGN KEY (aula_id) REFERENCES aulas(id)
+    CONSTRAINT fk_usuario_conclusao FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
+    CONSTRAINT fk_etapa_conclusao FOREIGN KEY (etapa_id) REFERENCES etapas(id)
 );
 select * from progressos;
 SELECT * FROM usuarios;
@@ -109,10 +120,10 @@ INSERT INTO aulas (curso_id, nome, numero_ordem) VALUES
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     mensagem TEXT NOT NULL,
-    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_usuario_suporte FOREIGN KEY (idUsuarioFK) REFERENCES usuarios(id)
 );
 
-select * from suporte_mensagens;
-select * from progressos;
 select * from cursos;
-select * from aulas;
+INSERT INTO matriculas (usuarioIdFK, cursoIdFK) VALUES (1, 2);
+select * from matriculas;
