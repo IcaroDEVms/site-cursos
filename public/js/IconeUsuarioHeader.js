@@ -5,6 +5,8 @@ const userId = localStorage.getItem('userId');
 if (userId) {
     loadUserPhoto(userId);
     document.getElementById('HeaderUserImg').href = 'usuario.html';
+}else{
+    document.getElementById('HeaderUserImg').href = 'login.html';
 }
 
 function loadUserPhoto(userId) {
