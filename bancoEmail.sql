@@ -28,20 +28,10 @@ CREATE TABLE matriculas (
     CONSTRAINT fk_curso_matricula FOREIGN KEY (cursoIdFK) REFERENCES cursos(id)
 );
 
-CREATE TABLE matriculas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    usuarioIdFK INT,         -- Chave estrangeira para a tabela emails
-    cursoIdFK INT,         -- ID do curso
-    data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Data da matrícula
-    CONSTRAINT fk_usuario_matricula FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
-    CONSTRAINT fk_curso_matricula FOREIGN KEY (cursoIdFK) REFERENCES cursos(id)
-);
-
 CREATE TABLE progressos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     usuarioIdFK INT,      -- Chave estrangeira para a tabela usuarios
     curso_id INT,         -- ID do curso
-    progresso INT,        -- Percentual de progresso (0-100)
     aula_id INT,                 -- ID da aula para rastrear o progresso de cada aula
     progresso INT DEFAULT 0,     -- Percentual de progresso (0-100)
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
