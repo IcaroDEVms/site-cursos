@@ -73,5 +73,4 @@ CREATE TABLE suporte_mensagens (
 );
 
 select * from cursos;
-INSERT INTO matriculas (usuarioIdFK, cursoIdFK) VALUES (1, 2);
 select * from matriculas;
