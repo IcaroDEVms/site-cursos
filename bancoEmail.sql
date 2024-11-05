@@ -54,7 +54,7 @@ CREATE TABLE conclusoes_aulas (
     aula_id INT,                         -- ID da etapa (chave estrangeira para tabela etapas)
     data_conclusao DATE,                  -- Data em que o usuário concluiu a etapa
     CONSTRAINT fk_usuario_conclusao FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
-    CONSTRAINT fk_etapa_conclusao FOREIGN KEY (etapa_id) REFERENCES etapas(id)
+    CONSTRAINT fk_etapa_conclusao FOREIGN KEY (aula_id) REFERENCES aulas(id)
 );
 select * from progressos;
 SELECT * FROM usuarios;
@@ -108,11 +108,12 @@ INSERT INTO aulas (curso_id, nome, numero_ordem) VALUES
     
   CREATE TABLE suporte_mensagens (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    usuarioIdFK int,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     mensagem TEXT NOT NULL,
     data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_usuario_suporte FOREIGN KEY (idUsuarioFK) REFERENCES usuarios(id)
+    CONSTRAINT fk_usuario_suporte FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id)
 );
 
 select * from cursos;
