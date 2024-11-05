@@ -1114,3 +1114,46 @@ img {
 .ConclusaoButton:hover {
     background: #218838; /* Tom mais escuro para o hover */
 }
+
+/* Estilos do Círculo de Progresso */
+.progress-circle {
+    position: absolute;
+    top: 130px; /* Posição ajustada para ficar abaixo do header */
+    right: 90px; /* Posição inicial */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    background-color: var(--background-color);
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+}
+
+.circular-chart {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--borda-color);
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 3.8;
+    stroke: var(--H2-color); /* Cor de progresso */
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s;
+}
+
+.progress-text {
+    position: absolute;
+    font-weight: bold;
+    color: var(--H2-color); /* Cor do texto de progresso */
+}
