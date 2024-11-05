@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/menu.css">
 </head>
 <body>
+    <div id="particles-js"></div>
      <!-- Header -->
     <header class="header">
         <h1>Poppy Cursos</h1>
@@ -37,7 +38,7 @@
                 </ul>
             </nav>
         </aside>
-
+        
         <!-- Carrossel de Imagens -->
         <section class="carousel">
             <div class="carousel-container"> 
@@ -60,7 +61,7 @@
                 <span class="dot"></span>
             </div>
         </section>
-        
+
         <!-- Texto abaixo do carrossel -->
         <section class="content-below-carousel">
             <h2>Bem-vindo à Poppy Cursos: Melhore Suas Habilidades e Domine os Jogos! 🎮🔥</h2>
@@ -112,11 +113,89 @@
         </section> 
     </div>
 
+     <!-- Seção de Parallax -->
+     <section class="parallax-background">
+        <div class="parallax-content">
+           
+        <div class="containerSobre">
+            <h2>Sobre o Curso</h2>
+            <p>O Poppy Cursos é uma plataforma dedicada a ajudar jogadores de todas as idades e níveis a melhorar suas habilidades em jogos competitivos. Nossa equipe de especialistas oferece treinamentos específicos para jogos populares como VALORANT, League of Legends, Rocket League e muito mais. Combinamos teoria e prática para que nossos alunos possam progredir de forma eficiente, independentemente do nível inicial.</p>
+
+            <p>Nossos cursos são projetados por profissionais com ampla experiência no cenário de eSports e desenvolvimento de software, oferecendo insights valiosos para se destacar nos jogos competitivos.</p>
+
+            <h2>Nossa Equipe</h2>
+
+            <p>Conheça os professores e desenvolvedores responsáveis pela criação e administração dos cursos no Poppy Cursos. Nossa equipe é formada por especialistas tanto no desenvolvimento de software quanto na prática dos jogos que você adora.</p>
+
+            <ul>
+                <li><strong>João Pedro Sena</strong> - Desenvolvedor Front-End Chefe e Professor de Rainbow Six Siege e Git.</li>
+                <li><strong>Ícaro Matos Silva</strong> - Desenvolvedor Back-End Chefe e Professor de Rocket League e Git.</li>
+                <li><strong>Isaque de Pontes Nunes</strong> - Desenvolvedor Full Stack e Professor de League of Legends e Git.</li>
+                <li><strong>Maria Fernanda Testai</strong> - Desenvolvedora Back-End e Professora de Valorant e Git.</li>
+                <li><strong>Maria Luísa de Carvalho</strong> - Desenvolvedora Front-End e Professora Assistente e Git.</li>
+            </ul>
+
+            <h3>Missão</h3>
+            <p>Nossa missão é ajudar jogadores a alcançarem seus objetivos no mundo dos games, fornecendo conteúdos de qualidade, treinamentos profissionais e suporte personalizado para melhorar suas habilidades em jogos competitivos.</p>
+        </div>
+            
+        </div>
+    </section>
+    
+    <div class="containerSobre">
+        <h2>Parcerias</h2>
+        <p>O Poppy Cursos precisou da ajuda de parcerias durante as gravações das aulas.</p>
+
+        <h2>Nossos Parceiros</h2>
+
+        <p>Conheça os parceiros responsáveis pela criação e administração dos cursos no Poppy Cursos. Nossa equipe é formada por especialistas tanto no desenvolvimento de software quanto na prática dos jogos que você adora, e também por 
+            criadores de conteúdo do Youtube. <strong>Para encontrar o Canal, basta pesquisar pelo nome deles!</strong></p>
+
+        <ul>
+            <li><strong>VALORANT</strong> - Ahiru Valorant, O Professor - Valorant, f0rsaken e K1dGamer.</li>
+            <li><strong>League of Legends</strong> - Academia de Piltover.</li>
+            <li><strong>Rocket League</strong> - strov3, Copyright RL, xPuurga, nxghtt e Strelau.</li>
+            <li><strong>Rainbow Six</strong> - Rainbow Six Brasil, Fábrica de Cobres, Henrich, Ubisoft Brasil e Team Liquid R6 | Rainbow Six.</li>
+        </ul>
+
+        <h3>Agradecimentos</h3>
+        <p>Somos eternamente gratos pela ajuda de vocês na construção do Poppy Cursos!</p>
+    </div>
+
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
     </footer>
 
+    <style>
+        /* Estilize o fundo de partículas para ocupar a tela toda */
+        #particles-js {
+          position: absolute;
+          width: 100%;
+          height: 285vh;
+          z-index: -1;
+        }
+
+        .parallax-background {
+            background-image: url('img/parallax.avif'); /* Substitua pela sua imagem */
+            height: 120vh; /* Ajuste a altura conforme necessário */
+            background-attachment: fixed; /* Isso é importante para o efeito parallax */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+      
+
+      </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
     <script src="js/darkmode.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/IconeUsuarioHeader.js"></script>

@@ -18,7 +18,8 @@ body {
 /* O conteúdo principal terá um margin-top uniforme */
 .main-content {
     flex: 1;
-    margin-top: 50px; /* Padronize o valor do margin-top aqui */
+    margin-top: 10vh; 
+    margin-bottom: 10vh; 
 }
 
 /* Se houver h1, h2, p, etc., garantir margens consistentes */
@@ -35,7 +36,7 @@ h1, h2, p {
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #55555567;
     --TEXTO-color: #444;
-    --fundoTEXT-color: #e1e1e1;
+    --fundoTEXT-color: #e1e1e12f;
     --H2-color: #F78166;
     --H3-color: #333;
     --LI-color: #F78166;
@@ -122,7 +123,11 @@ h1, h2, p {
     margin-top: 20px;
     opacity: 0;
     transform: translateX(-20px);
-    transition: opacity 0.5s, transform 0.5s;
+}
+
+.sidebar nav ul li a:hover{
+    transform: scale(1.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .thumb-accordion-item {
@@ -318,7 +323,8 @@ h1, h2, p {
 
 /* Carrossel */
 .carousel {
-    margin-top: 120px;
+    margin-top: 20vh; 
+    margin-bottom: 10vh;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -383,11 +389,15 @@ h1, h2, p {
 
 /* Texto abaixo do carrossel */
 .content-below-carousel {
-    margin: 40px auto;
+    margin-top: 10vh; 
+   
     width: 80%;
     max-width: 900px;
     text-align: center;
     flex-grow: 1;
+    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     background-color: var(--fundoTEXT-color);
     border-radius: 10px;
@@ -444,7 +454,8 @@ h1, h2, p {
     background-color: var(--fundoTEXT-color);
     padding: 20px;
     border-radius: 15px;
-    margin-top: 130px; 
+    margin-top: 10vh; 
+    margin-bottom: 10vh;
     margin-left: auto;
     margin-right: auto;
 }
@@ -808,8 +819,8 @@ form button:hover {
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
     padding: 25px;
-    margin-bottom: 17.5vh;
-    margin-top: 200px;
+    margin-top: 10vh; 
+    margin-bottom: 10vh;
     margin-bottom: 18.1vh;
     color: var(--TEXTusuario-color);
     border-radius: 15px;
@@ -1003,6 +1014,7 @@ img {
     max-width: 100%;
     height: auto;
   }
+
 /* Estilos principais */
 .video-overlay {
     position: fixed;
@@ -1047,7 +1059,6 @@ img {
     background: none;
     border: none;
     font-size: 24px;
-    color: red !important;
     cursor: pointer;
     transition: transform 0.2s, color 0.3s;
 }
@@ -1055,7 +1066,6 @@ img {
 
 .close-btn:hover {
     transform: scale(1.1);
-    color: darkred;
 }
 
 .video-and-message {
@@ -1100,6 +1110,7 @@ img {
     color: rgb(255, 208, 0);
 }
 
+
 .ConclusaoButton {
     padding: 10px 20px;
     background: #28a745;
@@ -1113,4 +1124,9 @@ img {
 
 .ConclusaoButton:hover {
     background: #218838; /* Tom mais escuro para o hover */
+}
+
+
+.parallax-background {
+    color: var(--H2-color);
 }

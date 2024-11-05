@@ -195,7 +195,7 @@ app.post('/enviar-mensagem-suporte/:id', (req, res) => {
     // Verifique se os dados estão sendo recebidos
     console.log("Dados recebidos: ", mensagem);
 
-    const query = 'INSERT INTO suporte_mensagens (mensagem, idUsuarioFK) VALUES (?, ?)';
+    const query = 'INSERT INTO suporte_mensagens (mensagem, usuarioIdFK) VALUES (?, ?)';
     connection.query(query, [mensagem, userId], (err, result) => {
         if (err) {
             console.error('Erro ao inserir mensagem de suporte: ' + err.stack);
