@@ -1120,7 +1120,7 @@ img {
     position: absolute;
     top: 130px; /* Posição ajustada para ficar abaixo do header */
     right: 90px; /* Posição inicial */
-    width: 80px;
+    width: 90px;
     height: 80px;
     display: flex;
     align-items: center;
