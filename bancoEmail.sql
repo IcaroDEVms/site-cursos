@@ -109,8 +109,6 @@ INSERT INTO aulas (curso_id, nome, numero_ordem) VALUES
   CREATE TABLE suporte_mensagens (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuarioIdFK int,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
     mensagem TEXT NOT NULL,
     data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_usuario_suporte FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id)
