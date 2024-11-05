@@ -1,6 +1,6 @@
 // Função para exibir o vídeo e o sistema de avaliação
 function playVideo(videoUrl) {
-    const videoContainer = document.getElementById('video-container');
+    const videoContainer = document.getElementById('video-containerTrue');
     
     videoContainer.innerHTML = `
         <div class="video-overlay">
