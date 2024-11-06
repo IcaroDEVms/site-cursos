@@ -142,6 +142,8 @@
 
     </div>
 
+    <div id="notification" class="notification"></div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
@@ -176,8 +178,9 @@
         .then(response => response.json())
         .then(data => {
             // Exibe o alert com a resposta do servidor
-            alert(data.message || 'Curso adiquirido com sucesso!');
-            location.reload();
+            showNotification('Curso adquirido com sucesso')
+            buscarMatriculas();
+            // location.reload();
         })
         .catch(error => {
             console.error('Erro:', error);
@@ -185,7 +188,9 @@
         });
     }
 
-    window.addEventListener('load', function buscarMatriculas(){
+    window.addEventListener('load', buscarMatriculas());
+
+    function buscarMatriculas(){
         fetch(`/buscar-matriculas/${userId}`, {
             method: 'GET',
             headers: {
@@ -210,7 +215,7 @@
             console.error('Erro: ', error);
             alert('Ocorreu um erro ao buscar matrículas: ',error);
         })
-    });
+    }
 
     function atualizarEstadoBotoes() {
         const cursosAdquiridos = JSON.parse(localStorage.getItem('cursosAdquiridos')) || [];
@@ -224,6 +229,18 @@
                 button.disabled = true;
             }
         });
+    }
+
+    function showNotification(message, isError = false) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.toggle('error', isError);
+        notification.style.display = 'block';
+
+        // Ocultar a notificação após 3 segundos
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 2000);
     }
 </script>
 </body>
