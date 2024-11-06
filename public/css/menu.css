@@ -962,6 +962,12 @@ hr {
     border: .5px solid var(--borda-color);
     border-radius: 15px;
     margin-bottom: 20px;
+
+}
+
+.Usuariocourse img{
+    max-height: 100px;
+    max-width: 100px;
 }
 
 .Usuarioother-courses {
