@@ -109,6 +109,25 @@ app.get('/buscar-usuario/:id', (req, res) =>{
     });
 });
 
+//Rota para exibir matriculas cadastradas
+
+app.get('/buscar-matriculas/:id', (req, res) =>{
+    const userId = req.params.id;
+
+    const query = 'SELECT cursoIdFK FROM matriculas WHERE usuarioIdFK = ?'
+
+    console.log('buscando matriculas do usuario: ', userId);
+
+    connection.query(query, [userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao buscar matriculas');
+        }
+        if(result.length === 0){
+            return res.json([]);
+        }
+        res.json(result);
+    });
+});
 
 // Rota para cadastro de e-mail
 app.post('/cadastrar-usuario', (req, res) => {
