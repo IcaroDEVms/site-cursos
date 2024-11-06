@@ -564,6 +564,7 @@ h1, h2, p {
     width: 100%;
     height: 300px; /* Define uma altura fixa para o banner */
     overflow: hidden;
+    background-color: #ffffffbb;
     border-radius: 15px; 
 }
 
@@ -786,16 +787,6 @@ form textarea {
     transition: background-color 0.3s;
 }
 
-.ConclusaoButton {
-    background-color: rgb(43, 190, 63);
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 
 .AboveVideo {
     display: flex;
@@ -804,8 +795,8 @@ form textarea {
 }
 
 form button:hover {
-    background-color: #397a39;
-    color: var(--TEXTusuario-color);
+    background-color: #379637;
+    color: white;
 }
 
 .loginflexbox {
@@ -1162,7 +1153,7 @@ img {
     padding: 10px 20px;
     background: #28a745;
     border: none;
-    color: var(--TEXTO-color);
+    color: white;
     cursor: pointer;
     font-size: 16px;
     border-radius: 4px;

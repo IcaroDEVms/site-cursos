@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <header class="header">  
         <h1>Poppy Cursos</h1>
         <a  id="HeaderUserImg" href="login.html">
@@ -145,30 +147,42 @@
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
     </footer>
 
-<script src="js/darkmode.js"></script>
-<script src="js/IconeUsuarioHeader.js"></script>
-<script>
-    function adquirirCurso(curso) {
-        const userId = localStorage.getItem('userId');
-        
-        fetch(`/cadastrar-matricula/${userId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+    <style>
+        /* Estilize o fundo de partículas para ocupar a tela toda */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 247vh;
+            z-index: -1;
+        }
+    </style>
 
-            body: JSON.stringify({cursoId : curso})
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Exibe o alert com a resposta do servidor
-            alert(data.message || 'Curso adiquirido com sucesso!');
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro ao enviar os dados. Tente novamente.');
-        });
-    }
-</script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/IconeUsuarioHeader.js"></script>
+    <script>
+        function adquirirCurso(curso) {
+            const userId = localStorage.getItem('userId');
+            
+            fetch(`/cadastrar-matricula/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({cursoId : curso})
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Exibe o alert com a resposta do servidor
+                alert(data.message || 'Curso adiquirido com sucesso!');
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar os dados. Tente novamente.');
+            });
+        }
+    </script>
 </body>
 </html>

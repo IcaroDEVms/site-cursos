@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <header class="header">
         <h1>Poppy Cursos</h1>
         <a  id="HeaderUserImg" href="login.html">
@@ -96,9 +98,21 @@
     <footer class="footer">
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
     </footer>
+    
+    <style>
+        /* Estilize o fundo de partículas para ocupar a tela toda */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 183vh;
+            z-index: -1;
+        }
+    </style>
 
-<script src="js/darkmode.js"></script>
-<script src="js/IconeUsuarioHeader.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/IconeUsuarioHeader.js"></script>
 
 </body>
 </html>
