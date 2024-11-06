@@ -1244,3 +1244,47 @@ img {
     bottom: 0;
     z-index: 1;
 }
+
+.certificate-container {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 0;
+    border: 5px solid var(--borda-color);
+    text-align: center;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-container h1 {
+    font-size: 2em;
+    color: var(--H2-color);
+    margin-bottom: 20px;
+}
+
+.certificate-container p {
+    color: var(--TEXTO-color);
+    margin: 10px 0;
+}
+
+.download-button-container {
+    text-align: center;
+    margin-top: 20px
+}
+
+.download-button-container button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--hanburgueTRES-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.download-button-container button:hover {
+    background-color: var(--hanburgueTEXT-color);
+}

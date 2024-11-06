@@ -1,3 +1,5 @@
+let aulaAtualId = null;
+
 // Função para exibir o vídeo e o sistema de avaliação
 function playVideo(videoUrl) {
     const videoContainer = document.getElementById('video-containerTrue');
