@@ -150,6 +150,7 @@
 <script src="js/darkmode.js"></script>
 <script src="js/IconeUsuarioHeader.js"></script>
 <script>
+    
     function adquirirCurso(curso) {
         const userId = localStorage.getItem('userId');
         
@@ -165,10 +166,52 @@
         .then(data => {
             // Exibe o alert com a resposta do servidor
             alert(data.message || 'Curso adiquirido com sucesso!');
+            location.reload();
         })
         .catch(error => {
             console.error('Erro:', error);
             alert('Ocorreu um erro ao enviar os dados. Tente novamente.');
+        });
+    }
+
+    window.addEventListener('load', function buscarMatriculas(){
+        fetch(`/buscar-matriculas/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response =>{
+            if(!response.ok) {
+                throw new Error('Erro na rede: '+ response.status);
+            }
+            return response.json();
+        })
+        .then(data =>{
+            console.log('Matriculas: ', data);
+
+            const cursosAdquiridos = data.map(matricula => matricula.cursoIdFK);
+            localStorage.setItem('cursosAdquiridos', JSON.stringify(cursosAdquiridos));
+
+            atualizarEstadoBotoes();
+        })
+        .catch(error =>{
+            console.error('Erro: ', error);
+            alert('Ocorreu um erro ao buscar matrículas: ',error);
+        })
+    });
+
+    function atualizarEstadoBotoes() {
+        const cursosAdquiridos = JSON.parse(localStorage.getItem('cursosAdquiridos')) || [];
+        
+        document.querySelectorAll('.adquirir-curso-btn').forEach(button => {
+            const cursoId = parseInt(button.getAttribute('onclick').match(/\d+/)[0]);
+            
+            if (cursosAdquiridos.includes(cursoId)) {
+                button.textContent = 'Adquirido';
+                button.style.backgroundColor = 'green';
+                button.disabled = true;
+            }
         });
     }
 </script>

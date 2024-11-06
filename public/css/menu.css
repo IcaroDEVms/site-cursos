@@ -1003,3 +1003,114 @@ img {
     max-width: 100%;
     height: auto;
   }
+/* Estilos principais */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.video-content {
+    position: relative;
+    background: var(--background-color);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.video-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.video-title {
+    color: var(--H2-color);
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: -0px; 
+    right: 0px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: red !important;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+}
+
+
+.close-btn:hover {
+    transform: scale(1.1);
+    color: darkred;
+}
+
+.video-and-message {
+    display: flex;
+    margin-top: 10px;
+}
+
+.message-box {
+    margin-right: 20px;
+}
+
+.message-box textarea {
+    width: 100%;
+    height: 315px; /* Altura aumentada */
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+}
+
+.below-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.star-rating {
+    display: inline-flex;
+}
+
+.star {
+    font-size: 40px; /* Aumenta o tamanho das estrelas */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star.active {
+    color: gold;
+}
+
+.star:hover {
+    color: darkorange;
+}
+
+.ConclusaoButton {
+    padding: 10px 20px;
+    background: #28a745;
+    border: none;
+    color: var(--TEXTO-color);
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.ConclusaoButton:hover {
+    background: #218838; /* Tom mais escuro para o hover */
+}

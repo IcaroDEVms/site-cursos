@@ -44,6 +44,7 @@ CREATE TABLE aulas (
     curso_id INT,                         -- ID do curso ao qual a etapa pertence
     nome VARCHAR(255),                    -- Nome da etapa
     numero_ordem INT,                     -- Ordem da etapa no curso
+    estrelas INT,
     CONSTRAINT fk_curso_aulas FOREIGN KEY (curso_id) REFERENCES cursos(id)
 );
 
