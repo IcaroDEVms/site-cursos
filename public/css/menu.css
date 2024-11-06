@@ -18,8 +18,8 @@ body {
 /* O conteúdo principal terá um margin-top uniforme */
 .main-content {
     flex: 1;
-    margin-top: 10vh; 
-    margin-bottom: 10vh; 
+    min-height: calc(100vh - 80px); /* 100vh menos a altura do header e footer */
+    padding-bottom: 20px; 
 }
 
 /* Se houver h1, h2, p, etc., garantir margens consistentes */
@@ -29,27 +29,30 @@ h1, h2, p {
 
 :root{
     --hanburgueTRES-color: #0cdbff;
-    --hanburgueTEXT-color: #F78166;
+    --hanburgueTEXT-color: #fd5e3a;
     --hanburguue-color: #dddada;
     --cabecalho-color: #e1e1e1;
-    --cabecalhoTEXT-color: #F78166;
+    --cabecalhoTEXT-color: #fd5e3a;
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #55555567;
-    --TEXTO-color: #444;
-    --fundoTEXT-color: #e1e1e12f;
-    --H2-color: #F78166;
-    --H3-color: #333;
-    --LI-color: #F78166;
-    --UL-color: #444;
+    --TEXTO-color: #222;
+    --fundoTEXT-color: #f0f6efc0;
+    --H2-color: #fd5e3a;
+    --H3-color: #111;
+    --LI-color: #fd7253;
+    --UL-color: #222;
     --entraremoutroscursos-color: #555;
-    --TEXTusuario-color: #444;  
+    --TEXTusuario-color: #222;  
     --background-color: #F0F6EF;
     --CorButaoUsuario-color: #F0F6EF;
     --SuporteTextBox-color: #fff;
+    --gradiente-invertido: linear-gradient(to bottom, rgba(240, 246, 239, 3), rgba(240, 246, 239, 0) 15%);
+
+    --footer-color: #F0F6EF;
 }
 
 .dark-mode:root{
-    --hanburgueTRES-color: #F78166;
+    --hanburgueTRES-color: #fd7253;
     --hanburgueTEXT-color: #0cdbff;
     --hanburguue-color: #010409;
     --cabecalho-color: #0D1117;
@@ -57,7 +60,7 @@ h1, h2, p {
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #555;
     --TEXTO-color: #F0F6EF;
-    --fundoTEXT-color: #0d11172f;
+    --fundoTEXT-color: #0d1117c0;
     --H2-color: #0cdbff;
     --H3-color: #F0F6EF;
     --LI-color: #0cdbff;
@@ -67,6 +70,8 @@ h1, h2, p {
     --background-color: #303030;
     --CorButaoUsuario-color: #F0F6EF;
     --SuporteTextBox-color: #555;
+    --gradiente-invertido: linear-gradient(to bottom, rgba(48, 48, 48, 6), rgba(48, 48, 48, 0) 15%);
+    --footer-color: #303030;
 }
 
 /* Sidebar retrátil */
@@ -188,6 +193,7 @@ h1, h2, p {
 .aula {
     overflow-y: auto; /* Adiciona rolagem apenas na aula se necessário */
     max-height: calc(100vh - 60px); /* Ajusta a altura conforme necessário */
+    background-color: var(--background-color);
 }
 
 .textoPendeciaEscolherAula{
@@ -355,12 +361,12 @@ h1, h2, p {
 /* Carrossel */
 .carousel {
     margin-top: 20vh; 
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-    max-width: 900px;
-    height: 500px;
+    width: 100%;
+    max-width: 1200px;
+    height: 550px;
     position: relative;
     border-radius: 15px;
     overflow: hidden;
@@ -421,8 +427,8 @@ h1, h2, p {
 /* Texto abaixo do carrossel */
 .content-below-carousel {
     margin-top: 10vh; 
-   
-    width: 80%;
+    margin-bottom: 10vh;
+    width: 100%;
     max-width: 900px;
     text-align: center;
     flex-grow: 1;
@@ -465,13 +471,23 @@ h1, h2, p {
     list-style-position: inside;
 }
 
+.footerAulas {
+    position: relative; /* Ou fixed, dependendo do comportamento desejado */
+    bottom: 0;
+    width: 100%;
+    color: var(--cabecalhoTEXT-color);
+    background-color: var(--background-color);
+    padding: 13px 0;
+    text-align: center;
+} 
+
 /* Rodapé sempre ao final da página */
 .footer {
     position: relative; /* Ou fixed, dependendo do comportamento desejado */
     bottom: 0;
     width: 100%;
     color: var(--cabecalhoTEXT-color);
-    background-color: var(--cabecalho-color);
+    background-color: none;
     padding: 13px 0;
     text-align: center;
 }  
@@ -709,7 +725,8 @@ h1, h2, p {
     padding: 30px 0;
     background-color: var(--fundoTEXT-color);
     border-radius: 15px;
-    margin-top: 120px;
+    margin-bottom: 10vh;
+    margin-top: 20vh;
     margin-left: auto;
     margin-right: auto; 
     color: var(--TEXTO-color);
@@ -850,9 +867,8 @@ form button:hover {
 .Usuariocontainer {
     background-color: var(--fundoTEXT-color);
     padding: 25px;
-    margin-top: 10vh; 
+    margin-top: 20vh; 
     margin-bottom: 10vh;
-    margin-bottom: 18.1vh;
     color: var(--TEXTusuario-color);
     border-radius: 15px;
     width: 90vh;
@@ -1203,4 +1219,37 @@ img {
     position: absolute;
     font-weight: bold;
     color: var(--H2-color); /* Cor do texto de progresso */
+}
+
+
+.parallax-backgroundEmBaixoHeader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:var(--gradiente-invertido);
+    z-index: 1;
+}
+
+
+.parallax-backgroundSobre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    z-index: 1;
+}
+
+.parallax-backgroundParcerias::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }

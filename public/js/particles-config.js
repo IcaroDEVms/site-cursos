@@ -3,7 +3,7 @@ const darkMode = localStorage.getItem('darkMode');
 particlesJS("particles-js", {
     particles: {
       number: {
-        value: 80, // Quantidade de partículas
+        value: 60, // Quantidade de partículas
         density: {
           enable: true,
           value_area: 800
