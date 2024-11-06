@@ -214,12 +214,73 @@ app.post('/enviar-mensagem-suporte/:id', (req, res) => {
     // Verifique se os dados estão sendo recebidos
     console.log("Dados recebidos: ", mensagem);
 
-    const query = 'INSERT INTO suporte_mensagens (mensagem, idUsuarioFK) VALUES (?, ?)';
+    const query = 'INSERT INTO suporte_mensagens (mensagem, usuarioIdFK) VALUES (?, ?)';
     connection.query(query, [mensagem, userId], (err, result) => {
         if (err) {
             console.error('Erro ao inserir mensagem de suporte: ' + err.stack);
             return res.status(500).send('Erro ao enviar a mensagem.');
         }
         res.json({ message: 'Mensagem enviada com sucesso!' });
+    });
+});
+
+// Rota para atualizar o progresso de uma aula, respeitando os incrementos de 25% e verificando o progresso da aula anterior
+app.post('/atualizar-progresso', (req, res) => {
+    const { usuarioId, curso_id, aula_id, progresso } = req.body;
+
+    // Verifique se o progresso é um múltiplo de 25
+    if (progresso % 25 !== 0) {
+        return res.status(400).json({ error: 'O progresso deve ser em incrementos de 25%.' });
+    }
+
+    // Verifique se a aula anterior foi concluída
+    const queryPreviousLesson = `
+        SELECT progresso FROM progressos 
+        WHERE usuarioIdFK = ? AND curso_id = ? AND aula_id = ? - 1
+    `;
+
+    connection.query(queryPreviousLesson, [usuarioId, curso_id, aula_id], (err, result) => {
+        if (err) {
+            console.error('Erro ao verificar progresso da aula anterior:', err);
+            return res.status(500).json({ error: 'Erro ao verificar progresso da aula anterior.' });
+        }
+
+        // Se houver aula anterior e ela não foi concluída (100%), não permitir o acesso
+        if (result.length > 0 && result[0].progresso < 100) {
+            return res.status(403).json({ error: 'Complete a aula anterior antes de acessar esta.' });
+        }
+
+        // Inserir ou atualizar o progresso da aula atual
+        const queryUpdateProgress = `
+            INSERT INTO progressos (usuarioIdFK, curso_id, aula_id, progresso)
+            VALUES (?, ?, ?, ?)
+            ON DUPLICATE KEY UPDATE progresso = ?, data_atualizacao = CURRENT_TIMESTAMP
+        `;
+
+        connection.query(queryUpdateProgress, [usuarioId, curso_id, aula_id, progresso, progresso], (err, result) => {
+            if (err) {
+                console.error('Erro ao atualizar o progresso:', err);
+                return res.status(500).json({ error: 'Erro ao atualizar o progresso.' });
+            }
+            res.json({ message: 'Progresso atualizado com sucesso' });
+        });
+    });
+});
+
+// Rota para obter o progresso de todas as aulas de um curso para um usuário específico
+app.get('/progressos/:usuarioId/:curso_id', (req, res) => {
+    const { usuarioId, curso_id } = req.params;
+
+    const query = `
+        SELECT aula_id, progresso FROM progressos
+        WHERE usuarioIdFK = ? AND curso_id = ?
+    `;
+
+    connection.query(query, [usuarioId, curso_id], (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar progresso das aulas:', err);
+            return res.status(500).json({ error: 'Erro ao buscar progresso das aulas.' });
+        }
+        res.json(results);
     });
 });

@@ -1,13 +1,13 @@
 // Função para exibir o vídeo e o sistema de avaliação
 function playVideo(videoUrl) {
-    const videoContainer = document.getElementById('video-container');
+    const videoContainer = document.getElementById('video-containerTrue');
     
     videoContainer.innerHTML = `
         <div class="video-overlay">
             <div class="video-content">
                 <div class="video-header">
                     <h2 class="video-title">Legue of legends</h2>
-                    <button id="close-btn" class="close-btn aria-label="Close"">✖</button>
+                    <button id="close-btn" class="close-btn" aria-label="Close">❌</button>
                 </div>
                 <div class="video-and-message">
                     <div class="message-box">
