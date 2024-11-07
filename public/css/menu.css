@@ -291,6 +291,7 @@ h1, h2, p {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 2;
 }
 
 .accordion-body {
@@ -486,17 +487,17 @@ h1, h2, p {
     text-align: center;
 } 
 
-/* Rodapé sempre ao final da página */
+
 .footer {
-    position: relative;  /* O footer ficará fixo no fundo */
+    position: relative; 
     bottom: 0;
     left: 0;
     width: 100%;
     color: var(--cabecalhoTEXT-color);
-    background-color: transparent; /* Corrigido de 'none' para 'transparent' */
+    background-color: transparent; 
     padding: 5px 0;
     text-align: center;
-    z-index: 10; /* Garante que o footer fique acima de outros conteúdos */
+    z-index: 10; 
 }
  
 

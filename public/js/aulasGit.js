@@ -62,6 +62,7 @@ function marcarConclusao() {
         progressoAtual = 100;
         console.log("Progresso Atual Setado para 100% porque qtdAulasTotal é 0");
     }
+    
 
     // Envia o novo progresso ao backend
     fetch('/atualizar-progresso', {
