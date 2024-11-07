@@ -284,3 +284,31 @@ app.get('/progressos/:usuarioId/:curso_id', (req, res) => {
         res.json(results);
     });
 });
+
+// Rota para retornar cursos e progresso de um usuário específico
+app.get('/mostrar-cursos/:usuarioId', (req, res) => {
+    const usuarioId = req.params.usuarioId;
+
+    const query = `
+        SELECT 
+            c.nome AS nome,
+            m.progresso AS progresso,
+            c.pathAula AS path,
+            c.imgCurso AS imagem,
+            c.bannerCurso AS banner
+        FROM 
+            matriculas m
+        JOIN 
+            cursos c ON m.cursoIdFK = c.id
+        WHERE 
+            m.usuarioIdFK = ?;
+    `;
+
+    connection.query(query, [usuarioId], (error, results) => {
+        if (error) {
+            console.error('Erro ao buscar os dados:', error);
+            return res.status(500).json({ error: 'Erro no servidor' });
+        }
+        res.json(results);
+    });
+});
