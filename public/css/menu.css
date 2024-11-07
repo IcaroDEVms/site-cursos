@@ -965,11 +965,14 @@ hr {
 .Usuariocourse {
     display: flex;
     justify-content: space-between;
-    padding: 50px;
+    align-items: center;
+    padding: 20px;
     border: .5px solid var(--borda-color);
     border-radius: 15px;
     margin-bottom: 20px;
-
+    text-decoration: none;
+    color: var(--TEXTO-color);
+    font-size: 18px;
 }
 
 .Usuariocourse img{
@@ -979,13 +982,13 @@ hr {
 
 .Usuarioother-courses {
     background-color: var(--entraremoutroscursos-color);
-    padding: 10px;
     color: var(--CorButaoUsuario-color);
-    cursor: pointer;                      
-    text-decoration: none; 
-    border-radius: 10px;
-    text-align: center;
-    color: var()
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 10px;
 }
 
 .Usuarioother-courses:hover {
@@ -994,6 +997,11 @@ hr {
 
 .Usuariolabel{
     font-size: 7px;
+}
+
+.UsuarioBottom{
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn {
