@@ -48,6 +48,7 @@ h1, h2, p {
     --SuporteTextBox-color: #fff;
     --gradiente-invertido: linear-gradient(to bottom, rgba(240, 246, 239, 3), rgba(240, 246, 239, 0) 15%);
     --footer-color: #F0F6EF;
+    --fundoNOVO-color: radial-gradient(circle, rgba(255, 255, 255, 0.95), #bbb 50%, #eee 90%);
 }
 
 .dark-mode:root{
@@ -71,6 +72,7 @@ h1, h2, p {
     --SuporteTextBox-color: #555;
     --gradiente-invertido: linear-gradient(to bottom, rgba(48, 48, 48, 6), rgba(48, 48, 48, 0) 15%);
     --footer-color: #303030;
+    --fundoNOVO-color: radial-gradient(circle, rgba(30, 30, 30, 0.9), #222 60%, #111 90%);
 }
 
 /* Sidebar retrátil */
@@ -1310,3 +1312,18 @@ img {
 .download-button-container button:hover {
     background-color: var(--hanburgueTEXT-color);
 }
+
+    /* Estilize o fundo de partículas para ocupar a tela toda */
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--fundoNOVO-color);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: -1;
+    }

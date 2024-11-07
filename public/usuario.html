@@ -7,15 +7,15 @@
     <title>Usuario</title>
 </head>
 <body> 
-    
+
+    <div id="particles-js"></div>
+
     <header class="header">
         <h1>Poppy Cursos</h1>
         <a  id="HeaderUserImg" href="usuario.html">
             <img class="icon-button" src="img/image.png" alt="icone usuario" id="user-photo">
         </a>    
     </header>
-
-    <div class="main-content">
 
         <aside class="sidebar">
             <!-- Ícone de hambúrguer (três riscos) -->
@@ -107,10 +107,12 @@
             color: #fff; /* Texto claro */
             border: 1px solid #666; /* Borda escura */
         }
+
     </style>
 
     
-    <script>
+    <script> 
+        
         //criação da constante userId que será utilizada nas demais funções
         const userId = localStorage.getItem('userId');
 
