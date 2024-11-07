@@ -344,46 +344,64 @@ function loadUserPhoto(userId) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const cursos = [
-        { nome: "Curso 1", progresso: 50, path: "curso1.html", imagem: "public/img/vava-removebg-preview.png" },
-        { nome: "Curso 2", progresso: 75, path: "curso2.html", imagem: "public/img/r6-removebg-preview.png" },
-        { nome: "Curso 3", progresso: 100, path: "curso3.html", imagem: "public/img/lol-removebg-preview.png" }
-    ];
-  // Seleciona a div com a classe usuariocourses
-  const container = document.querySelector(".Usuariocourses");
+    const userId = 1; // Ou recupere o userId de onde for necessário (por exemplo, do login ou da URL)
 
-  if (container) {
-        cursos.forEach(curso => {
-            criarElementoCurso(curso.nome, curso.progresso, curso.path, curso.imagem, container);
+    fetch(`/mostrar-cursos/${userId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao buscar os cursos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Verifique se o contêiner existe
+            const container = document.querySelector('.Usuariocourses');
+            if (!container) {
+                console.error('Contêiner .Usuariocourses não encontrado no DOM');
+                return;
+            }
+
+            // 'data' contém os cursos do usuário, agora você pode trabalhar com esses dados
+            data.forEach(curso => {
+                const nomeCurso = curso.nome;
+                const progressoCurso = curso.progresso;
+                const pathCurso = curso.path;
+                const imagemCurso = curso.imagem;
+                const bannerCurso = curso.banner;
+
+                // Chama a função para criar o elemento do curso
+                criarElementoCurso(nomeCurso, progressoCurso, pathCurso, imagemCurso, container);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar os cursos:', error);
         });
-    } else {
-        console.error("Div com a classe 'usuariocourses' não encontrada.");
-    }
 });
 
 // Função para criar um elemento de curso e adicioná-lo ao container
 function criarElementoCurso(nomeCurso, progressoCurso, pathCurso, imagemCurso, container) {
-  const linkCurso = document.createElement("a");
-  linkCurso.className = "Usuariocourse";
-  linkCurso.href = pathCurso;
+    const linkCurso = document.createElement("a");
+    linkCurso.className = "Usuariocourse";
+    linkCurso.href = pathCurso;
 
-  const imgCurso = document.createElement("img");
-  imgCurso.src = imagemCurso;
-  imgCurso.alt = `Imagem do ${nomeCurso}`;
+    const imgCurso = document.createElement("img");
+    imgCurso.src = imagemCurso;
+    imgCurso.alt = `Imagem do ${nomeCurso}`;
 
-  const spanCurso = document.createElement("span");
-  spanCurso.textContent = nomeCurso;
+    const spanCurso = document.createElement("span");
+    spanCurso.textContent = nomeCurso;
 
-  const spanProgresso = document.createElement("span");
-  spanProgresso.textContent = `Progresso: ${progressoCurso}%`;
+    const spanProgresso = document.createElement("span");
+    spanProgresso.textContent = `Progresso: ${progressoCurso}%`;
 
-  linkCurso.appendChild(imgCurso);
-  linkCurso.appendChild(spanCurso);
-  linkCurso.appendChild(spanProgresso);
+    linkCurso.appendChild(imgCurso);
+    linkCurso.appendChild(spanCurso);
+    linkCurso.appendChild(spanProgresso);
 
-  // Adiciona o linkCurso ao container
-  container.appendChild(linkCurso);
+    // Adiciona o linkCurso ao container
+    container.appendChild(linkCurso);
 }
+
 
 </script>
 

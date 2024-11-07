@@ -15,28 +15,21 @@ CREATE TABLE cursos (
     id INT PRIMARY KEY AUTO_INCREMENT,  -- ID do curso
     nome VARCHAR(255),                  -- Nome do curso
     carga_horaria INT,                  -- Carga horária do curso em horas
-    data_criacao DATE,                   -- Data de criação do curso
-    qtd_aulas INT
+    data_criacao DATE,                  -- Data de criação do curso
+    qtd_aulas INT,
+    pathAula VARCHAR(255),				-- Path do html das aulas 
+    imgCurso VARCHAR(255),				-- Path do local do icone do curso
+    bannerCurso VARCHAR(255)			-- Path do local do banner do curso
 );
 
 CREATE TABLE matriculas (
     id INT PRIMARY KEY AUTO_INCREMENT,
     usuarioIdFK INT,         -- Chave estrangeira para a tabela emails
     cursoIdFK INT,         -- ID do curso
+    progresso INT DEFAULT 0,
     data_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Data da matrícula
     CONSTRAINT fk_usuario_matricula FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
     CONSTRAINT fk_curso_matricula FOREIGN KEY (cursoIdFK) REFERENCES cursos(id)
-);
-
-CREATE TABLE progressos (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    usuarioIdFK INT,      -- Chave estrangeira para a tabela usuarios
-    curso_id INT,         -- ID do curso
-    aula_id INT,                 -- ID da aula para rastrear o progresso de cada aula
-    progresso INT DEFAULT 0,     -- Percentual de progresso (0-100)
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT fk_usuario_progresso FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
-    CONSTRAINT fk_curso_progresso FOREIGN KEY (curso_id) REFERENCES cursos(id)
 );
 
 CREATE TABLE aulas (
@@ -56,15 +49,14 @@ CREATE TABLE conclusoes_aulas (
     CONSTRAINT fk_usuario_conclusao FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id),
     CONSTRAINT fk_etapa_conclusao FOREIGN KEY (aula_id) REFERENCES aulas(id)
 );
-select * from progressos;
 SELECT * FROM usuarios;
      
-INSERT INTO cursos (nome, carga_horaria, data_criacao, qtd_aulas) VALUES
-  ('Curso de Git', 1, '2024-10-27', 5),
-  ('Curso de Valorant', 1.10, '2024-10-27', 7),
-  ('Curso de League of Legends', 2.5, '2024-10-27', 9),
-  ('Curso de Rocket League', 1.30, '2024-10-27', 6),
-  ('Curso de Rainbow Six', 1.10, '2024-10-27', 7);
+INSERT INTO cursos (nome, carga_horaria, data_criacao, qtd_aulas, pathAula, imgCurso, bannerCurso) VALUES
+  ('Curso de Git', 1, '2024-10-27', 5, 'aulaGit.html', 'public/img/git-removebg-preview.png', '/public/img/logo-git.png'),
+  ('Curso de Valorant', 1.10, '2024-10-27', 7, 'aulaValorant.html', 'public/img/vava-removebg-preview.png', '/public/img/VALORANT.jpg'),
+  ('Curso de League of Legends', 2.5, '2024-10-27', 9, 'aulaLol.html', 'public/img/lol-removebg-preview.png', '/public/img/lol.jpeg'),
+  ('Curso de Rocket League', 1.30, '2024-10-27', 6, 'aulaRL.html', 'public/img/rocket-removebg-preview.png', '/public/img/rocket.jpeg'),
+  ('Curso de Rainbow Six', 1.10, '2024-10-27', 7, 'aulaR6.html', 'public/img/r6-removebg-preview.png', '/public/img/R6.jpg');
 
 INSERT INTO aulas (curso_id, nome, numero_ordem) VALUES
 	(1, 'Git, versionamento e gitHub', 1),
@@ -114,6 +106,19 @@ INSERT INTO aulas (curso_id, nome, numero_ordem) VALUES
     CONSTRAINT fk_usuario_suporte FOREIGN KEY (usuarioIdFK) REFERENCES usuarios(id)
 );
 
-select * from aulas;
 select * from cursos;
 select * from matriculas;
+select * from usuarios;
+
+SELECT 
+            c.nome AS nome,
+            m.progresso AS progresso,
+            c.pathAula AS path,
+            c.imgCurso AS imagem,
+            c.bannerCurso AS banner
+        FROM 
+            matriculas m
+        JOIN 
+            cursos c ON m.cursoIdFK = c.id
+        WHERE 
+            m.usuarioIdFK = 1;
