@@ -342,8 +342,6 @@ function loadUserPhoto(userId) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const userId = 1; // Ou recupere o userId de onde for necessário (por exemplo, do login ou da URL)
-
     fetch(`/mostrar-cursos/${userId}`)
         .then(response => {
             if (!response.ok) {

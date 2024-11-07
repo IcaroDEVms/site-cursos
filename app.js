@@ -369,6 +369,8 @@ app.get('/cursos/:cursoId/qtd_aulas', (req, res) => {
 app.get('/mostrar-cursos/:usuarioId', (req, res) => {
     const usuarioId = req.params.usuarioId;
 
+    console.log("Mostrando cursos do id: ",usuarioId);
+
     const query = `
         SELECT 
             c.nome AS nome,
