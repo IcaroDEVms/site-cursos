@@ -285,6 +285,86 @@ app.get('/progressos/:usuarioId/:curso_id', (req, res) => {
     });
 });
 
+// Exemplo com Express.js
+app.post('/atualizar-progresso', (req, res) => {
+    const { usuarioId, curso_id, aula_id, progresso } = req.body;
+    
+    if (!usuarioId || !curso_id || !aula_id || progresso === undefined) {
+        return res.status(400).json({ message: 'Dados insuficientes' });
+    }
+
+    const sql = `UPDATE progressos SET progresso = ? WHERE usuarioIdFK = ? AND curso_id = ? AND aula_id = ?`;
+    db.query(sql, [progresso, usuarioId, curso_id, aula_id], (err, result) => {
+        if (err) {
+            console.error('Erro ao atualizar progresso:', err);
+            return res.status(500).json({ message: 'Erro no servidor ao atualizar o progresso' });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Registro de progresso não encontrado' });
+        }
+
+        res.json({ message: 'Progresso atualizado com sucesso!' });
+    });
+});
+
+app.get('/cursos/:cursoId/qtd_aulas', (req, res) => {
+    const cursoId = req.params.cursoId;
+    const sql = 'SELECT qtd_aulas FROM cursos WHERE id = ?';
+
+    db.query(sql, [cursoId], (err, result) => {
+        if (err) {
+            console.error('Erro ao buscar qtd_aulas:', err);
+            res.status(500).json({ message: 'Erro no servidor' });
+        } else if (result.length === 0) {
+            res.status(404).json({ message: 'Curso não encontrado' });
+        } else {
+            res.json({ qtd_aulas: result[0].qtd_aulas });
+        }
+    });
+});
+
+
+// Exemplo com Express.js
+app.post('/atualizar-progresso', (req, res) => {
+    const { usuarioId, curso_id, aula_id, progresso } = req.body;
+    
+    if (!usuarioId || !curso_id || !aula_id || progresso === undefined) {
+        return res.status(400).json({ message: 'Dados insuficientes' });
+    }
+
+    const sql = `UPDATE progressos SET progresso = ? WHERE usuarioIdFK = ? AND curso_id = ? AND aula_id = ?`;
+    db.query(sql, [progresso, usuarioId, curso_id, aula_id], (err, result) => {
+        if (err) {
+            console.error('Erro ao atualizar progresso:', err);
+            return res.status(500).json({ message: 'Erro no servidor ao atualizar o progresso' });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Registro de progresso não encontrado' });
+        }
+
+        res.json({ message: 'Progresso atualizado com sucesso!' });
+    });
+});
+
+app.get('/cursos/:cursoId/qtd_aulas', (req, res) => {
+    const cursoId = req.params.cursoId;
+    const sql = 'SELECT qtd_aulas FROM cursos WHERE id = ?';
+
+    db.query(sql, [cursoId], (err, result) => {
+        if (err) {
+            console.error('Erro ao buscar qtd_aulas:', err);
+            res.status(500).json({ message: 'Erro no servidor' });
+        } else if (result.length === 0) {
+            res.status(404).json({ message: 'Curso não encontrado' });
+        } else {
+            res.json({ qtd_aulas: result[0].qtd_aulas });
+        }
+    });
+});
+
+
 // Rota para retornar cursos e progresso de um usuário específico
 app.get('/mostrar-cursos/:usuarioId', (req, res) => {
     const usuarioId = req.params.usuarioId;
