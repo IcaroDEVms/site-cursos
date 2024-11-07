@@ -227,61 +227,53 @@ app.post('/enviar-mensagem-suporte/:id', (req, res) => {
 // Rota para atualizar o progresso de uma aula, respeitando os incrementos de 25% e verificando o progresso da aula anterior
 app.post('/atualizar-progresso', (req, res) => {
     const { usuarioId, curso_id, aula_id, progresso } = req.body;
+    console.log("Dados recebidos no servidor:", { usuarioId, curso_id, aula_id, progresso });
 
-    // Verifique se o progresso é um múltiplo de 25
-    if (progresso % 25 !== 0) {
-        return res.status(400).json({ error: 'O progresso deve ser em incrementos de 25%.' });
+    // Verificação de dados insuficientes
+    if (!usuarioId || !curso_id || !aula_id || progresso === undefined) {
+        return res.status(400).json({ message: 'Dados insuficientes' });
     }
 
-    // Verifique se a aula anterior foi concluída
-    const queryPreviousLesson = `
-        SELECT progresso FROM progressos 
-        WHERE usuarioIdFK = ? AND curso_id = ? AND aula_id = ? - 1
+    const query = `
+        UPDATE matriculas 
+        SET progresso = ? 
+        WHERE usuarioIdFK = ? AND cursoIdFK = ?
     `;
 
-    connection.query(queryPreviousLesson, [usuarioId, curso_id, aula_id], (err, result) => {
+    connection.query(query, [progresso, usuarioId, curso_id], (err, result) => {
         if (err) {
-            console.error('Erro ao verificar progresso da aula anterior:', err);
-            return res.status(500).json({ error: 'Erro ao verificar progresso da aula anterior.' });
+            console.error('Erro ao atualizar progresso:', err);
+            return res.status(500).json({ message: 'Erro no servidor ao atualizar o progresso' });
         }
 
-        // Se houver aula anterior e ela não foi concluída (100%), não permitir o acesso
-        if (result.length > 0 && result[0].progresso < 100) {
-            return res.status(403).json({ error: 'Complete a aula anterior antes de acessar esta.' });
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Registro de matrícula não encontrado' });
         }
 
-        // Inserir ou atualizar o progresso da aula atual
-        const queryUpdateProgress = `
-            INSERT INTO progressos (usuarioIdFK, curso_id, aula_id, progresso)
-            VALUES (?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE progresso = ?, data_atualizacao = CURRENT_TIMESTAMP
-        `;
-
-        connection.query(queryUpdateProgress, [usuarioId, curso_id, aula_id, progresso, progresso], (err, result) => {
-            if (err) {
-                console.error('Erro ao atualizar o progresso:', err);
-                return res.status(500).json({ error: 'Erro ao atualizar o progresso.' });
-            }
-            res.json({ message: 'Progresso atualizado com sucesso' });
-        });
+        res.json({ message: 'Progresso atualizado com sucesso!' });
     });
 });
 
+
 // Rota para obter o progresso de todas as aulas de um curso para um usuário específico
-app.get('/progressos/:usuarioId/:curso_id', (req, res) => {
+app.get('/buscar-progresso/:usuarioId/:curso_id/progresso', (req, res) => {
     const { usuarioId, curso_id } = req.params;
 
     const query = `
-        SELECT aula_id, progresso FROM progressos
-        WHERE usuarioIdFK = ? AND curso_id = ?
+        SELECT progresso 
+        FROM matriculas
+        WHERE usuarioIdFK = ? AND cursoIdFK = ?
     `;
 
     connection.query(query, [usuarioId, curso_id], (err, results) => {
         if (err) {
-            console.error('Erro ao buscar progresso das aulas:', err);
-            return res.status(500).json({ error: 'Erro ao buscar progresso das aulas.' });
+            console.error('Erro ao buscar progresso:', err);
+            return res.status(500).json({ message: 'Erro ao buscar progresso.' });
         }
-        res.json(results);
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Matrícula não encontrada' });
+        }
+        res.json({ progresso: results[0].progresso });
     });
 });
 
@@ -394,3 +386,5 @@ app.get('/mostrar-cursos/:usuarioId', (req, res) => {
         res.json(results);
     });
 });
+
+    // Função para buscar o progresso
