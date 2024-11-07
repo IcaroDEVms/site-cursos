@@ -1305,15 +1305,15 @@ img {
 .download-button-container button {
     padding: 10px 20px;
     font-size: 1em;
-    background-color: var(--hanburgueTRES-color);
-    color: #fff;
+    background-color: rgb(43, 190, 63);;
+    color: #F0F6EF;
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .download-button-container button:hover {
-    background-color: var(--hanburgueTEXT-color);
+    background-color: #379637;
 }
 
     /* Estilize o fundo de partículas para ocupar a tela toda */
