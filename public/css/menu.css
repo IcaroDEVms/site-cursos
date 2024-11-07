@@ -36,7 +36,7 @@ h1, h2, p {
     --borda-color: #555;
     --botoesdenavegacaodocarrossel-color: #55555567;
     --TEXTO-color: #222;
-    --fundoTEXT-color: #f0f6efc0;
+    --fundoTEXT-color: #e1e1e1e1;
     --H2-color: #fd5e3a;
     --H3-color: #111;
     --LI-color: #fd7253;
@@ -47,7 +47,6 @@ h1, h2, p {
     --CorButaoUsuario-color: #F0F6EF;
     --SuporteTextBox-color: #fff;
     --gradiente-invertido: linear-gradient(to bottom, rgba(240, 246, 239, 3), rgba(240, 246, 239, 0) 15%);
-
     --footer-color: #F0F6EF;
 }
 
@@ -156,7 +155,7 @@ h1, h2, p {
     width: 100%; 
     margin: 0; 
     padding: 0; 
-    border: none; 
+   
 }
 
 .sidebar .accordion-header {
@@ -240,7 +239,8 @@ h1, h2, p {
     left: 0;
     top: 120px;
     z-index: 10;
-    border: none;
+    border: 15px;
+    border: 1px solid var(--borda-color) !important;
     background-color: var(--cabecalho-color) !important; /* Fundo do accordion */
     color: var(--cabecalhoTEXT-color) !important; /* Cor do texto */
 }
@@ -293,7 +293,7 @@ h1, h2, p {
 
 .accordion-body {
     padding: 10px;     /* Espaçamento interno */
-    border: none;
+  
     background-color: var(--cabecalho-color) !important; /* Fundo do conteúdo */
     color: var(--cabecalhoTEXT-color) !important; /* Cor do texto */
 }
@@ -303,7 +303,7 @@ h1, h2, p {
     height: 50px; /* Altura do botão */
     background-color: var(--cabecalho-color) !important; /* Fundo do botão */
     color: var(--cabecalhoTEXT-color) !important; /* Cor do texto */
-    border: none; /* Remove bordas */
+   border: 1px solid var(--borda-color) !important; 
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -311,18 +311,21 @@ h1, h2, p {
     background-color: var(--cabecalho-color) !important; /* Fundo do botão expandido */
     color: var(--cabecalhoTEXT-color) !important; /* Cor do texto expandido */
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125); /* Efeito para o estado expandido */
+    border: solid none;
 }
 
 /* Estado colapsado do botão do accordion */
 .accordion-button.collapsed {
     background-color: var(--cabecalho-color) !important; /* Fundo do botão colapsado */
     color: var(--cabecalhoTEXT-color) !important; /* Cor do texto colapsado */
+    border: solid none;
 }
 
 /* Define uma altura fixa para a área de colapso e controla o fluxo do conteúdo */
 /* Área de colapso do accordion */
 .accordion-collapse {
     transition: max-height 0.3s ease;
+    border: solid none;
 }
 
 /* Botões internos das aulas */
@@ -485,6 +488,7 @@ h1, h2, p {
 .footer {
     position: relative; /* Ou fixed, dependendo do comportamento desejado */
     bottom: 0;
+   
     width: 100%;
     color: var(--cabecalhoTEXT-color);
     background-color: none;
@@ -650,6 +654,7 @@ h1, h2, p {
     background-color: var(--fundoTEXT-color);
     padding: 20px;
     border-radius: 15px;
+    border: 1px solid var(--borda-color);
     margin-top: 7vh; 
     display: flex; 
     align-items: flex-start;
@@ -728,6 +733,7 @@ h1, h2, p {
     border-radius: 15px;
     margin-bottom: 10vh;
     margin-top: 20vh;
+    border: 1px solid var(--borda-color);
     margin-left: auto;
     margin-right: auto; 
     color: var(--TEXTO-color);
@@ -863,6 +869,7 @@ form button:hover {
     color: var(--TEXTusuario-color);
     border-radius: 15px;
     width: 90vh;
+    border: 1px solid var(--borda-color);
     margin-left: auto;
     margin-right: auto; 
     text-align: end;
@@ -1254,8 +1261,8 @@ img {
 .certificate-container {
     width: 80%;
     max-width: 600px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 30vh;
+    margin-bottom: 0vh;
     margin-left: auto;
     margin-right: auto;
     padding: 30px 0;
@@ -1278,7 +1285,8 @@ img {
 
 .download-button-container {
     text-align: center;
-    margin-top: 20px
+    margin-top: 20px;
+    margin-bottom: 42vh;
 }
 
 .download-button-container button {
