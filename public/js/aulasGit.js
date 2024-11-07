@@ -1,6 +1,6 @@
 let aulaAtualId = null;
-let qtdAulasTotal = 5;  // Armazena o total de aulas do curso
-let progressoAtual = 0; // Armazena o progresso atual
+const qtdAulasTotal = 5;  // Defina aqui a quantidade total de aulas no curso
+let progressoAtual = 0;   // Variável para armazenar o progresso atual
 
 // Função para exibir o vídeo e o sistema de avaliação
 function playVideo(videoUrl) {
@@ -41,29 +41,31 @@ function playVideo(videoUrl) {
     document.getElementById('ConclusaoButton').addEventListener('click', marcarConclusao);
 }
 
-// Função para buscar `qtd_aulas` do curso
-function obterQtdAulas(cursoId) {
-    fetch(`http://localhost:2005/curso/${cursoId}/qtd_aulas`)
-        .then(response => response.json())
-        .then(data => {
-            qtdAulasTotal = data.qtd_aulas;
-            console.log(`Total de aulas no curso: ${qtdAulasTotal}`);
-        })
-        .catch(error => console.error('Erro ao buscar qtd_aulas:', error));
-}
-
 // Função para marcar aula como concluída e enviar progresso incrementado
 function marcarConclusao() {
     const usuarioId = localStorage.getItem('userId');
     const curso_id = 1;
     const aula_id = aulaAtualId;
 
-    // Calcula o incremento de progresso com base no número total de aulas
-    const incrementoProgresso = 100 / qtdAulasTotal;
-    progressoAtual = Math.min(progressoAtual + incrementoProgresso, 100);  // Limita a 100%
+    // Verifique os valores
+    console.log("Qtd de Aulas Total:", qtdAulasTotal);
+    console.log("usuarioId:", usuarioId, "curso_id:", curso_id, "aula_id:", aula_id);
+    if (qtdAulasTotal > 0) {
+        const incrementoProgresso = 100 / qtdAulasTotal;
+        progressoAtual = Math.min(progressoAtual + incrementoProgresso, 100);  // Limita a 100%
+        console.log("Incremento de Progresso:", incrementoProgresso);
+        console.log("Progresso Atual:", progressoAtual);
+        
+        // Salva progresso no localStorage
+        localStorage.setItem('progressoAtual', progressoAtual);
+    } else {
+        progressoAtual = 100;
+        console.log("Progresso Atual Setado para 100% porque qtdAulasTotal é 0");
+    }
+    
 
     // Envia o novo progresso ao backend
-    fetch('http://localhost:2005/atualizar-progresso', {
+    fetch('/atualizar-progresso', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -72,6 +74,7 @@ function marcarConclusao() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log("Resposta do servidor:", data);
         if (data.message) {
             alert(data.message);
             updateProgress(progressoAtual); // Atualiza visualmente o progresso
@@ -79,7 +82,73 @@ function marcarConclusao() {
             alert('Erro ao atualizar o progresso');
         }
     })
-    .catch(error => console.error('Erro:', error));
+    .catch(error => console.error('Erro na requisição:', error));
+}
+
+// Função para buscar o progresso do banco de dados e atualizar a variável progressoAtual
+document.addEventListener('DOMContentLoaded', () => {
+    const usuarioId = localStorage.getItem('userId');  // Substitua pelo método adequado para obter o ID do usuário
+    const cursoId = 1;  // Substitua com o ID do curso correspondente
+    
+    // Função para buscar o progresso do banco de dados
+    fetch(`/curso-progresso/${usuarioId}/${cursoId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.progresso !== undefined) {
+                progressoAtual = data.progresso;  // Define o progresso atual com o valor do banco
+                updateProgress(progressoAtual);  // Atualiza visualmente o círculo de progresso
+            } else {
+                console.warn('Progresso não encontrado.');
+            }
+        })
+        .catch(error => console.error('Erro ao buscar progresso:', error));
+});
+
+const usuarioId = localStorage.getItem('userId');  // Substitua pelo método adequado para obter o ID do usuário
+const cursoId = 1;  // Substitua com o ID do curso correspondente
+
+// Verifica se há progresso salvo no localStorage
+const progressoSalvo = localStorage.getItem('progressoAtual');
+if (progressoSalvo !== null) {
+    progressoAtual = parseFloat(progressoSalvo); // Usa o progresso salvo no localStorage
+    updateProgress(progressoAtual);  // Atualiza visualmente o círculo de progresso
+} else {
+    // Caso não haja progresso salvo, tenta buscar do backend
+    fetch(`/curso-progresso/${usuarioId}/${cursoId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.progresso !== undefined) {
+                progressoAtual = data.progresso;  // Define o progresso atual com o valor do banco
+                localStorage.setItem('progressoAtual', progressoAtual); // Salva no localStorage
+                updateProgress(progressoAtual);  // Atualiza visualmente o progresso
+            } else {
+                console.warn('Progresso não encontrado.');
+            }
+        })
+        .catch(error => console.error('Erro ao buscar progresso:', error));
+}
+
+// Função para buscar o progresso do banco de dados e atualizar o progresso visualmente
+async function buscarProgresso() {
+    try {
+        const response = await fetch(`/buscar-progresso/${usuarioId}/${cursoId}/progresso`);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.warn("Erro ao buscar progresso:", response.statusText, errorData);
+            return;
+        }
+
+        const data = await response.json();
+        
+        if (data.progresso !== undefined) {
+            progressoAtual = data.progresso;
+            updateProgress(progressoAtual); // Atualiza visualmente o progresso no círculo
+        } else {
+            console.warn('Progresso não encontrado.');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar progresso:', error);
+    }
 }
 
 // Função para atualizar visualmente o progresso no círculo
@@ -87,16 +156,13 @@ function updateProgress(percent) {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
     
+    // Atualiza o dasharray do círculo com base na porcentagem
     progressBar.style.strokeDasharray = `${percent}, 100`;
-    progressText.textContent = `${Math.round(percent)}%`;
+    progressText.textContent = `${Math.round(percent)}%`;  // Atualiza o texto de porcentagem
 }
 
-// Carrega o total de aulas do curso ao iniciar a página
-document.addEventListener('DOMContentLoaded', () => {
-    const cursoId = 1;
-    obterQtdAulas(cursoId);
-});
-
+// Chama buscarProgresso ao carregar a página
+document.addEventListener('DOMContentLoaded', buscarProgresso);
 // Botões dos módulos e aulas
 document.getElementById('m1a1git').addEventListener('click', () => { aulaAtualId = 1; playVideo("https://www.youtube.com/embed/iQU7AS2jbPM?si=EFYBDny_r2hbcs0I"); });
 document.getElementById('m1a2git').addEventListener('click', () => { aulaAtualId = 2; playVideo("https://www.youtube.com/embed/Vl49fxpMiGc?si=eJAnOjNtMvQIwAF9"); });
