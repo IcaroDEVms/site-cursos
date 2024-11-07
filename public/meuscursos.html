@@ -42,56 +42,7 @@
         
 
         <div class="BannersCursos">
-            <section class="meuscursosBOX">
-                <div class="meuscursosbanner">
-                    <img src="img/logo-git.png" alt="Banner Image">
-                    <!-- Conteúdo sobre a imagem -->
-                    <h2>Curso de GitHub Avançado</h2>
-                    <p>Aprenda as melhores práticas e avance na sua carreira de profissional.</p>
-                    <a href="aulaGit.html" class="meuscursosbanner-button">Entrar nas Aulas</a>
-                </div >
-            </section>
-
-            <!-- Seção de imagens com títulos e textos -->
-            <section class="meuscursosBOX">
-                <div class="meuscursosbanner">
-                    <img src="img/VALORANT.jpg" alt="Banner Image">
-                    <!-- Conteúdo sobre a imagem -->
-                    <h2>Curso de Valorant Avançado</h2>
-                    <p>Aprenda as melhores práticas e avance na sua carreira de profissional.</p>
-                    <a href="aulaValorant.html" class="meuscursosbanner-button">Entrar nas Aulas</a>
-                </div>
-            </section>
-
-            <section class="meuscursosBOX">
-                <div class="meuscursosbanner">
-                    <img src="img/lol.jpeg" alt="Banner Image">
-                    <!-- Conteúdo sobre a imagem -->
-                    <h2>Curso de League of Legends Avançado</h2>
-                    <p>Aprenda as melhores práticas e avance na sua carreira de profissional.</p>
-                    <a href="aulaLol.html" class="meuscursosbanner-button">Entrar nas Aulas</a>
-                </div>
-            </section>
-
-            <section class="meuscursosBOX">
-                <div class="meuscursosbanner">
-                    <img src="img/rocket.jpeg" alt="Banner Image">
-                    <!-- Conteúdo sobre a imagem -->
-                    <h2>Curso de  Rocket League Avançado</h2>
-                    <p>Aprenda as melhores práticas e avance na sua carreira de profissional.</p>
-                    <a href="aulaRL.html" class="meuscursosbanner-button">Entrar nas Aulas</a>
-                </div>
-            </section>
-
-            <section class="meuscursosBOX">
-                <div class="meuscursosbanner">
-                    <img src="img/R6.jpg" alt="Banner Image">
-                    <!-- Conteúdo sobre a imagem -->
-                    <h2>Curso de Rainbow Six Siege Avançado</h2>
-                    <p>Aprenda as melhores práticas e avance na sua carreira de profissional.</p>
-                    <a href="aulaR6.html" class="meuscursosbanner-button">Entrar nas Aulas</a>
-                </div>
-            </section>
+            
         </div>
 
     </div>
@@ -101,7 +52,84 @@
         <p>&copy; 2024 Poppy Cursos - Todos os direitos reservados</p>
     </footer>
     
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const userId = localStorage.getItem('userId');
+
+            fetch(`/mostrar-cursos/${userId}`)
+                .then(response => {
+                    console.log(response);
+                    if (!response.ok) {
+                        throw new Error('Erro ao buscar os cursos');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Verifique se o contêiner existe
+                    const container = document.querySelector('.BannersCursos');
+                    if (!container) {
+                        console.error('Contêiner .BannerCursos não encontrado no DOM');
+                        return;
+                    }
+
+                    // 'data' contém os cursos do usuário, agora você pode trabalhar com esses dados
+                    data.forEach(curso => {
+                        const nomeCurso = curso.nome;
+                        const progressoCurso = curso.progresso;
+                        const pathCurso = curso.path;
+                        const imagemCurso = curso.imagem;
+                        const bannerCurso = curso.banner;
+
+                        // Chama a função para criar o elemento do curso
+                        criarElementoBanner(nomeCurso, progressoCurso, pathCurso, bannerCurso, container);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar os cursos:', error);
+                });
+        });
+
+        function criarElementoBanner(nomeCurso, progressoCurso, pathCurso, bannerCurso, container) {
+            
+            console.log("Criando os elementos da pagina");
+            // Cria os elementos principais do banner
+            const section = document.createElement("section");
+            section.classList.add("meuscursosBOX");
+
+            const divBanner = document.createElement("div");
+            divBanner.classList.add("meuscursosbanner");
+
+            // Adiciona a imagem do banner
+            const img = document.createElement("img");
+            img.src = bannerCurso;
+            img.alt = `Banner do curso ${nomeCurso}`;
+            divBanner.appendChild(img);
+
+            // Adiciona o título do curso
+            const h2 = document.createElement("h2");
+            h2.textContent = nomeCurso;
+            divBanner.appendChild(h2);
+
+            // Adiciona a descrição do progresso do curso
+            const p = document.createElement("p");
+            p.textContent = `Progresso: ${progressoCurso}% concluído`;
+            divBanner.appendChild(p);
+
+            // Adiciona o botão para entrar nas aulas
+            const link = document.createElement("a");
+            link.href = pathCurso;
+            link.classList.add("meuscursosbanner-button");
+            link.textContent = "Entrar nas Aulas";
+            divBanner.appendChild(link);
+
+            // Junta a divBanner na section
+            section.appendChild(divBanner);
+
+            // Adiciona o banner ao container especificado
+            container.appendChild(section);
+        }
+
+    </script>    
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="js/particles-config.js"></script>
