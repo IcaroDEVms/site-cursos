@@ -236,7 +236,8 @@
         const dots = document.querySelectorAll('.dot');
         let currentIndex = 0;
         let autoSlideInterval;
-    
+
+        // Função para mostrar a imagem com base no índice
         function showImage(index) {
             images.forEach((img, i) => {
                 img.classList.remove('active');
@@ -251,24 +252,27 @@
                 }
             });
         }
-    
+
+        // Função para avançar para a próxima imagem
         function nextImage() {
             currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
             showImage(currentIndex);
         }
-    
+
+        // Botões de navegação
         document.querySelector('.prev').addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
             showImage(currentIndex);
             resetAutoSlide();
         });
-    
+
         document.querySelector('.next').addEventListener('click', () => {
             currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
             showImage(currentIndex);
             resetAutoSlide();
         });
-    
+
+        // Dots de navegação
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentIndex = index;
@@ -276,20 +280,21 @@
                 resetAutoSlide();
             });
         });
-    
-        // Start auto-slide every 2 seconds
+
+        // Função para iniciar o auto-slide
         function startAutoSlide() {
-            autoSlideInterval = setInterval(nextImage, 3000);
+            autoSlideInterval = setInterval(nextImage, 3000); // 3 segundos
         }
-    
-        // Stop auto-slide when user interacts and reset the timer
+
+        // Função para reiniciar o auto-slide
         function resetAutoSlide() {
             clearInterval(autoSlideInterval);
             startAutoSlide();
         }
-    
-        // Start auto-slide when the page loads
+
+        // Iniciar o auto-slide quando a página carregar
         startAutoSlide();
+
     </script>
 
 </body>

@@ -184,7 +184,7 @@ h1, h2, p {
 
 .video-container {
     min-height: calc(100vh - 50px); /* Ajuste conforme necessário */
-    background-color: var(--background-color);
+    background-color: var(--fundoNOVO-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -482,13 +482,14 @@ h1, h2, p {
     bottom: 0;
     width: 100%;
     color: var(--cabecalhoTEXT-color);
-    background-color: var(--background-color);
+    background-color: none;
     padding: 13px 0;
     text-align: center;
 } 
 
 
 .footer {
+    margin-top: auto;
     position: relative; 
     bottom: 0;
     left: 0;
@@ -1133,7 +1134,7 @@ img {
 }
 
 .video-and-message {
-    display: flex;
+    text-align: center;
     margin-top: 10px;
 }
 

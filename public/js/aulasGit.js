@@ -14,19 +14,11 @@ function playVideo(videoUrl) {
                     <button id="close-btn" class="close-btn" aria-label="Close">❌</button>
                 </div>
                 <div class="video-and-message">
-                    <div class="message-box">
-                        <textarea placeholder="Escreva sua mensagem de dúvida aqui..."></textarea>
-                    </div>
+                    
                     <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="below-video">
-                    <div class="star-rating">
-                        <span class="star" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
+                    
                     <button id="ConclusaoButton" class="ConclusaoButton">Marcar como concluída</button>
                 </div>
             </div>
@@ -76,7 +68,7 @@ function marcarConclusao() {
     .then(data => {
         console.log("Resposta do servidor:", data);
         if (data.message) {
-            alert(data.message);
+            showNotification(data.message);
             updateProgress(progressoAtual); // Atualiza visualmente o progresso
         } else {
             alert('Erro ao atualizar o progresso');
@@ -169,3 +161,15 @@ document.getElementById('m1a2git').addEventListener('click', () => { aulaAtualId
 document.getElementById('m1a3git').addEventListener('click', () => { aulaAtualId = 3; playVideo("https://www.youtube.com/embed/63e5LEAcSmE?si=kFAkfHuN1WkUu0Dy"); });
 document.getElementById('m1a4git').addEventListener('click', () => { aulaAtualId = 4; playVideo("https://www.youtube.com/embed/NyPnxWXoWXg?si=dVfQEJcc0IxVDIw0"); });
 document.getElementById('m1a5git').addEventListener('click', () => { aulaAtualId = 5; playVideo("https://www.youtube.com/embed/6ul_U0zeoz8?si=_qvwCWCi04gxTg1Z"); });
+
+function showNotification(message, isError = false) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.toggle('error', isError);
+    notification.style.display = 'block';
+
+    // Ocultar a notificação após 3 segundos
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
