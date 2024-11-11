@@ -1280,7 +1280,7 @@ img {
     margin-right: auto;
     padding: 40px;
     border: 10px double #444;
-    background-color: #fdfdfd;
+    background-color: #fff;
     text-align: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     font-family: 'Georgia', serif;
@@ -1326,7 +1326,7 @@ img {
 .download-button-container {
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 42vh;
+    margin-bottom: 10vh;
 }
 
 .download-button-container button {
@@ -1335,7 +1335,7 @@ img {
     background-color: rgb(43, 190, 63);;
     color: #F0F6EF;
     border: none;
-    cursor: pointer;
+    cursor: pointer;z
     border-radius: 5px;
 }
 
