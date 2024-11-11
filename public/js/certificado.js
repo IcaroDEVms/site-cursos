@@ -16,3 +16,29 @@ function downloadCertificate() {
         link.click();
     });
 }
+
+async function loadCertificateData(userId, courseId) {
+    try {
+        const response = await fetch(`/certificado-dados/${userId}/${courseId}`);
+        const data = await response.json();
+        document.getElementById('nome-aluno').textContent = `Nome: ${data.nome}`;
+        document.getElementById('nome-curso').textContent = `Curso: ${data.curso}`;
+    } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+    }
+}
+
+window.onload = function() {
+    const userId = 1; // Substitua pelo ID real do usuário
+    const courseId = 2; // Substitua pelo ID real do curso
+    loadCertificateData(userId, courseId);
+};
+
+function downloadCertificate() {
+    html2canvas(document.querySelector("#certificate")).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'certificado.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}

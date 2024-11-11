@@ -387,4 +387,27 @@ app.get('/mostrar-cursos/:usuarioId', (req, res) => {
     });
 });
 
-    // Função para buscar o progresso
+app.get('/certificado-dados/:userId/:courseId', (req, res) => {
+    const { userId, courseId } = req.params;
+
+    const query = `
+        SELECT u.nome AS nome, c.nome AS curso 
+        FROM usuarios u
+        JOIN matriculas m ON u.id = m.usuarioIdFK
+        JOIN cursos c ON m.cursoIdFK = c.id
+        WHERE u.id = ? AND c.id = ?;
+    `;
+
+    connection.query(query, [userId, courseId], (err, result) => {
+        if (err) {
+            console.error('Erro ao buscar os dados:', err);
+            return res.status(500).json({ error: 'Erro no servidor' });
+        }
+
+        if (result.length > 0) {
+            res.json(result[0]);
+        } else {
+            res.status(404).json({ error: 'Dados não encontrados' });
+        }
+    });
+});
