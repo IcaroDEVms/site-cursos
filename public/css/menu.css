@@ -576,6 +576,7 @@ h1, h2, p {
     overflow: hidden;
     background-color: #ffffffbb;
     border-radius: 15px; 
+    justify-content: space-between;
 }
 
 /* Imagem de fundo que cobre todo o espaço do banner */
@@ -629,6 +630,27 @@ h1, h2, p {
 /* Mudança de cor ao passar o mouse sobre o botão */
 .meuscursosbanner-button:hover {
     background-color: #555;
+}
+
+.emitir-certificado-button {
+    position: absolute;
+    bottom: 80px;  /* Coloca o botão na parte inferior */
+    right: 20px;   /* Coloca o botão no canto direito */
+    background-color: #28a745;  /* Fundo verde sólido */
+    color: white;  /* Cor do texto verde */
+    padding: 10px 20px;  /* Tamanho ajustado do botão */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;  /* Bordas arredondadas */
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;  /* Transição suave para todas as propriedades */
+    z-index: 2;  /* Coloca o botão acima de outros elementos */
+}
+
+.emitir-certificado-button:hover {
+    background-color: #79d48f;  /* Cor de fundo verde ao passar o mouse */
+    color: #fff;  /* Cor do texto branco */
 }
 
 /* Sombra sobre a imagem para melhorar a legibilidade do texto */
@@ -979,6 +1001,10 @@ hr {
     text-decoration: none;
     color: var(--TEXTO-color);
     font-size: 18px;
+
+    a{
+        color: #007BFF;
+    }
 }
 
 .Usuariocourse img{
@@ -1356,4 +1382,34 @@ img {
         justify-content: center;
         align-items: center;
         z-index: -1;
+    }
+
+    .no-courses-container {
+        width: 80%; /* Ajuste a largura conforme necessário */
+        max-width: 600px; /* Define uma largura máxima */
+        margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+        padding: 20px; /* Adiciona espaçamento interno */
+        text-align: center; /* Alinha o texto ao centro */
+        background-color: var(--fundoTEXT-color); /* Define a cor de fundo (opcional) */
+        border-radius: 10px; /* Arredonda as bordas (opcional) */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra (opcional) */
+    }
+    
+    .no-courses-container p {
+        font-size: 16px; /* Tamanho da fonte do texto */
+        color: var(--TEXTO-color);
+    }
+    
+    .no-courses-container a {
+        display: inline-block; /* Exibe o link como um bloco para que seja possível adicionar margens ou padding */
+        margin-top: 10px; /* Espaçamento entre o parágrafo e o link */
+        padding: 10px 20px;
+        background-color: #007bff; /* Cor de fundo do link */
+        color: #F0F6EF; /* Cor do texto do link */
+        text-decoration: none; /* Remove o sublinhado */
+        border-radius: 5px; /* Bordas arredondadas no link */
+    }
+    
+    .no-courses-container a:hover {
+        background-color: #0056b3; /* Cor de fundo do link ao passar o mouse */
     }

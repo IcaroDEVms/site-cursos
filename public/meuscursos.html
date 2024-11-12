@@ -31,7 +31,6 @@
                     <li><a href="index.html"><img src="img/CASINHAPRETA.png" class="menu-icon" alt="casinha" id="casinha"></a></li>
                     <li><a href="cursos.html">Cursos</a></li>
                     <li><a href="meuscursos.html">Meus Cursos</a></li>
-                    <li><a href="certificado.html">Certificado</a></li>
                     <li><a href="suporte.html">Suporte</a></li>
                 </ul>
             </nav>
@@ -65,6 +64,27 @@
                     const container = document.querySelector('.BannersCursos');
                     if (!container) {
                         console.error('Contêiner .BannerCursos não encontrado no DOM');
+                        return;
+                    }
+
+                    if (data.length === 0) {
+                        // Cria um contêiner para a mensagem e o link
+                        const messageContainer = document.createElement("div");
+                        messageContainer.classList.add("no-courses-container");
+
+                        const message = document.createElement("p");
+                        message.textContent = "Você ainda não possui cursos cadastrados.";
+
+                        const link = document.createElement("a");
+                        link.href = "cursos.html";
+                        link.textContent = "Clique aqui para ver nossos cursos";
+
+                        // Adiciona a mensagem e o link ao contêiner de mensagem
+                        messageContainer.appendChild(message);
+                        messageContainer.appendChild(link);
+
+                        // Adiciona o contêiner de mensagem ao contêiner principal
+                        container.appendChild(messageContainer);
                         return;
                     }
 
@@ -110,6 +130,23 @@
             const p = document.createElement("p");
             p.textContent = `Progresso: ${progressoCurso}% concluído`;
             divBanner.appendChild(p);
+
+            if (progressoCurso === 100) {
+                const button = document.createElement("button");
+                button.textContent = "Emitir Certificado";
+
+                button.onclick = function() {
+                    // Adiciona uma variável ao localStorage
+                    localStorage.setItem("courseId", nomeCurso);
+
+                    // Redireciona para a página do certificado
+                    window.location.href = "certificado.html";
+                };
+
+                // Adiciona o botão ao contêiner
+                button.classList.add("emitir-certificado-button");
+                divBanner.appendChild(button);
+            }
 
             // Adiciona o botão para entrar nas aulas
             const link = document.createElement("a");

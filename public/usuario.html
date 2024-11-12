@@ -29,7 +29,6 @@
                     <li><a href="index.html"><img src="img/CASINHAPRETA.png" class="menu-icon" alt="casinha" id="casinha"></a></li>
                     <li><a href="cursos.html">Cursos</a></li>
                     <li><a href="meuscursos.html">Meus Cursos</a></li>
-                    <li><a href="certificado.html">Certificado</a></li>
                     <li><a href="suporte.html">Suporte</a></li>
                 </ul>
             </nav>
@@ -358,6 +357,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error('Contêiner .Usuariocourses não encontrado no DOM');
                 return;
             }
+
+            if (data.length === 0) {
+                // Cria um contêiner para a mensagem e o link
+                const messageContainer = document.createElement("div");
+                messageContainer.classList.add("Usuariocourse");
+
+                const message = document.createElement("p");
+                message.textContent = "Você ainda não possui cursos cadastrados.";
+
+                const link = document.createElement("a");
+                link.href = "cursos.html";
+                link.textContent = "Clique aqui para ver nossos cursos";
+
+                // Adiciona a mensagem e o link ao contêiner de mensagem
+                messageContainer.appendChild(message);
+                messageContainer.appendChild(link);
+
+                // Adiciona o contêiner de mensagem ao contêiner principal
+                container.appendChild(messageContainer);
+                return;
+            }
+
 
             // 'data' contém os cursos do usuário, agora você pode trabalhar com esses dados
             data.forEach(curso => {
