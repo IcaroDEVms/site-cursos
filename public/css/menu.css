@@ -1225,16 +1225,16 @@ img {
 /* Estilos do Círculo de Progresso */
 .progress-circle {
     position: absolute;
-    top: 130px; /* Posição ajustada para ficar abaixo do header */
-    right: 90px; /* Posição inicial */
-    width: 90px;
-    height: 80px;
+    top: 130px;
+    right: 90px;
+    width: 90px; /* Largura */
+    height: 90px; /* Igual à largura para garantir que seja circular */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
     background-color: var(--background-color);
-    border-radius: 50%;
+    border-radius: 50%; /* Mantém o formato circular */
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
 }
@@ -1306,7 +1306,7 @@ img {
     margin-right: auto;
     padding: 40px;
     border: 10px double #444;
-    background-color: #fdfdfd;
+    background-color: #fff;
     text-align: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     font-family: 'Georgia', serif;
@@ -1352,7 +1352,7 @@ img {
 .download-button-container {
     text-align: center;
     margin-top: 20px;
-    margin-bottom: 42vh;
+    margin-bottom: 10vh;
 }
 
 .download-button-container button {
@@ -1412,4 +1412,22 @@ img {
     
     .no-courses-container a:hover {
         background-color: #0056b3; /* Cor de fundo do link ao passar o mouse */
+    }
+    .nameHeader {
+        font-size: 16px; /* Tamanho legível */
+        font-weight: bold; /* Destaque para o texto */
+        color: #ffffff; /* Cor branca, assumindo um fundo mais escuro */
+        text-transform: uppercase; /* Coloca o texto em letras maiúsculas */
+        transition: color 0.3s ease; /* Efeito suave na mudança de cor */
+    }
+    
+    .nameHeader:hover {
+        color: #ffdd57; /* Cor de destaque */
+        cursor: pointer;
+    }
+    #HeaderUserImg {
+        display: flex;
+        align-items: center;
+        text-decoration: none; /* Remove sublinhado do link */
+        gap: 8px; /* Espaço entre o texto e a imagem */
     }

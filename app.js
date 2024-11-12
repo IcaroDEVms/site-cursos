@@ -6,6 +6,8 @@ const path = require('path');
 const port = 2005;
 
 const app = express();
+const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 10;// Nível de complexidade da criptografia
 
 // Middleware para processar dados de formulários
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -108,6 +110,23 @@ app.get('/buscar-usuario/:id', (req, res) =>{
         }
     });
 });
+//Rota para exibir dados do usuário
+app.get('/buscar-nome/:id', (req, res) =>{
+    const userId = req.params.id;
+
+    const query = 'SELECT nome FROM usuarios WHERE id = ?';
+
+    connection.query(query, [userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao buscar dados');
+        }
+        if(result.length >0){
+            res.json(result[0]);
+        }else{
+            res.status(404).send('Usuário não encontrado');
+        }
+    });
+});
 
 //Rota para exibir matriculas cadastradas
 
@@ -130,42 +149,64 @@ app.get('/buscar-matriculas/:id', (req, res) =>{
 });
 
 // Rota para cadastro de e-mail
-app.post('/cadastrar-usuario', (req, res) => {
+app.post('/cadastrar-usuario', async (req, res) => {
     const { email, senha, confirmarSenha, nome } = req.body;
     const defaultImgPath = '/public/userIMG/defaultUser.png';
 
     if (senha !== confirmarSenha) {
         return res.status(400).send('As senhas não coincidem.');
     }
-    const query = 'INSERT INTO usuarios (email, senha, nome, imagePath) VALUES (?, ?, ?, ?)';
+    try {
+        // Criptografa a senha antes de salvar no banco
+        const SenhaCriptografada = await bcrypt.hash(senha, SALT_ROUNDS);
+        
+        const query = 'INSERT INTO usuarios (email, senha, nome, imagePath) VALUES (?, ?, ?, ?)';
+        console.log("Valores a serem inseridos: "+ email, senha, confirmarSenha, nome);
 
-    console.log("Valores a serem inseridos: "+ email, senha, confirmarSenha, nome);
-
-    connection.query(query, [email, senha, nome, defaultImgPath], (err, result) => {
-        if (err) {
-            console.error('Erro ao inserir no banco de dados: ' + err.stack);
-            return res.status(500).send('Erro ao cadastrar o e-mail.');
-        }
-        // res.send('E-mail cadastrado com sucesso!');
-        res.json({ message: 'E-mail cadastrado com sucesso!' });
-    });
+        connection.query(query, [email, SenhaCriptografada, nome, defaultImgPath], (err, result) => {
+            if (err) {
+                console.error('Erro ao inserir no banco de dados: ' + err.stack);
+                return res.status(500).send('Erro ao cadastrar o e-mail.');
+            }
+            // res.send('E-mail cadastrado com sucesso!');
+            res.json({ message: 'E-mail cadastrado com sucesso!' });
+        });
+    } catch (error) {
+        console.error('Erro ao criptografar a senha:', error);
+        res.status(500).send('Erro ao cadastrar o e-mail.');
+    }
 });
 
 // Rota para login
 app.post('/login', (req, res) => {
     const { email, senha } = req.body;
-    const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+    const query = 'SELECT * FROM usuarios WHERE email = ?';
 
-    connection.query(query, [email, senha], (err, results) => {
+    connection.query(query, [email], async (err, results) => {
         if (err) {
             console.error('Erro ao buscar no banco de dados: ' + err.stack);
             return res.status(500).send('Erro ao fazer login.');
         }
 
-        if (results.length > 0) {
-            res.json({message: "Login bem-sucedido!", id: results[0].id});
-        } else {
-            res.status(401).send('E-mail ou senha incorretos.');
+        // Verifica se algum usuário foi encontrado
+        if (results.length === 0) {
+            return res.status(401).send('E-mail ou senha incorretos.');
+        }
+
+        const user = results[0];
+        
+        try {
+            // Compara a senha fornecida com a senha criptografada
+            const isMatch = await bcrypt.compare(senha, user.senha);
+            if (isMatch) {
+                res.json({ message: 'Login bem-sucedido!', id: user.id });
+            } else {
+                console.log("Senha incorreta");
+                res.status(401).send('E-mail ou senha incorretos.');
+            }
+        } catch (error) {
+            console.error('Erro ao comparar a senha:', error);
+            res.status(500).send('Erro no servidor.');
         }
     });
 });
