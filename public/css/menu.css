@@ -282,12 +282,12 @@ h1, h2, p {
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Ajuste centralizado em desktop */
     align-items: center;
     background-color: var(--cabecalho-color) !important;
     color: var(--cabecalhoTEXT-color) !important;
     padding: 20px;
-    position:absolute;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -351,17 +351,11 @@ h1, h2, p {
 }
 
 .icon-button {
-    position: absolute;
-    right: 20px;
-    top: 10px; /* Ajuste este valor para mover mais para cima */
-    padding: 10px 10px;
-    margin: 0 60px;
-    border: none;
-    cursor: pointer;
-    height: 80px;
-    width: 80px;
-    border-radius: 50%; /* Faz a imagem ficar circular */
-    object-fit: cover; /* Mantém o conteúdo centralizado e ajustado */
+    height: 50px; /* Alterar caso 80px seja grande em UX */
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 70px;
 }
 
 /* Carrossel */
@@ -1414,20 +1408,20 @@ img {
         background-color: #0056b3; /* Cor de fundo do link ao passar o mouse */
     }
     .nameHeader {
-        font-size: 16px; /* Tamanho legível */
-        font-weight: bold; /* Destaque para o texto */
-        color: #ffffff; /* Cor branca, assumindo um fundo mais escuro */
-        text-transform: uppercase; /* Coloca o texto em letras maiúsculas */
-        transition: color 0.3s ease; /* Efeito suave na mudança de cor */
+        margin-top: 20px;
+        font-size: 16px;
+        color: var(--TEXTO-color);
+        transition: color 0.3s ease;
     }
     
     .nameHeader:hover {
-        color: #ffdd57; /* Cor de destaque */
+        color: var(--cabecalhoTEXT-color);
         cursor: pointer;
     }
+    
     #HeaderUserImg {
-        display: flex;
+        display: flex; /* Necessário */
         align-items: center;
-        text-decoration: none; /* Remove sublinhado do link */
-        gap: 8px; /* Espaço entre o texto e a imagem */
+        text-decoration: none;
+        gap: 10px; /* Espaço entre a imagem e o texto */
     }
