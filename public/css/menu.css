@@ -1357,3 +1357,22 @@ img {
         align-items: center;
         z-index: -1;
     }
+
+    .nameHeader {
+        font-size: 16px; /* Tamanho legível */
+        font-weight: bold; /* Destaque para o texto */
+        color: #ffffff; /* Cor branca, assumindo um fundo mais escuro */
+        text-transform: uppercase; /* Coloca o texto em letras maiúsculas */
+        transition: color 0.3s ease; /* Efeito suave na mudança de cor */
+    }
+    
+    .nameHeader:hover {
+        color: #ffdd57; /* Cor de destaque */
+        cursor: pointer;
+    }
+    #HeaderUserImg {
+        display: flex;
+        align-items: center;
+        text-decoration: none; /* Remove sublinhado do link */
+        gap: 8px; /* Espaço entre o texto e a imagem */
+    }

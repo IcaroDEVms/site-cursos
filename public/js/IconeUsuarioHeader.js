@@ -4,6 +4,7 @@ const userId = localStorage.getItem('userId');
 // Verifica se o userId existe e chama a função para carregar a foto do usuário
 if (userId > 0) {
     loadUserPhoto(userId);
+    LoadNameUser(userId);
     document.getElementById('HeaderUserImg').href = 'usuario.html';
 }else{
     document.getElementById('HeaderUserImg').href = 'login.html';
@@ -28,4 +29,25 @@ function loadUserPhoto(userId) {
         .catch(error => {
             console.error('Erro ao carregar imagem:', error);
         });
+}
+
+function LoadNameUser(userId){
+    fetch(`/buscar-nome/${userId}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao buscar nome do usuário');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const HeaderUser = document.getElementById('nameHeader');
+        if (data.nome) {
+            HeaderUser.innerHTML = data.nome;
+        } else {
+            HeaderUser.innerHTML = "Nome não encontrado";
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao carregar imagem:', error);
+    });
 }

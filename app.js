@@ -110,6 +110,23 @@ app.get('/buscar-usuario/:id', (req, res) =>{
         }
     });
 });
+//Rota para exibir dados do usuário
+app.get('/buscar-nome/:id', (req, res) =>{
+    const userId = req.params.id;
+
+    const query = 'SELECT nome FROM usuarios WHERE id = ?';
+
+    connection.query(query, [userId], (err, result) =>{
+        if(err){
+            return res.status(500).send('Erro ao buscar dados');
+        }
+        if(result.length >0){
+            res.json(result[0]);
+        }else{
+            res.status(404).send('Usuário não encontrado');
+        }
+    });
+});
 
 //Rota para exibir matriculas cadastradas
 
